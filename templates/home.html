@@ -3,31 +3,39 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{{ url_for('static',filename='styles/index.css') }}"
-    />
+    <link rel="stylesheet" type="text/css" href="/css/index.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Mooli&display=swap"
       rel="stylesheet"
     />
+
     <title>Cadastro de Empresas</title>
   </head>
   <body>
     <div class="headerContainer">
-      <img class="headerLogo" src="/static/assets/logo.png" />
+      <img class="headerLogo" src="/assets/logo.png" />
       <ul class="menuBarContainer">
         <li class="menuItem"><a href="/" class="linkItem">Home</a></li>
         <li class="menuItem">
-          <a href="/cadastro-empresa" class="linkItem">Cadastro de Empresas </a>
+          <a href="/cadastroEmpresa.html" class="linkItem"
+            >Cadastro de Empresas
+          </a>
         </li>
         <li class="menuItem">
-          <a href="/cadastro-startup" class="linkItem">Cadastro de Startup </a>
+          <a href="/cadastroStartup.html" class="linkItem"
+            >Cadastro de Startup
+          </a>
         </li>
       </ul>
     </div>
+
+    <script type="text/javascript" src="/eel.js"></script>
+    <script type="text/javascript">
+      //Template para conectar python com JS
+      var a = eel.my_python_function(1, 2)();
+      a.then((ab) => console.log(ab));
+    </script>
   </body>
 </html>
