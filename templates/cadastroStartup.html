@@ -3,14 +3,47 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/css/cadastroStartup.css" />
+    <link rel="stylesheet" type="text/css" href="/css/header.css" />
+    <link rel="stylesheet" type="text/css" href="/css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      href="https://fonts.googleapis.com/css2?family=Mooli&display=swap"
       rel="stylesheet"
-      type="text/css"
-      href="{{ url_for('static',filename='styles/cadastroStartup.css') }}"
     />
     <title>Cadastro Startup</title>
   </head>
   <body>
-    <h1>Cadastro Startup</h1>
+    <div class="mainContainer">
+      <h1 class="title">Cadastre a sua startup aqui</h1>
+      <form onsubmit="onSubmit(event)" id="signup">
+        <div class="inputsContainer">
+          <input
+            type="text"
+            name="name"
+            class="formInput"
+            placeholder="Digite o nome da startup"
+          />
+          <input
+            type="text"
+            name="other"
+            class="formInput"
+            placeholder="Digite outra coisa"
+          />
+        </div>
+        <div>
+          <input type="submit" class="submitBtn" value="Enviar" />
+        </div>
+      </form>
+    </div>
+
+    <script type="text/javascript" src="/eel.js"></script>
+    <script type="text/javascript">
+      //Template para conectar python com JS
+      //var a = eel.my_python_function(1, 2)();
+      //a.then((ab) => console.log(ab));
+    </script>
+    <script type="text/javascript" src="/js/index.js"></script>
   </body>
 </html>

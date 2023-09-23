@@ -8,4 +8,9 @@ eel.init('templates')
 def my_python_function(a, b):
     return a + b
 
+@eel.expose
+def workWithValues(values):
+    print('name:', values["name"])
+    print('other:', values["other"])
+
 eel.start('home.html')
