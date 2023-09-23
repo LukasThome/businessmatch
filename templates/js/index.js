@@ -29,7 +29,17 @@ function onSubmit(event) {
   event.preventDefault();
   var obj = {
     name: form.elements["name"].value,
-    other: form.elements["other"].value,
+    cnpj: form.elements["cnpj"].value,
+    cnae: form.elements["cnae"].value,
+    setor: form.elements["setor"].value,
+    pergunta1: form.elements["pergunta1"].value,
+    pergunta2: form.elements["pergunta2"].value,
+    pergunta3: form.elements["pergunta3"].value,
   };
   eel.workWithValues(obj)();
+}
+
+function logList() {
+  var list = eel.sendList()();
+  list.then((l) => console.log(l));
 }

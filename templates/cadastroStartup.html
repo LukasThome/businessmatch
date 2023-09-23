@@ -24,18 +24,57 @@
             name="name"
             class="formInput"
             placeholder="Digite o nome da startup"
+            required
           />
           <input
             type="text"
-            name="other"
+            name="cnpj"
             class="formInput"
-            placeholder="Digite outra coisa"
+            placeholder="Digite o CPNJ da startup"
+            required
+          />
+          <input
+            type="text"
+            name="cnae"
+            class="formInput"
+            placeholder="Digite o CNAE da startup"
+            required
+          />
+          <input
+            type="text"
+            name="setor"
+            class="formInput"
+            placeholder="Digite o setor da startup"
+            required
+          />
+          <input
+            type="text"
+            name="pergunta1"
+            class="formInput"
+            placeholder="Digite a resposta da pergunta 1"
+            required
+          />
+          <input
+            type="text"
+            name="pergunta2"
+            class="formInput"
+            placeholder="Digite a resposta da pergunta 2"
+            required
+          />
+          <input
+            type="text"
+            name="pergunta3"
+            class="formInput"
+            placeholder="Digite a resposta da pergunta 3"
+            required
           />
         </div>
-        <div>
+        <div class="inputsContainer">
           <input type="submit" class="submitBtn" value="Enviar" />
         </div>
       </form>
+
+      <button class="submitBtn" onclick="logList()">Log List</button>
     </div>
 
     <script type="text/javascript" src="/eel.js"></script>
