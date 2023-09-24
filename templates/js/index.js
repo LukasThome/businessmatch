@@ -42,6 +42,7 @@ function onSubmit(event) {
     pergunta3: form.elements["pergunta3"].value,
   };
   eel.workWithValues(obj)();
+  location.reload();
 }
 
 function onEdit(event) {
@@ -67,6 +68,7 @@ function remove() {
         .getElementById(`startupId__${id}`)
         .addEventListener("click", () => {
           eel.removeStartup(id)();
+          location.reload();
         });
       document
         .getElementById(`startupId__${id}`)
