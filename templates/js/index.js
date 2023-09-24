@@ -22,6 +22,11 @@ let header = `
                     >Gerenciar Startups
                 </a>
             </li>
+            <li class="menuItem">
+                <a href="/gerenciarEmpresas.html" class="linkItem"
+                    >Gerenciar Empresas
+                </a>
+            </li>
         </ul>
     </div>
 `;
