@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="/js/eventos.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/cadastroStartup.css">
+    <link rel="stylesheet" type="text/css" href="./css/header.css">
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <link rel="stylesheet" type="text/css" href="./css/eventos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mooli&display=swap" rel="stylesheet">
+    <title>Eventos</title>
+    <style>
+        /* Estilos específicos para a página de eventos (eventos.css) */
+        /* Adicione seus estilos personalizados aqui */
+    </style>
+</head>
+<body>
+    <div class="mainContainer">
+        <h1 class="title">Gerenciar Eventos</h1>
+        
+        <!-- Formulário para adicionar eventos -->
+        <div class="eventForm">
+            <h2>Adicionar Evento</h2>
+            <input type="text" id="eventInput" placeholder="Digite o nome do evento">
+            
+            <button onclick="addEvent()">Adicionar</button>
+        </div>
+        
+        <!-- Calendário de Eventos -->
+        <div class="calendarContainer">
+            <h2>Calendário de Eventos</h2>
+            <div id="calendar" class="calendar">
+                <!-- Conteúdo do calendário será adicionado aqui -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Inicialize o Datepicker após o carregamento do DOM -->
+    <script>
+        $(document).ready(function () {
+            initializeDatepicker();
+        });
+    </script>
+    <script type="text/javascript" src="/eel.js"></script>
+    <script type="text/javascript" src="/js/index.js"></script>
+</body>
+</html>
