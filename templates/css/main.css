@@ -1,19 +1,17 @@
 .mainContainer {
-  width: fit-content;
   display: flex;
   flex-direction: column;
   padding: 0 1rem;
+  align-items: center;
 }
 .formInput {
   padding: 1rem;
   font-family: Mooli;
   font-size: 1rem;
-  width: 100%;
   border-radius: 1rem;
   border: 2px solid #0d9340;
 }
 .inputsContainer {
-  width: 100%;
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
@@ -32,4 +30,7 @@
 }
 .title {
   width: fit-content;
+}
+.question {
+  margin: 1rem 0;
 }

@@ -21,7 +21,7 @@
         <div class="inputsContainer">
           <input
             type="text"
-            name="name"
+            name="nome"
             class="formInput"
             placeholder="Digite o nome da startup"
             required
@@ -47,6 +47,7 @@
             placeholder="Digite o setor da startup"
             required
           />
+          <p class="question">Pergunta 1</p>
           <input
             type="text"
             name="pergunta1"
@@ -54,6 +55,7 @@
             placeholder="Digite a resposta da pergunta 1"
             required
           />
+          <p class="question">Pergunta 2</p>
           <input
             type="text"
             name="pergunta2"
@@ -61,6 +63,7 @@
             placeholder="Digite a resposta da pergunta 2"
             required
           />
+          <p class="question">Pergunta 3</p>
           <input
             type="text"
             name="pergunta3"
@@ -73,8 +76,9 @@
           <input type="submit" class="submitBtn" value="Enviar" />
         </div>
       </form>
-
-      <button class="submitBtn" onclick="logList()">Log List</button>
+      <div class="inputsContainer">
+        <button class="submitBtn" onclick="logList()">Log List</button>
+      </div>
     </div>
 
     <script type="text/javascript" src="/eel.js"></script>

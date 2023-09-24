@@ -28,7 +28,7 @@ var form = document.getElementById("signup");
 function onSubmit(event) {
   event.preventDefault();
   var obj = {
-    name: form.elements["name"].value,
+    nome: form.elements["nome"].value,
     cnpj: form.elements["cnpj"].value,
     cnae: form.elements["cnae"].value,
     setor: form.elements["setor"].value,

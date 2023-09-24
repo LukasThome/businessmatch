@@ -1,6 +1,7 @@
 
 from src.model.organizacao import Organizacao
 
+
 class Startup(Organizacao):
     pergunta1: str
     pergunta2: str
