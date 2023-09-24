@@ -8,11 +8,14 @@
   margin-top: 1rem;
 }
 
-.trash {
+.svgIcons {
   cursor: pointer;
 }
 .titleContainer {
   display: flex;
   align-items: center;
   gap: 1rem;
+}
+.editBtn {
+  margin-top: 1rem;
 }

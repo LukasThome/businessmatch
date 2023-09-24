@@ -58,3 +58,14 @@ class StartupController():
                 startups.remove(startup)
         with open(self.__filePath, 'wb') as st:
             pickle.dump(startups, st)
+
+    def edit(self, startup):
+        startups = self.load()
+        for s in startups:
+            if(int(s["id"]) == int(startup["id"])):
+                s["nome"] = startup["nome"]
+                s["cnpj"] = startup["cnpj"]
+                s["cnae"] = startup["cnae"]
+                s["setor"] = startup["setor"]
+        with open(self.__filePath, 'wb') as st:
+            pickle.dump(startups, st)

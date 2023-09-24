@@ -28,4 +28,9 @@ def removeStartup(startupId):
     startupController.remove(startupId)
 
 
+@eel.expose
+def editStartup(startup):
+    startupController.edit(startup)
+
+
 eel.start('home.html')
