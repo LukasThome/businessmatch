@@ -1,14 +1,17 @@
 # pip install -r requirements.txt
 # python main.py
-from src.model.startup import Startup
-from src.controller.startup import StartupController
+from src.model.Startup import Startup
+from src.controller.StartupController import StartupController
+from src.controller.EmpresaController import EmpresaController
 
 import eel
+
 eel.init('templates')
 
 startups = []
 
 startupController = StartupController()
+empresaController = EmpresaController()
 
 
 @eel.expose
@@ -18,7 +21,7 @@ def workWithValues(values):
 
 @eel.expose
 def sendList():
-    if(startupController.filePath.exists()):
+    if (startupController.filePath.exists()):
         s = startupController.load()
         return s
 
@@ -31,6 +34,16 @@ def removeStartup(startupId):
 @eel.expose
 def editStartup(startup):
     startupController.edit(startup)
+
+
+@eel.expose
+def removeEmpresa(idEmpresa):
+    empresaController.remove(idEmpresa)
+
+
+@eel.expose
+def editEmpresa(empresa):
+    empresaController.edit(empresa)
 
 
 eel.start('home.html')

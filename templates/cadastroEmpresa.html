@@ -17,6 +17,65 @@
   <body>
     <div class="mainContainer">
       <h1>Cadastre a sua empresa aqui</h1>
+        <form onsubmit="onSubmit(event)" id="signup">
+        <div class="inputsContainer">
+          <input
+            type="text"
+            name="nome"
+            class="formInput"
+            placeholder="Digite o nome da empresa"
+            required
+          />
+          <input
+            type="text"
+            name="cnpj"
+            class="formInput"
+            placeholder="Digite o CPNJ da empresa"
+            required
+          />
+          <input
+            type="text"
+            name="cnae"
+            class="formInput"
+            placeholder="Digite o CNAE da empresa"
+            required
+          />
+          <input
+            type="text"
+            name="setor"
+            class="formInput"
+            placeholder="Digite o setor da empresa"
+            required
+          />
+          <p class="question">Pergunta 1</p>
+          <input
+            type="text"
+            name="pergunta1"
+            class="formInput"
+            placeholder="Digite a resposta da pergunta 1"
+            required
+          />
+          <p class="question">Pergunta 2</p>
+          <input
+            type="text"
+            name="pergunta2"
+            class="formInput"
+            placeholder="Digite a resposta da pergunta 2"
+            required
+          />
+          <p class="question">Pergunta 3</p>
+          <input
+            type="text"
+            name="pergunta3"
+            class="formInput"
+            placeholder="Digite a resposta da pergunta 3"
+            required
+          />
+        </div>
+        <div class="inputsContainer">
+          <input type="submit" class="submitBtn" value="Enviar" />
+        </div>
+      </form>
     </div>
 
     <script type="text/javascript" src="/eel.js"></script>

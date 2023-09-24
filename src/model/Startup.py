@@ -1,5 +1,4 @@
-
-from src.model.organizacao import Organizacao
+from src.model.Organizacao import Organizacao
 
 
 class Startup(Organizacao):

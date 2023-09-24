@@ -1,13 +1,13 @@
 import random
 import pickle
 from pathlib import Path
-from src.model.startup import Startup
+from src.model.Startup import Startup
 
 
 class StartupController():
     def __init__(self):
         self.__startups = []
-        self.__filePath = Path(Path.cwd(), "src", "controller", 'startup.pkl')
+        self.__filePath = Path(Path.cwd(), "src", "controller", 'pickle/startups.pkl')
 
     @property
     def startups(self):
@@ -32,11 +32,12 @@ class StartupController():
                              values["pergunta3"],
                              )
         mapping = {"id": newStartup.id, "nome": newStartup.nome, "cnpj": newStartup.cnpj, "cnae": newStartup.cnae,
-                   "setor": newStartup.setor, "pergunta1": newStartup.pergunta1, "pergunta2": newStartup.pergunta2, "pergunta3": newStartup.pergunta3}
+                   "setor": newStartup.setor, "pergunta1": newStartup.pergunta1, "pergunta2": newStartup.pergunta2,
+                   "pergunta3": newStartup.pergunta3}
         self.__startups.append(mapping)
 
         startups = []
-        if(self.__filePath.exists()):
+        if (self.__filePath.exists()):
             with open(self.__filePath, 'rb') as st:
                 try:
                     startups = pickle.load(st)
@@ -62,7 +63,7 @@ class StartupController():
     def edit(self, startup):
         startups = self.load()
         for s in startups:
-            if(int(s["id"]) == int(startup["id"])):
+            if (int(s["id"]) == int(startup["id"])):
                 s["nome"] = startup["nome"]
                 s["cnpj"] = startup["cnpj"]
                 s["cnae"] = startup["cnae"]
