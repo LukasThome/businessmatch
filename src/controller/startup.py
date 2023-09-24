@@ -50,3 +50,11 @@ class StartupController():
         with open(self.__filePath, 'rb') as st:
             startups = pickle.load(st)
             return startups
+
+    def remove(self, startupId):
+        startups = self.load()
+        for startup in startups:
+            if (startup["id"] == startupId):
+                startups.remove(startup)
+        with open(self.__filePath, 'wb') as st:
+            pickle.dump(startups, st)

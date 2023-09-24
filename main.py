@@ -23,4 +23,9 @@ def sendList():
         return s
 
 
+@eel.expose
+def removeStartup(startupId):
+    startupController.remove(startupId)
+
+
 eel.start('home.html')
