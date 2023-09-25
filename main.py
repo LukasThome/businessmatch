@@ -10,7 +10,7 @@ import eel
 eel.init('templates')
 
 
-portfolioController = portfolioController()
+portfolioController = PortfolioController()
 startupController = StartupController()
 empresaController = EmpresaController()
 
