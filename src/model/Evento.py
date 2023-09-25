@@ -1,10 +1,16 @@
 from src.model.Organizacao import Organizacao
-class Evento(Organizacao):
-    def __init__(self, ID, nome, data, descricao):
-        self.ID = ID  # ID do evento (inteiro)
-        self.nome = nome  # Nome do evento
-        self.data = data  # Data do evento (pode ser um objeto datetime)
-        self.descricao = descricao  # Descrição do evento (string)
+from datetime import date, time
 
-    def __str__(self):
-        return f"{self.nome} ({self.data}) - ID: {self.ID}, Descrição: {self.descricao}"
+class Evento:
+    
+    def __init__(self, ID, titulo, endereco, data, hora, descricao, empresa):
+        self.ID = ID  # ID do evento (inteiro)
+        self.titulo = titulo  # Título do evento
+        self.endereco = endereco  # Endereço do evento
+        self.data = data  # Data do evento (objeto date)
+        self.hora = hora  # Hora do evento (objeto time)
+        self.descricao = descricao  # Descrição do evento (string)
+        self.empresa = empresa #nome da empresa organizadora
+        
+
+    
