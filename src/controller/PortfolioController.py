@@ -23,10 +23,9 @@ class PortfolioController():
     def add(self, values):
         novoPortfolio = Portfolio(random.randint(0, 100),
                               values["nome"],
-                              values["Descricao"],
-                              values["imagem"],
+                              values["descricao"],
                               )
-        mapping = {"id": novoPortfolio.id, "nome": novoPortfolio.nome, "descricao": novoPortfolio.descricao, "imagem": novoPortfolio.imagem,}
+        mapping = {"id": novoPortfolio.id, "nome": novoPortfolio.nome, "descricao": novoPortfolio.descricao}
         self.__portfolios.append(mapping)
 
         portfolios = []

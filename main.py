@@ -67,13 +67,13 @@ def editEmpresa(empresa):
 # ----------------------------------------------------// PORTFOLIO //---------------------------------------------------
 @eel.expose
 def workWithValuesPortfolio(values):
-    PortfolioController.add(values)
+    portfolioController.add(values)
 
 
 @eel.expose
 def sendPortfolioList():
-    if (PortfolioController.filePath.exists()):
-        p = PortfolioController.load()
+    if (portfolioController.filePath.exists()):
+        p = portfolioController.load()
         return p
 
 

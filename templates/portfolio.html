@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/css/cadastroOrganizacao.css" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/css/cadastroOrganizacao.css"
+    />
     <link rel="stylesheet" type="text/css" href="/css/header.css" />
     <link rel="stylesheet" type="text/css" href="/css/main.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -13,35 +17,35 @@
       rel="stylesheet"
     />
     <title>Criar portfolio</title>
-</head>
-<body>
-  <div class="mainContainer">
-    <h1>Criar Portfólio</h1>
-      <form onsubmit="onSubmit(event)" id="signup">
-      <div class="inputsContainer">
-        <input
-          type="text"
-          name="nome"
-          class="formInput"
-          placeholder="Nome do Portfólio"
-          required
-        />
-        <input
-          type="text"
-          name="descricao"
-          class="formInput"
-          placeholder="Descreva os seus produtos/serviços"
-          required
-        />
-      </div>
-      <div class="inputsContainer">
-        <input type="submit" class="submitBtn" value="Enviar" />
-      </div>
-    </form>
-  </div>
+  </head>
+  <body>
+    <div class="mainContainer">
+      <h1>Criar Portfólio</h1>
+      <form onsubmit="onSubmit(event)" id="portfolio">
+        <div class="inputsContainer">
+          <input
+            type="text"
+            name="nome"
+            class="formInput"
+            placeholder="Nome do Portfólio"
+            required
+          />
+          <input
+            type="text"
+            name="descricao"
+            class="formInput"
+            placeholder="Descreva os seus produtos/serviços"
+            required
+          />
+        </div>
+        <div class="inputsContainer">
+          <input type="submit" class="submitBtn" value="Enviar" />
+        </div>
+      </form>
+    </div>
 
-  <script type="text/javascript" src="/eel.js"></script>
-  <script type="text/javascript" src="/js/index.js"></script>
-  <script type="text/javascript" src="/js/portfolio.js"></script>
-</body>
+    <script type="text/javascript" src="/eel.js"></script>
+    <script type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript" src="/js/portfolio.js"></script>
+  </body>
 </html>

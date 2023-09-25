@@ -1,5 +1,4 @@
-
-var form = document.getElementById("signup");
+var form = document.getElementById("portfolio");
 
 function onSubmit(event) {
   event.preventDefault();
@@ -7,7 +6,7 @@ function onSubmit(event) {
     nome: form.elements["nome"].value,
     descricao: form.elements["descricao"].value,
   };
-  eel.workWithValues(obj)();
+  eel.workWithValuesPortfolio(obj)();
   location.reload();
 }
 
