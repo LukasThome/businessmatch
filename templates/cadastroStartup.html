@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/css/cadastroOrganizacao.css" />
+    <link rel="stylesheet" type="text/css" href="/css/header.css" />
+    <link rel="stylesheet" type="text/css" href="/css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mooli&display=swap"
+      rel="stylesheet"
+    />
+    <title>Cadastro Startup</title>
+  </head>
+  <body>
+    <div class="mainContainer">
+      
+      <h1 class="title">Cadastre a sua startup aqui</h1>
+      <form onsubmit="onSubmit(event)" id="signup">
+        <div class="inputsContainer">
+          <input
+            type="text"
+            name="nome"
+            class="formInput"
+            placeholder="Digite o nome da startup"
+            required
+          />
+          <input
+            type="text"
+            name="cnpj"
+            class="formInput"
+            placeholder="Digite o CPNJ da startup"
+            required
+          />
+          <input
+            type="text"
+            name="cnae"
+            class="formInput"
+            placeholder="Digite o CNAE da startup"
+            required
+          />
+          <input
+            type="text"
+            name="setor"
+            class="formInput"
+            placeholder="Digite o setor da startup"
+            required
+          />
+          <p class="question">Pergunta 1</p>
+          <input
+            type="text"
+            name="pergunta1"
+            class="formInput"
+            placeholder="Digite a resposta da pergunta 1"
+            required
+          />
+          <p class="question">Pergunta 2</p>
+          <input
+            type="text"
+            name="pergunta2"
+            class="formInput"
+            placeholder="Digite a resposta da pergunta 2"
+            required
+          />
+          <p class="question">Pergunta 3</p>
+          <input
+            type="text"
+            name="pergunta3"
+            class="formInput"
+            placeholder="Digite a resposta da pergunta 3"
+            required
+          />
+        </div>
+        <div class="inputsContainer">
+          <input type="submit" class="submitBtn" value="Enviar" />
+        </div>
+      </form>
+    </div>
+
+    <script type="text/javascript" src="/eel.js"></script>
+    <script type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript" src="/js/startup.js"></script>
+  </body>
+</html>
