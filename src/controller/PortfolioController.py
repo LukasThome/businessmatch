@@ -30,35 +30,33 @@ class PortfolioController():
 
         portfolios = []
         if (self.__filePath.exists()):
-            with open(self.__filePath, 'rb') as em:
+            with open(self.__filePath, 'rb') as st:
                 try:
-                    portfolios = pickle.load(em)
+                    portfolios = pickle.load(st)
                 except EOFError:
                     return
 
-        with open(self.__filePath, 'wb') as em:
-            pickle.dump([*portfolios, mapping], em)
+        with open(self.__filePath, 'wb') as st:
+            pickle.dump([*portfolios, mapping], st)
 
     def load(self):
-        with open(self.__filePath, 'rb') as em:
-            portfolios = pickle.load(em)
+        with open(self.__filePath, 'rb') as st:
+            portfolios = pickle.load(st)
             return portfolios
         
-    def remove(self, portfolioid):
+    def remove(self, portfolioId):
         portfolios = self.load()
         for portfolio in portfolios:
-            if (portfolio["id"] == portfolioid):
+            if (portfolio["id"] == portfolioId):
                 portfolios.remove(portfolio)
-        with open(self.__filePath, 'wb') as em:
-            pickle.dump(portfolios, em)
+        with open(self.__filePath, 'wb') as st:
+            pickle.dump(portfolios, st)
 
     def edit(self, portfolio):
         portfolios = self.load()
-        for e in portfolios:
-            if (int(e["id"]) == int(portfolio["id"])):
-                e["nome"] = portfolio["nome"]
-                e["cnpj"] = portfolio["cnpj"]
-                e["cnae"] = portfolio["cnae"]
-                e["setor"] = portfolio["setor"]
-        with open(self.__filePath, 'wb') as em:
-            pickle.dump(portfolios, em)
+        for p in portfolios:
+            if (int(p["id"]) == int(portfolio["id"])):
+                p["nome"] = portfolio["nome"]
+                p["descricao"] = portfolio["descricao"]
+        with open(self.__filePath, 'wb') as st:
+            pickle.dump(portfolios, st)

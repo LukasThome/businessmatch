@@ -24,17 +24,17 @@ function onEdit(event) {
 }
 
 function remove() {
-  var list = eel.sendList()();
+  var list = eel.sendPortfolioList()();
   list.then((l) => {
     l.map(({ id }) => {
       document
-        .getElementById(`portfolioid__${id}`)
+        .getElementById(`portfolioId__${id}`)
         .addEventListener("click", () => {
-          eel.removeStartup(id)();
+          eel.removePortfolio(id)();
           location.reload();
         });
       document
-        .getElementById(`portfolioid__${id}`)
+        .getElementById(`portfolioId__${id}`)
         .removeEventListener("click", () => {});
     });
   });
@@ -63,7 +63,7 @@ function generateEditTemplate(nome, descricao, id) {
 }
 
 function edit() {
-  var list = eel.sendList()();
+  var list = eel.sendPortfolioList()();
   list.then((l) => {
     l.map(({ id, nome, descricao }) => {
       document.getElementById(`editId__${id}`).addEventListener("click", () => {
@@ -78,10 +78,10 @@ function edit() {
 }
 
 function logList() {
-  var list = eel.sendList()();
+  var list = eel.sendPortfolioList()();
   list.then((l) => {
     if (!l) {
-      let portfolioCardEdit = `<div>Não há portfólios criados!</div>`;
+      let portfolioCard = `<div>Não há portfólios criados!</div>`;
       document
         .getElementById("logBtn")
         .insertAdjacentHTML("afterend", portfolioCard);
@@ -102,8 +102,8 @@ function logList() {
         </div>
         <div class="bodyText">
             <span
-                >CPNJ:
-                <span id="cnpj">${descricao}</span>
+                >Descrição:
+                <span id="Descrição">${descricao}</span>
             </span>
         </div>
     </div>
