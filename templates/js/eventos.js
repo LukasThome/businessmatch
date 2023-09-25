@@ -1,31 +1,41 @@
-// Função para inicializar o Datepicker
-function initializeDatepicker() {
-    $("#calendar").datepicker({
-        dateFormat: "yy-mm-dd",
-        onSelect: function (dateText, inst) {
-            // Nesta função, você pode armazenar a data selecionada em uma variável global
-            selectedDate = dateText;
-        }
-    });
-}
+// Função para adicionar um evento
+function addEvent(event) {
+    event.preventDefault(); // Evita o envio do formulário
 
-// Variável global para armazenar a data selecionada
-var selectedDate = "";
+    // Obtenha os valores dos campos do formulário
+    var titulo = $("#titulo").val();
+    var local = $("#local").val();
+    var data = $("#data").val();
+    var hora = $("#hora").val();
+    var descricao = $("#descricao").val();
 
-// Função para adicionar um evento ao calendário
-function addEvent() {
-    var eventText = $("#eventInput").val();
-    if (eventText && selectedDate) {
-        // Verifique se ambos os campos foram preenchidos
-        $("#calendar").append(selectedDate + ": " + eventText + "<br>"); // Adicione o evento ao calendário
-        $("#eventInput").val('');
-    } else {
-        alert("Preencha o nome do evento e selecione a data antes de adicionar.");
+    // Valide os campos (adicione mais validações, se necessário)
+    if (!titulo || !local || !data || !hora || !descricao) {
+        alert("Preencha todos os campos do evento.");
+        return;
     }
+
+    // Crie uma div para exibir o evento
+    var eventoDiv = document.createElement("div");
+    eventoDiv.className = "evento";
+
+    // Preencha a div com informações do evento
+    eventoDiv.innerHTML = `
+        <h3>${titulo}</h3>
+        <p><strong>Local:</strong> ${local}</p>
+        <p><strong>Data:</strong> ${data}</p>
+        <p><strong>Hora:</strong> ${hora}</p>
+        <p><strong>Descrição:</strong> ${descricao}</p>
+    `;
+
+    // Adicione o evento à lista de eventos
+    $(".eventList").append(eventoDiv);
+
+    // Limpe os campos do formulário
+    $("#titulo").val("");
+    $("#local").val("");
+    $("#data").val("");
+    $("#hora").val("");
+    $("#descricao").val("");
 }
 
-// Função para remover um evento do calendário
-function removeEvent() {
-    // Aqui você pode implementar a lógica para remover eventos, se desejar
-    // Por exemplo, você pode adicionar IDs aos eventos e remover com base no ID
-}

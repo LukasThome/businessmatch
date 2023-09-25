@@ -1,4 +1,5 @@
-class Evento:
+from src.model.Organizacao import Organizacao
+class Evento(Organizacao):
     def __init__(self, ID, nome, data, descricao):
         self.ID = ID  # ID do evento (inteiro)
         self.nome = nome  # Nome do evento
