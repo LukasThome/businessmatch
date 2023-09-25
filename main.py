@@ -65,6 +65,26 @@ def editEmpresa(empresa):
 
 
 # ----------------------------------------------------// PORTFOLIO //---------------------------------------------------
+@eel.expose
+def workWithValuesStartup(values):
+    PortfolioController.add(values)
+
+
+@eel.expose
+def sendPortfolioList():
+    if (PortfolioController.filePath.exists()):
+        p = PortfolioController.load()
+        return p
+
+
+@eel.expose
+def removePortfolio(portfolioid):
+    startupController.remove(portfolioid)
+
+
+@eel.expose
+def editPortfolio(portfolio):
+    portfolioController.edit(portfolio)
 
 
 # ----------------------------------------------------------------------------------------------------------------------
