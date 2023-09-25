@@ -22,7 +22,7 @@ class EmpresaController():
         return self.__filePath
 
     def add(self, values):
-        novaEmpresa = Startup(random.randint(0, 100),
+        novaEmpresa = Empresa(random.randint(0, 100),
                               values["nome"],
                               values["cnpj"],
                               values["cnae"],
