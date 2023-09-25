@@ -23,14 +23,15 @@ let header = `
                 </a>
             </li>
             <li class="menuItem">
+                <a href="/gerenciarEmpresas.html" class="linkItem"
+                    >Gerenciar Empresas
+                </a>
+            </li>
+            <li class="menuItem">
                 <a href="/eventos.html" class="linkItem"
                     >Eventos
                 </a>
             </li>
-            <li class="menuItem">
-            <a href="/gerenciarEmpresas.html" class="linkItem"
-                >Gerenciar Empresas
-            </a>
             <li class="menuItem">
             <a href="/portfolio.html" class="linkItem"
                 >Portfólio

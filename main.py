@@ -15,13 +15,14 @@ startupController = StartupController()
 empresaController = EmpresaController()
 
 
+# ----------------------------------------------------// STARTUP //-----------------------------------------------------
 @eel.expose
-def workWithValues(values):
+def workWithValuesStartup(values):
     startupController.add(values)
 
 
 @eel.expose
-def sendList():
+def sendStartupList():
     if (startupController.filePath.exists()):
         s = startupController.load()
         return s
@@ -37,6 +38,19 @@ def editStartup(startup):
     startupController.edit(startup)
 
 
+# ----------------------------------------------------// EMPRESA //-----------------------------------------------------
+@eel.expose
+def workWithValuesEmpresa(values):
+    empresaController.add(values)
+
+
+@eel.expose
+def sendEmpresaList():
+    if (empresaController.filePath.exists()):
+        e = empresaController.load()
+        return e
+
+
 @eel.expose
 def removeEmpresa(idEmpresa):
     empresaController.remove(idEmpresa)
@@ -47,4 +61,11 @@ def editEmpresa(empresa):
     empresaController.edit(empresa)
 
 
+# ----------------------------------------------------// EVENTO //------------------------------------------------------
+
+
+# ----------------------------------------------------// PORTFOLIO //---------------------------------------------------
+
+
+# ----------------------------------------------------------------------------------------------------------------------
 eel.start('home.html')
