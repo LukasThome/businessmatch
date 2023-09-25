@@ -17,12 +17,10 @@ function onEdit(event) {
   event.preventDefault();
   var obj = {
     nome: editForm.elements["nome"].value,
-    cnpj: editForm.elements["cnpj"].value,
-    cnae: editForm.elements["cnae"].value,
-    setor: editForm.elements["setor"].value,
+    descricao: editForm.elements["descricao"].value,
     id: document.querySelector("#edit").children[0].id,
   };
-  eel.editStartup(obj)();
+  eel.editPortfolio(obj)();
   location.reload();
 }
 
@@ -31,20 +29,20 @@ function remove() {
   list.then((l) => {
     l.map(({ id }) => {
       document
-        .getElementById(`startupId__${id}`)
+        .getElementById(`portfolioid__${id}`)
         .addEventListener("click", () => {
           eel.removeStartup(id)();
           location.reload();
         });
       document
-        .getElementById(`startupId__${id}`)
+        .getElementById(`portfolioid__${id}`)
         .removeEventListener("click", () => {});
     });
   });
 }
 
-function generateEditTemplate(nome, cnpj, cnae, setor, id) {
-  let startupCardEdit = `
+function generateEditTemplate(nome, descricao, id) {
+  let portfolioCardEdit = `
         <form onsubmit="onEdit(event)" id="edit">
         <div id="${id}">
         <div class="titleContainer">
@@ -52,20 +50,8 @@ function generateEditTemplate(nome, cnpj, cnae, setor, id) {
         </div>
         <div class="bodyText">
             <span
-                >CPNJ:
-                <span id="cnpj"><input name="cnpj" value="${cnpj}" class="formInput"></span>
-            </span>
-        </div>
-        <div class="bodyText">
-            <span 
-                >CNAE:
-                <span id="cnae" ><input name="cnae" value="${cnae}" class="formInput"></span>
-            </span>
-        </div>
-        <div class="bodyText">
-            <span
-                >Setor:
-                <span id="setor"><input name="setor" value="${setor} "class="formInput"></span>
+                >descricao:
+                <span id="descricao"><input name="descricao" value="${descricao}" class="formInput"></span>
             </span>
         </div>
         <div class="inputsContainer">
@@ -74,16 +60,16 @@ function generateEditTemplate(nome, cnpj, cnae, setor, id) {
         </div>
         </form>
     `;
-  return startupCardEdit;
+  return portfolioCardEdit;
 }
 
 function edit() {
   var list = eel.sendList()();
   list.then((l) => {
-    l.map(({ id, nome, cnpj, cnae, setor }) => {
+    l.map(({ id, nome, descricao }) => {
       document.getElementById(`editId__${id}`).addEventListener("click", () => {
-        let startupCardEdit = generateEditTemplate(nome, cnpj, cnae, setor, id);
-        document.getElementById(`cardId__${id}`).innerHTML = startupCardEdit;
+        let portfolioCardEdit = generateEditTemplate(nome, descricao, id);
+        document.getElementById(`cardId__${id}`).innerHTML = portfolioCardEdit;
       });
       document
         .getElementById(`editId__${id}`)
@@ -96,14 +82,14 @@ function logList() {
   var list = eel.sendList()();
   list.then((l) => {
     if (!l) {
-      let startupCard = `<div>Não há startups cadastradas!</div>`;
+      let portfolioCardEdit = `<div>Não há portfólios criados!</div>`;
       document
         .getElementById("logBtn")
-        .insertAdjacentHTML("afterend", startupCard);
+        .insertAdjacentHTML("afterend", portfolioCard);
       return;
     }
-    l.map(({ nome, cnpj, cnae, setor, id }) => {
-      let startupCard = `
+    l.map(({ nome, descricao, id }) => {
+      let portfolioCard = `
     <div class="card" id="cardId__${id}">
         <div class="titleContainer">
             <h2 id="title">Nome: ${nome}</h2>
@@ -118,26 +104,14 @@ function logList() {
         <div class="bodyText">
             <span
                 >CPNJ:
-                <span id="cnpj">${cnpj}</span>
-            </span>
-        </div>
-        <div class="bodyText">
-            <span 
-                >CNAE:
-                <span id="cnae" >${cnae}</span>
-            </span>
-        </div>
-        <div class="bodyText">
-            <span
-                >Setor:
-                <span id="setor">${setor}</span>
+                <span id="cnpj">${descricao}</span>
             </span>
         </div>
     </div>
 `;
       document
         .getElementById("logBtn")
-        .insertAdjacentHTML("afterend", startupCard);
+        .insertAdjacentHTML("afterend", portfolioCard);
     });
   });
 }
