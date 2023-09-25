@@ -37,6 +37,12 @@ let header = `
                 >Portfólio
             </a>
         </li>
+        </li>
+            <li class="menuItem">
+            <a href="/gerenciarportfolios.html" class="linkItem"
+                >Gerenciar Portfólios
+            </a>
+        </li>
         </ul>
     </div>
 `;
