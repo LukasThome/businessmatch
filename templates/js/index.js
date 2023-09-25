@@ -32,6 +32,11 @@ let header = `
                     >Eventos
                 </a>
             </li>
+            <li class="menuItem">
+            <a href="/portfolio.html" class="linkItem"
+                >Portfólio
+            </a>
+        </li>
         </ul>
     </div>
 `;
