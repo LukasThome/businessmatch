@@ -66,7 +66,7 @@ def editEmpresa(empresa):
 
 # ----------------------------------------------------// PORTFOLIO //---------------------------------------------------
 @eel.expose
-def workWithValuesStartup(values):
+def workWithValuesPortfolio(values):
     PortfolioController.add(values)
 
 
