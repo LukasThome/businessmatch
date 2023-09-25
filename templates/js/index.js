@@ -31,6 +31,10 @@ let header = `
             <a href="/gerenciarEmpresas.html" class="linkItem"
                 >Gerenciar Empresas
             </a>
+            <li class="menuItem">
+            <a href="/portfolio.html" class="linkItem"
+                >Portfólio
+            </a>
         </li>
         </ul>
     </div>

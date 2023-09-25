@@ -3,13 +3,14 @@
 from src.model.Startup import Startup
 from src.controller.StartupController import StartupController
 from src.controller.EmpresaController import EmpresaController
+from src.controller.PortfolioController import PortfolioController
 
 import eel
 
 eel.init('templates')
 
-startups = []
 
+portfolioController = portfolioController()
 startupController = StartupController()
 empresaController = EmpresaController()
 
