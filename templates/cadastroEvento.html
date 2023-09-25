@@ -22,7 +22,7 @@
                 <li><a href="./gerenciarEventos.html">Gerenciar Eventos</a></li>
                 <li><a href="./eventos.html">Todos Eventos</a></li>
 
-
+                
             </ul>
             <a href="#my-dropdown2" aria-controls="my-dropdown2" role="button" data-toggle="dropdown"
                 id="my-dropdown2-btn">
@@ -32,11 +32,22 @@
                 Close dropdown
             </a>
         </div>
-        <h1 class="title">Todos os Eventos</h1>
+        <h1 class="title">Criar Evento</h1>
 
-        <div class="eventList">
-            <!-- Aqui serão adicionados os eventos como cards -->
-        </div>
+        <!-- Formulário para criar eventos -->
+        <form onsubmit="addEvent(event)" id="evento">
+            <div class="inputsContainer">
+                <input type="text" id="titulo" name="titulo" class="formInput" placeholder="Digite o título do evento" required />
+                <input type="text" id="local" name="local" class="formInput" placeholder="Informe o local do evento" required />
+                <input type="date" id="data" name="data" class="formInput" placeholder="Informe a data do evento" required />
+                <input type="time" id="hora" name="hora" class="formInput" placeholder="Informe o horário do evento" required />
+                <input type="text" id="descricao" name="descricao" class="formInput" placeholder="Descreva o evento" required />
+            </div>
+            <div class="inputsContainer">
+                <input type="submit" class="submitBtn" value="Enviar" />
+            </div>
+        </form>
+    </div>
 
 
     <script type="text/javascript" src="/eel.js"></script>
