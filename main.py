@@ -4,6 +4,7 @@ from src.model.Startup import Startup
 from src.controller.StartupController import StartupController
 from src.controller.EmpresaController import EmpresaController
 from src.controller.PortfolioController import PortfolioController
+from src.controller.EventoController import EventoController
 
 import eel
 
@@ -13,6 +14,7 @@ eel.init('templates')
 portfolioController = PortfolioController()
 startupController = StartupController()
 empresaController = EmpresaController()
+eventoController = EventoController()
 
 
 # ----------------------------------------------------// STARTUP //-----------------------------------------------------
@@ -62,6 +64,24 @@ def editEmpresa(empresa):
 
 
 # ----------------------------------------------------// EVENTO //------------------------------------------------------
+
+@eel.expose
+def editEvento(evento):
+    eventoController.edit(evento)
+
+@eel.expose
+def removeEvento(evento):
+    eventoController.edit(evento)
+
+@eel.expose
+def sendEventoList():
+    if (eventoController.filePath.exists()):
+        e = eventoController.load()
+        return e
+
+@eel.expose
+def workWithValuesEvento(values):
+    eventoController.add(values)
 
 
 # ----------------------------------------------------// PORTFOLIO //---------------------------------------------------

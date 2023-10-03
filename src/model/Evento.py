@@ -3,14 +3,13 @@ from datetime import date, time
 
 class Evento:
     
-    def __init__(self, id, titulo, endereco, data, hora, descricao, empresa, organizacao):
+    def __init__(self, id, titulo, endereco, data, hora, descricao, organizacao):
         self.__id = id  # ID do evento (inteiro)
         self.__titulo = titulo  # Título do evento
         self.__endereco = endereco  # Endereço do evento
         self.__data = data  # Data do evento (objeto date)
         self.__hora = hora  # Hora do evento (objeto time)
         self.__descricao = descricao  # Descrição do evento (string)
-        self.__empresa = empresa  # Nome da empresa organizadora
         self.__organizacao = organizacao  # Referência à organização responsável pelo evento (objeto Organizacao)
 
     def get_organizacao(self):
@@ -35,9 +34,6 @@ class Evento:
     def get_descricao(self):
         return self.__descricao
 
-    def get_empresa(self):
-        return self.__empresa
-
     def get_organizacao(self):
         return self.__organizacao
 
@@ -59,9 +55,6 @@ class Evento:
 
     def set_descricao(self, descricao):
         self.__descricao = descricao
-
-    def set_empresa(self, empresa):
-        self.__empresa = empresa
 
     def set_organizacao(self, organizacao):
         self.__organizacao = organizacao

@@ -46,7 +46,7 @@ function criarCardEvento(evento) {
         <p><strong>Descrição:</strong> ${evento.descricao}</p>
     `;
 
-  $(".eventList").append(eventoDiv);
+  //$(".eventList").append(eventoDiv);
 }
 
 $(document).ready(function () {
