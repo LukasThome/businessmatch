@@ -71,7 +71,7 @@ def editEvento(evento):
 
 @eel.expose
 def removeEvento(evento):
-    eventoController.edit(evento)
+    eventoController.remove(evento)
 
 @eel.expose
 def sendEventoList():

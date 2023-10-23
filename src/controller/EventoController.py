@@ -23,22 +23,22 @@ class EventoController:
     def add(self, values):
         newEvento = Evento(random.randint(0, 100),
                            values["titulo"],
-                           values["endereco"],
+                           values["local"],
                            values["data"],
                            values["hora"],
-                           values["descricao"],
-                           values["empresa"],
-                           values["organizacao"]
+                           values["descricao"]
+                           #values["empresa"],
+                           #values["organizacao"]
                            )
         mapping = {
             "id": newEvento.get_id(),
             "titulo": newEvento.get_titulo(),
-            "endereco": newEvento.get_endereco(),
+            "local": newEvento.get_local(),
             "data": newEvento.get_data(),
             "hora": newEvento.get_hora(),
             "descricao": newEvento.get_descricao(),
-            "empresa": newEvento.get_empresa(),
-            "organizacao": newEvento.get_organizacao()
+            #"empresa": newEvento.get_empresa(),
+            #"organizacao": newEvento.get_organizacao()
         }
         self.__eventos.append(mapping)
 
@@ -71,11 +71,11 @@ class EventoController:
         for e in eventos:
             if int(e["id"]) == int(evento["id"]):
                 e["titulo"] = evento["titulo"]
-                e["endereco"] = evento["endereco"]
+                e["local"] = evento["local"]
                 e["data"] = evento["data"]
                 e["hora"] = evento["hora"]
                 e["descricao"] = evento["descricao"]
-                e["empresa"] = evento["empresa"]
-                e["organizacao"] = evento["organizacao"]
+                #e["empresa"] = evento["empresa"]
+                #e["organizacao"] = evento["organizacao"]
         with open(self.__filePath, 'wb') as ev:
             pickle.dump(eventos, ev)

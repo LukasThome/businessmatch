@@ -3,17 +3,17 @@ from datetime import date, time
 
 class Evento:
     
-    def __init__(self, id, titulo, endereco, data, hora, descricao, organizacao):
+    def __init__(self, id, titulo, local, data, hora, descricao):
         self.__id = id  # ID do evento (inteiro)
         self.__titulo = titulo  # Título do evento
-        self.__endereco = endereco  # Endereço do evento
+        self.__local = local  # Endereço do evento
         self.__data = data  # Data do evento (objeto date)
         self.__hora = hora  # Hora do evento (objeto time)
         self.__descricao = descricao  # Descrição do evento (string)
-        self.__organizacao = organizacao  # Referência à organização responsável pelo evento (objeto Organizacao)
+        #self.__organizacao = organizacao  # Referência à organização responsável pelo evento (objeto Organizacao)
 
-    def get_organizacao(self):
-        return self.__organizacao
+    #def get_organizacao(self):
+    #    return self.__organizacao
 
 # Getters
     def get_id(self):
@@ -22,8 +22,8 @@ class Evento:
     def get_titulo(self):
         return self.__titulo
 
-    def get_endereco(self):
-        return self.__endereco
+    def get_local(self):
+        return self.__local
 
     def get_data(self):
         return self.__data
@@ -34,8 +34,8 @@ class Evento:
     def get_descricao(self):
         return self.__descricao
 
-    def get_organizacao(self):
-        return self.__organizacao
+    #def get_organizacao(self):
+    #    return self.__organizacao
 
     # Setters
     def set_id(self, id):
@@ -44,8 +44,8 @@ class Evento:
     def set_titulo(self, titulo):
         self.__titulo = titulo
 
-    def set_endereco(self, endereco):
-        self.__endereco = endereco
+    def set_local(self, local):
+        self.__local = local
 
     def set_data(self, data):
         self.__data = data
@@ -56,5 +56,5 @@ class Evento:
     def set_descricao(self, descricao):
         self.__descricao = descricao
 
-    def set_organizacao(self, organizacao):
-        self.__organizacao = organizacao
+    #def set_organizacao(self, organizacao):
+    #    self.__organizacao = organizacao
