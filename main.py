@@ -17,7 +17,15 @@ empresaController = EmpresaController()
 eventoController = EventoController()
 
 
+@eel.expose
+def currentSession():
+    startups = startupController.load()
+    return startups[0]
+
+
 # ----------------------------------------------------// STARTUP //-----------------------------------------------------
+
+
 @eel.expose
 def workWithValuesStartup(values):
     startupController.add(values)
@@ -69,15 +77,18 @@ def editEmpresa(empresa):
 def editEvento(evento):
     eventoController.edit(evento)
 
+
 @eel.expose
 def removeEvento(evento):
     eventoController.remove(evento)
+
 
 @eel.expose
 def sendEventoList():
     if (eventoController.filePath.exists()):
         e = eventoController.load()
         return e
+
 
 @eel.expose
 def workWithValuesEvento(values):

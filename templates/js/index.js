@@ -43,8 +43,19 @@ let header = `
                 >Gerenciar Portfólios
             </a>
         </li>
+        
         </ul>
     </div>
 `;
 
+(function getSession() {
+  var session = eel.currentSession()();
+  session.then((s) => {
+    console.log(s);
+    /* body.insertAdjacentHTML(
+      "beforeend",
+      `<li>ID Usuário logado: ${s.id}</li> <li>Tipo: ${s.tipo}</li>`
+    ); */
+  });
+})();
 body.insertAdjacentHTML("afterbegin", header);
