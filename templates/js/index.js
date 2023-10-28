@@ -7,43 +7,62 @@ let header = `
         </a>
         <ul class="menuBarContainer">
             <li class="menuItem"><a href="/home.html" class="linkItem">Home</a></li>
-            <li class="menuItem">
-                <a href="/cadastroEmpresa.html" class="linkItem"
-                    >Cadastro de Empresas
-                </a>
-            </li>
-            <li class="menuItem">
-                <a href="/cadastroStartup.html" class="linkItem"
-                    >Cadastro de Startup
-                </a>
-            </li>
-            <li class="menuItem">
-                <a href="/gerenciarStartups.html" class="linkItem"
-                    >Gerenciar Startups
-                </a>
-            </li>
-            <li class="menuItem">
-                <a href="/gerenciarEmpresas.html" class="linkItem"
-                    >Gerenciar Empresas
-                </a>
-            </li>
+            <div class="dropDownContainer">
+                <li class="menuItem dropdownItem">
+                    Empresas
+                </li>
+                <div class="dropdownItems">
+                    <li class="menuDropdown">
+                        <a href="/cadastroEmpresa.html" class="dropdownItem"
+                            >Cadastro de Empresas
+                        </a>
+                    </li>
+                    <li class="menuDropdown">
+                        <a href="/gerenciarEmpresas.html" class="dropdownItem"
+                            >Gerenciar Empresas
+                        </a>
+                    </li>
+                </div>
+            </div>
+            <div class="dropDownContainer">
+                <li class="menuItem dropdownItem">
+                    Startups
+                </li>
+                <div class="dropdownItems">
+                    <li class="menuDropdown">
+                        <a href="/cadastroStartup.html" class="dropdownItem"
+                            >Cadastro de Startups
+                        </a>
+                    </li>
+                    <li class="menuDropdown">
+                        <a href="/gerenciarStartups.html" class="dropdownItem"
+                            >Gerenciar Startups
+                        </a>
+                    </li>
+                </div>
+            </div>
             <li class="menuItem">
                 <a href="/eventos.html" class="linkItem"
                     >Eventos
                 </a>
             </li>
-            <li class="menuItem">
-            <a href="/portfolio.html" class="linkItem"
-                >Portfólio
-            </a>
-        </li>
-        </li>
-            <li class="menuItem">
-            <a href="/gerenciarportfolios.html" class="linkItem"
-                >Gerenciar Portfólios
-            </a>
-        </li>
-        
+            <div class="dropDownContainer">
+                <li class="menuItem dropdownItem">
+                    Portfólios
+                </li>
+                <div class="dropdownItems">
+                    <li class="menuDropdown">
+                        <a href="/portfolio.html" class="dropdownItem"
+                            >Cadastro de Portfólio
+                        </a>
+                    </li>
+                    <li class="menuDropdown">
+                        <a href="/gerenciarportfolios.html" class="dropdownItem"
+                            >Gerenciar Portfólios
+                        </a>
+                    </li>
+                </div>
+            </div>
         </ul>
     </div>
 `;
