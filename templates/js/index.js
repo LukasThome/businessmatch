@@ -63,6 +63,28 @@ let header = `
                     </li>
                 </div>
             </div>
+            <li class="menuItem">
+                <a href="/cadastrarInteresse.html" class="linkItem"
+                    >Interesses
+                </a>
+            </li>
+            <div class="dropDownContainer">
+                <li class="menuItem dropdownItem">
+                    Propostas
+                </li>
+                <div class="dropdownItems">
+                    <li class="menuDropdown">
+                        <a href="/cadastroProposta.html" class="dropdownItem"
+                            >Cadastro de Proposta
+                        </a>
+                    </li>
+                    <li class="menuDropdown">
+                        <a href="/gerenciarPropostas.html" class="dropdownItem"
+                            >Gerenciar Propostas
+                        </a>
+                    </li>
+                </div>
+            </div>
         </ul>
     </div>
 `;
