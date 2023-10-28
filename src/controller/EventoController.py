@@ -20,25 +20,30 @@ class EventoController:
     def filePath(self):
         return self.__filePath
 
+
+    
     def add(self, values):
-        newEvento = Evento(random.randint(0, 100),
+        id_organizacao = values.get("id_organizacao")
+        #nome_organizacao = values.get("nome_organizacao") 
+        newEvento = Evento(
+                           id_organizacao,
+                           #nome_organizacao,
+                           random.randint(0, 100),
                            values["titulo"],
                            values["local"],
                            values["data"],
                            values["hora"],
                            values["descricao"]
-                           #values["empresa"],
-                           #values["organizacao"]
                            )
         mapping = {
+            "id_organizacao": id_organizacao,
+            #"nome_organizacao": nome_organizacao,
             "id": newEvento.get_id(),
             "titulo": newEvento.get_titulo(),
             "local": newEvento.get_local(),
             "data": newEvento.get_data(),
             "hora": newEvento.get_hora(),
             "descricao": newEvento.get_descricao(),
-            #"empresa": newEvento.get_empresa(),
-            #"organizacao": newEvento.get_organizacao()
         }
         self.__eventos.append(mapping)
 
@@ -75,7 +80,6 @@ class EventoController:
                 e["data"] = evento["data"]
                 e["hora"] = evento["hora"]
                 e["descricao"] = evento["descricao"]
-                #e["empresa"] = evento["empresa"]
-                #e["organizacao"] = evento["organizacao"]
+
         with open(self.__filePath, 'wb') as ev:
             pickle.dump(eventos, ev)

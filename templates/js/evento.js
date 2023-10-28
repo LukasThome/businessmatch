@@ -5,12 +5,22 @@ function onSubmit(event) {
   event.preventDefault();
 
   var evento = {
+    id_organizacao: null,
+    nome_organizacao: null,
     titulo: form.elements["titulo"].value,
     local: form.elements["local"].value,
     data: form.elements["data"].value,
     hora: form.elements["hora"].value,
     descricao: form.elements["descricao"].value,
   };
+
+   // Verifica se a data é válida e no futuro
+   var selectedDate = new Date(evento.data);
+   var currentDate = new Date();
+   if (selectedDate <= currentDate) {
+     alert("A data deve ser no futuro.");
+     return;
+   }
     eel.workWithValuesEvento(evento)();
     console.log(evento.value);
     console.log("create")
@@ -44,12 +54,14 @@ function onEdit(event) {
 
   event.preventDefault();
   var evento = {
-      titulo: editForm.elements["titulo"].value,
-      local: editForm.elements["local"].value,
-      data: editForm.elements["data"].value,
-      hora: editForm.elements["hora"].value,
-      descricao: editForm.elements["descricao"].value,
-      id: document.querySelector("#edit").children[0].id,
+    //id_organizacao: editForm.elemnents["id_organizacao"].value, Comentado, pois nao queremos deixar edicao habilitada
+    //nome_organizacao: editForm.elements["nome_organizacao"]. value,
+    titulo: editForm.elements["titulo"].value,
+    local: editForm.elements["local"].value,
+    data: editForm.elements["data"].value,
+    hora: editForm.elements["hora"].value,
+    descricao: editForm.elements["descricao"].value,
+    id: document.querySelector("#edit").children[0].id,
   };
   eel.editEvento(evento)();
   location.reload();
