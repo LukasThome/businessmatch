@@ -133,3 +133,20 @@ function generateEditTemplate(titulo, descricao, id) {
     `;
   return propostaCardEdit;
 }
+
+function remove() {
+    var list = eel.sendPropostaList()();
+    list.then((l) => {
+      l.map(({ id }) => {
+        document
+          .getElementById(`propsotaId__${id}`)
+          .addEventListener("click", () => {
+            eel.removeProposta(id)();
+            location.reload();
+          });
+        document
+          .getElementById(`propsotaId__${id}`)
+          .removeEventListener("click", () => {});
+      });
+    });
+  }
