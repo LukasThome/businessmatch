@@ -2,7 +2,6 @@ from src.model.Organizacao import Organizacao
 from datetime import date, time
 from uuid import uuid4
 
-
 class Evento(Organizacao):
     id: int
     titulo: str
@@ -10,21 +9,22 @@ class Evento(Organizacao):
     data: date
     hora: time
     descricao: str
-    
+    nome_organizacao: Organizacao
 
-    def __init__(self, id, titulo, local, data, hora, descricao()):  
+
+    def __init__(self, id, titulo, local, data, hora, descricao, nome_organizacao):  
         self.id = id  # ID do evento (inteiro)
         self.titulo = titulo  # Título do evento
         self.local = local  # Endereço do evento
         self.data = data  # Data do evento (objeto date)
         self.hora = hora  # Hora do evento (objeto time)
         self.descricao = descricao  # Descrição do evento (string)
-        self.organizacao = Organizacao().nome #campo para saber quem criou este evento posteriormente
+        self.nome_organizacao = nome_organizacao#campo para saber quem criou este evento posteriormente
 
 
     # Getters
-    def get_organizacao(self):
-        return self.organizacao
+    def get_nome_organizacao(self):
+        return self.nome_organizacao
 
     def get_id(self):
         return self.__id
@@ -47,8 +47,8 @@ class Evento(Organizacao):
 
     # Setters
     # Setter para a organização
-    def set_organizacao(self, organizacao):
-        self.organizacao = organizacao
+    def set_organizacao(self, nome_organizacao):
+        self.nome_organizacao = nome_organizacao
 
     def set_id(self, id):
         self.__id = id
