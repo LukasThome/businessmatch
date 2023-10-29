@@ -79,8 +79,8 @@ def editEvento(evento):
 
 
 @eel.expose
-def removeEvento(evento):
-    eventoController.remove(evento)
+def removeEvento(eventoId):
+    eventoController.remove(eventoId)
 
 
 @eel.expose
@@ -93,6 +93,7 @@ def sendEventoList():
 @eel.expose
 def workWithValuesEvento(values):
     eventoController.add(values)
+
 
 
 # ----------------------------------------------------// PORTFOLIO //---------------------------------------------------

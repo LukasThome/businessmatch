@@ -181,10 +181,65 @@ function logList() {
                           <span id="nome_organizacao">${nome_organizacao}</span>
                       </span>
                   </div>
-
-
               </div>
           `;
+      document
+        .getElementById("logBtn")
+        .insertAdjacentHTML("afterend", eventoCard);
+    });
+  });
+}
+
+function logListViewOnly() {
+  var list = eel.sendEventoList()();
+  list.then((l) => {
+    if (!l) {
+      let eventoCard = `<div>Não há eventos cadastradas!</div>`;
+      document
+        .getElementById("logBtn")
+        .insertAdjacentHTML("afterend", eventoCard);
+      return;
+    }
+    l.map(({ titulo, local, data, hora, descricao, id, nome_organizacao }) => {
+      let eventoCard = `
+                <div class="card" id="cardId__${id}">
+                    <div class="titleContainer">
+                        <h2 id="title">Nome: ${titulo}</h2>
+    
+            
+                    </div>
+                    <div class="bodyText">
+                        <span
+                            >LOCAL:
+                            <a href="https://www.google.com/maps?q=${local}" target="_blank">Ver no Google Maps</a>
+                        </span>
+                    </div>
+                    <div class="bodyText">
+                        <span 
+                            >DATA:
+                            <span id="data" >${data}</span>
+                        </span>
+                    </div>
+                    <div class="bodyText">
+                        <span
+                            >HORA:
+                            <span id="hora">${hora}</span>
+                        </span>
+                    </div>
+                    <div class="descricao">
+                        <span
+                            >DESCRICAO:
+                            <span id="descricao">${descricao}</span>
+                        </span>
+                    </div>
+                    <div class="nome_organizacao">
+                        <span
+                            >NOME_ORG:
+                            <span id="nome_organizacao">${nome_organizacao}</span>
+                        </span>
+                    </div>
+                </div>
+            `;
       document
         .getElementById("logBtn")
         .insertAdjacentHTML("afterend", eventoCard);

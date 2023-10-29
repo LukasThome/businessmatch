@@ -10,15 +10,17 @@ class Evento(Organizacao):
     data: date
     hora: time
     descricao: str
+    
 
-    def __init__(self, organizacao, id, titulo, local, data, hora, descricao):  
-        self.organizacao = organizacao #campo para saber quem criou este evento posteriormente
-        self.__id = id  # ID do evento (inteiro)
-        self.__titulo = titulo  # Título do evento
-        self.__local = local  # Endereço do evento
-        self.__data = data  # Data do evento (objeto date)
-        self.__hora = hora  # Hora do evento (objeto time)
-        self.__descricao = descricao  # Descrição do evento (string)
+    def __init__(self, id, titulo, local, data, hora, descricao()):  
+        self.id = id  # ID do evento (inteiro)
+        self.titulo = titulo  # Título do evento
+        self.local = local  # Endereço do evento
+        self.data = data  # Data do evento (objeto date)
+        self.hora = hora  # Hora do evento (objeto time)
+        self.descricao = descricao  # Descrição do evento (string)
+        self.organizacao = Organizacao().nome #campo para saber quem criou este evento posteriormente
+
 
     # Getters
     def get_organizacao(self):

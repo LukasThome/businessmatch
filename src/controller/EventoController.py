@@ -30,16 +30,17 @@ class EventoController:
                            values["local"],
                            values["data"],
                            values["hora"],
-                           values["descricao"]
+                           values["descricao"],
+                           values["nome_organizacao"]
                            )
         mapping = {
-    
-            "id": newEvento.id(),
-            "titulo": newEvento.titulo(),
-            "local": newEvento.local(),
-            "data": newEvento.data(),
-            "hora": newEvento.hora(),
-            "descricao": newEvento.descricao(),
+            "id": newEvento.id,
+            "titulo": newEvento.titulo,
+            "local": newEvento.local,
+            "data": newEvento.data,
+            "hora": newEvento.hora,
+            "descricao": newEvento.descricao,
+            "nome_organizacao": newEvento.nome_organizacao
         }
         self.__eventos.append(mapping)
 
@@ -70,7 +71,7 @@ class EventoController:
     def edit(self, evento):
         eventos = self.load()
         for e in eventos:
-            if int(e["id"]) == int(evento["id"]):
+            if (e["id"] == evento["id"]):
                 e["titulo"] = evento["titulo"]
                 e["local"] = evento["local"]
                 e["data"] = evento["data"]
