@@ -5,6 +5,7 @@ from src.controller.StartupController import StartupController
 from src.controller.EmpresaController import EmpresaController
 from src.controller.PortfolioController import PortfolioController
 from src.controller.EventoController import EventoController
+from src.controller.PropostaController import PropostaController
 
 import eel
 
@@ -15,6 +16,7 @@ portfolioController = PortfolioController()
 startupController = StartupController()
 empresaController = EmpresaController()
 eventoController = EventoController()
+propostaController = PropostaController()
 
 
 @eel.expose
@@ -93,6 +95,26 @@ def sendEventoList():
 @eel.expose
 def workWithValuesEvento(values):
     eventoController.add(values)
+
+
+# ----------------------------------------------------// PROPOSTAS //---------------------------------------------------
+
+@eel.expose
+def removePropsota(propostaId):
+    propostaController.remove(propostaId)
+
+
+@eel.expose
+def sendPropostaList():
+    if (propostaController.filePath.exists()):
+        e = propostaController.load()
+        return e
+
+
+@eel.expose
+def workWithValuesProposta(values):
+    propostaController.add(values)
+
 
 
 
