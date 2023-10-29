@@ -109,7 +109,7 @@ function combineLists() {
   logEmpresaList().then((el) => {
     document
       .getElementById("list")
-      .insertAdjacentHTML("afterbegin", createTemplate(el, "Empresas"));
+      .insertAdjacentHTML("afterbegin", createTemplate(...el, "Empresas"));
   });
   logStartupList().then((el) => {
     document

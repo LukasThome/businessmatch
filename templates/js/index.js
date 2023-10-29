@@ -41,11 +41,29 @@ let header = `
                     </li>
                 </div>
             </div>
-            <li class="menuItem">
-                <a href="/eventos.html" class="linkItem"
-                    >Eventos
-                </a>
-            </li>
+            <div class="dropDownContainer">
+                <li class="menuItem dropdownItem">
+                    Eventos
+                </li>
+                <div class="dropdownItems">
+                    <li class="menuDropdown">
+                        <a href="/eventos.html" class="dropdownItem"
+                            >Mostrar todos os eventos
+                        </a>
+                    </li>
+                    <li class="menuDropdown">
+                        <a href="/cadastroEvento.html" class="dropdownItem"
+                            >Cadastrar Evento
+                        </a>
+                    </li>
+                    <li class="menuDropdown">
+                        <a href="/gerenciarEventos.html" class="dropdownItem"
+                            >Gerenciar Eventos
+                        </a>
+                    </li>
+                </div>
+            </div>
+            
             <div class="dropDownContainer">
                 <li class="menuItem dropdownItem">
                     Portfólios
