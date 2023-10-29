@@ -1,7 +1,8 @@
-import random
 import pickle
 from pathlib import Path
 from src.model.Evento import Evento
+from uuid import uuid4
+
 
 class EventoController:
     def __init__(self):
@@ -23,12 +24,8 @@ class EventoController:
 
     
     def add(self, values):
-        id_organizacao = values.get("id_organizacao")
-        #nome_organizacao = values.get("nome_organizacao") 
-        newEvento = Evento(
-                           id_organizacao,
-                           #nome_organizacao,
-                           random.randint(0, 100),
+        
+        newEvento = Evento(str(uuid4()),
                            values["titulo"],
                            values["local"],
                            values["data"],
@@ -36,14 +33,13 @@ class EventoController:
                            values["descricao"]
                            )
         mapping = {
-            "id_organizacao": id_organizacao,
-            #"nome_organizacao": nome_organizacao,
-            "id": newEvento.get_id(),
-            "titulo": newEvento.get_titulo(),
-            "local": newEvento.get_local(),
-            "data": newEvento.get_data(),
-            "hora": newEvento.get_hora(),
-            "descricao": newEvento.get_descricao(),
+    
+            "id": newEvento.id(),
+            "titulo": newEvento.titulo(),
+            "local": newEvento.local(),
+            "data": newEvento.data(),
+            "hora": newEvento.hora(),
+            "descricao": newEvento.descricao(),
         }
         self.__eventos.append(mapping)
 

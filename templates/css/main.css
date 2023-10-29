@@ -10,6 +10,7 @@
   font-size: 1rem;
   border-radius: 1rem;
   border: 2px solid #0d9340;
+
 }
 .inputsContainer {
   display: flex;
@@ -33,4 +34,14 @@
 }
 .question {
   margin: 1rem 0;
+}
+
+
+.formInputDescricao {
+  padding: 1rem;
+  font-family: Mooli;
+  font-size: 1rem;
+  border-radius: 1rem;
+  border: 2px solid #0d9340;
+  width: 500px;
 }

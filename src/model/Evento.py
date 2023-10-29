@@ -1,5 +1,7 @@
 from src.model.Organizacao import Organizacao
 from datetime import date, time
+from uuid import uuid4
+
 
 class Evento(Organizacao):
     id: int
@@ -10,7 +12,7 @@ class Evento(Organizacao):
     descricao: str
 
     def __init__(self, organizacao, id, titulo, local, data, hora, descricao):  
-        self.organizacao = organizacao
+        self.organizacao = organizacao #campo para saber quem criou este evento posteriormente
         self.__id = id  # ID do evento (inteiro)
         self.__titulo = titulo  # Título do evento
         self.__local = local  # Endereço do evento

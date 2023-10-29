@@ -1,61 +1,69 @@
 var form = document.getElementById("signup");
 
+// Função para pesquisar no Google Maps e preencher o campo "LOCAL"
+function searchLocationOnMaps() {
+  const locationInput = document.getElementById("localInput").value;
+  const googleMapsUrl = `https://www.google.com/maps?q=${encodeURIComponent(
+    locationInput
+  )}`;
+  window.open(googleMapsUrl, "_blank");
+}
+
+function openMap() {
+  // URL do mapa do Google Maps
+  const googleMapsUrl = "https://www.google.com/maps";
+  window.open(googleMapsUrl, "_blank");
+}
+
 // Função para adicionar um evento
 function onSubmit(event) {
   event.preventDefault();
 
   var evento = {
-    id_organizacao: null,
     nome_organizacao: null,
     titulo: form.elements["titulo"].value,
-    local: form.elements["local"].value,
+    local: form.elements["localInput"].value, // Usa o campo "localInput" para obter o link do Google Maps
     data: form.elements["data"].value,
     hora: form.elements["hora"].value,
     descricao: form.elements["descricao"].value,
   };
 
-   // Verifica se a data é válida e no futuro
-   var selectedDate = new Date(evento.data);
-   var currentDate = new Date();
-   if (selectedDate <= currentDate) {
-     alert("A data deve ser no futuro.");
-     return;
-   }
-    eel.workWithValuesEvento(evento)();
-    console.log(evento.value);
-    console.log("create")
+  // Verifica se a data é válida e no futuro
+  var selectedDate = new Date(evento.data);
+  var currentDate = new Date();
+  if (selectedDate <= currentDate) {
+    alert("A data deve ser no futuro.");
+    return;
+  }
+  eel.workWithValuesEvento(evento)();
+  console.log(evento.value);
+  console.log("create");
 
-    location.reload();
-
-
+  location.reload();
 }
 
 function remove() {
   var list = eel.sendEventoList()();
   list.then((l) => {
-      l.map(({id}) => {
-          document
-              .getElementById(`eventoId__${id}`)
-              .addEventListener("click", () => {
-                  eel.removeEvento(id)();
-                  location.reload();
-              });
-          document
-              .getElementById(`eventoId__${id}`)
-              .removeEventListener("click", () => {
-              });
-      });
+    l.map(({ id }) => {
+      document
+        .getElementById(`eventoId__${id}`)
+        .addEventListener("click", () => {
+          eel.removeEvento(id)();
+          location.reload();
+        });
+      document
+        .getElementById(`eventoId__${id}`)
+        .removeEventListener("click", () => {});
+    });
   });
 }
-
 
 function onEdit(event) {
   var editForm = document.getElementById("edit");
 
   event.preventDefault();
   var evento = {
-    //id_organizacao: editForm.elemnents["id_organizacao"].value, Comentado, pois nao queremos deixar edicao habilitada
-    //nome_organizacao: editForm.elements["nome_organizacao"]. value,
     titulo: editForm.elements["titulo"].value,
     local: editForm.elements["local"].value,
     data: editForm.elements["data"].value,
@@ -67,36 +75,33 @@ function onEdit(event) {
   location.reload();
 }
 
-
 function generateEditTemplate(titulo, local, data, hora, descricao, id) {
   let eventoCardEdit = `
       <form onsubmit="onEdit(event)" id="edit">
-          <div id="${id}">
               <div class="titleContainer">
                   <h2 id="title">Nome: <input name="titulo" value="${titulo}" class="formInput"></h2>
               </div>
               <div class="bodyText">
-                  <span
-                      >CPNJ:
-                      <span id="local"><input name="local" value="${local}" class="formInput"></span>
-                  </span>
+                    <span>LOCAL: <input type="text" id="localInput" class="formInput" placeholder="Clique no mapa para escolher o local" readonly required></span>
+                    <button type="button" id="searchLocationBtn" onclick="openMap()">Escolher no Google Maps</button>
+                <button type="button" id="searchLocationBtn" class="submitBtn" onclick="searchLocationOnMaps()">Pesquisar no Google Maps</button>
               </div>
               <div class="bodyText">
                   <span 
-                      >CNAE:
+                      >DATA:
                       <span id="data" ><input name="data" value="${data}" class="formInput"></span>
                   </span>
               </div>
               <div class="bodyText">
                   <span
-                      >Setor:
+                      >HORA:
                       <span id="hora"><input name="hora" value="${hora} "class="formInput"></span>
                   </span>
               </div>
               <div class="bodyText">
                   <span 
-                      >CNAE:
-                      <span id="descricao" ><input name="descricao" value="${descricao}" class="formInput"></span>
+                      >DESCRICAO:
+                      <span id="descricao" ><input name="descricao" value="${descricao}" class="formInputDescricao"></span>
                   </span>
               </div>
               <div class="inputsContainer">
@@ -111,31 +116,30 @@ function generateEditTemplate(titulo, local, data, hora, descricao, id) {
 function edit() {
   var list = eel.sendEventoList()();
   list.then((l) => {
-      l.map(({id, titulo, local, data, hora, descricao}) => {
-          document.getElementById(`editId__${id}`).addEventListener("click", () => {
-              let eventoCardEdit = generateEditTemplate(nome, local, data, hora, id);
-              document.getElementById(`cardId__${id}`).innerHTML = eventoCardEdit;
-          });
-          document
-              .getElementById(`editId__${id}`)
-              .removeEventListener("click", () => {
-              });
+    l.map(({ id, titulo, local, data, hora, descricao }) => {
+      document.getElementById(`editId__${id}`).addEventListener("click", () => {
+        let eventoCardEdit = generateEditTemplate(nome, local, data, hora, id);
+        document.getElementById(`cardId__${id}`).innerHTML = eventoCardEdit;
       });
+      document
+        .getElementById(`editId__${id}`)
+        .removeEventListener("click", () => {});
+    });
   });
 }
 
 function logList() {
   var list = eel.sendEventoList()();
   list.then((l) => {
-      if (!l) {
-          let eventoCard = `<div>Não há eventos cadastradas!</div>`;
-          document
-              .getElementById("logBtn")
-              .insertAdjacentHTML("afterend", eventoCard);
-          return;
-      }
-      l.map(({titulo, local, data, hora, descricao, id}) => {
-          let eventoCard = `
+    if (!l) {
+      let eventoCard = `<div>Não há eventos cadastradas!</div>`;
+      document
+        .getElementById("logBtn")
+        .insertAdjacentHTML("afterend", eventoCard);
+      return;
+    }
+    l.map(({ titulo, local, data, hora, descricao, id, nome_organizacao }) => {
+      let eventoCard = `
               <div class="card" id="cardId__${id}">
                   <div class="titleContainer">
                       <h2 id="title">Nome: ${titulo}</h2>
@@ -150,7 +154,7 @@ function logList() {
                   <div class="bodyText">
                       <span
                           >LOCAL:
-                          <span id="local">${local}</span>
+                          <a href="https://www.google.com/maps?q=${local}" target="_blank">Ver no Google Maps</a>
                       </span>
                   </div>
                   <div class="bodyText">
@@ -165,20 +169,25 @@ function logList() {
                           <span id="hora">${hora}</span>
                       </span>
                   </div>
-                  <div class="bodyText">
+                  <div class="descricao">
                       <span
                           >DESCRICAO:
                           <span id="descricao">${descricao}</span>
+                      </span>
+                  </div>
+                  <div class="nome_organizacao">
+                      <span
+                          >NOME_ORG:
+                          <span id="nome_organizacao">${nome_organizacao}</span>
                       </span>
                   </div>
 
 
               </div>
           `;
-          document
-              .getElementById("logBtn")
-              .insertAdjacentHTML("afterend", eventoCard);
-      });
+      document
+        .getElementById("logBtn")
+        .insertAdjacentHTML("afterend", eventoCard);
+    });
   });
 }
-
