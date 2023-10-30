@@ -2,36 +2,33 @@ from src.model.Organizacao import Organizacao
 
 
 class Startup(Organizacao):
-    pergunta1: str
-    pergunta2: str
-    pergunta3: str
 
-    def __init__(self, id, nome, cnpj, cnae, setor, pergunta1, pergunta2, pergunta3):
+    def __init__(self, id, nome, cnpj, cnae, setor, activityType, offeredServices, offeredProducts):
         super().__init__(id, nome, cnpj, cnae, setor)
-        self.__pergunta1 = pergunta1
-        self.__pergunta2 = pergunta2
-        self.__pergunta3 = pergunta3
+        self.__activityType = activityType
+        self.__offeredServices = offeredServices
+        self.__offeredProducts = offeredProducts
 
     @property
-    def pergunta1(self):
-        return self.__pergunta1
-    
-    @pergunta1.setter
-    def pergunta1(self, pergunta1):
-        self.__pergunta1 = pergunta1
+    def activityType(self):
+        return self.__activityType
+
+    @activityType.setter
+    def activityType(self, activityType):
+        self.__activityType = activityType
 
     @property
-    def pergunta2(self):
-        return self.__pergunta2
-    
-    @pergunta2.setter
-    def pergunta2(self, pergunta2):
-        self.__pergunta2 = pergunta2
+    def offeredServices(self):
+        return self.__offeredServices
+
+    @offeredServices.setter
+    def offeredServices(self, offeredServices):
+        self.__offeredServices = offeredServices
 
     @property
-    def pergunta3(self):
-        return self.__pergunta3
-    
-    @pergunta3.setter
-    def pergunta3(self, pergunta3):
-        self.__pergunta3 = pergunta3
+    def offeredProducts(self):
+        return self.__offeredProducts
+
+    @offeredProducts.setter
+    def offeredProducts(self, offeredProducts):
+        self.__offeredProducts = offeredProducts
