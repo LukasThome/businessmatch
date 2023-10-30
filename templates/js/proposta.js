@@ -135,18 +135,19 @@ function generateEditTemplate(titulo, descricao, id) {
 }
 
 function remove() {
-    var list = eel.sendPropostaList()();
-    list.then((l) => {
-      l.map(({ id }) => {
+  var list = eel.sendPropostaList()();
+  list.then((l) => {
+    l.map(({ id }) => {
+      const listener = () => {
+        eel.removeProposta(id)();
+        location.reload();
         document
-          .getElementById(`propsotaId__${id}`)
-          .addEventListener("click", () => {
-            eel.removeProposta(id)();
-            location.reload();
-          });
-        document
-          .getElementById(`propsotaId__${id}`)
-          .removeEventListener("click", () => {});
-      });
+          .getElementById(`propostaId__${id}`)
+          .removeEventListener("click", listener);
+      };
+      document
+        .getElementById(`propostaId__${id}`)
+        .addEventListener("click", listener);
     });
-  }
+  });
+}

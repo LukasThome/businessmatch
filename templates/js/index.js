@@ -63,7 +63,6 @@ let header = `
                     </li>
                 </div>
             </div>
-            
             <div class="dropDownContainer">
                 <li class="menuItem dropdownItem">
                     Portfólios

@@ -97,24 +97,25 @@ function logEmpresaList() {
 }
 
 function createTemplate(el, type) {
+  const list = el.join(" ");
   return `
   <div class="organizacaoItem">
-    <h2 class="title">${type}</h2>
-    ${el}
-    </div>
+  <h2 class="title">${type}</h2>
+    ${list}
+  </div>
 `;
 }
 
 function combineLists() {
-  logEmpresaList().then((el) => {
-    document
-      .getElementById("list")
-      .insertAdjacentHTML("afterbegin", createTemplate(...el, "Empresas"));
-  });
   logStartupList().then((el) => {
     document
       .getElementById("list")
       .insertAdjacentHTML("afterbegin", createTemplate(el, "Startups"));
+  });
+  logEmpresaList().then((el) => {
+    document
+      .getElementById("list")
+      .insertAdjacentHTML("beforeend", createTemplate(el, "Empresas"));
   });
 }
 function determineFavStatus() {
