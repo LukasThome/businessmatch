@@ -86,6 +86,7 @@ function generateEditTemplate(titulo, local, data, hora, descricao, id) {
                     <button type="button" id="searchLocationBtn" onclick="openMap()">Escolher no Google Maps</button>
                 <button type="button" id="searchLocationBtn" class="submitBtn" onclick="searchLocationOnMaps()">Pesquisar no Google Maps</button>
               </div>
+
               <div class="bodyText">
                   <span 
                       >DATA:
@@ -118,7 +119,7 @@ function edit() {
   list.then((l) => {
     l.map(({ id, titulo, local, data, hora, descricao }) => {
       document.getElementById(`editId__${id}`).addEventListener("click", () => {
-        let eventoCardEdit = generateEditTemplate(nome, local, data, hora, id);
+        let eventoCardEdit = generateEditTemplate(id, titulo, local, data, hora, descricao);
         document.getElementById(`cardId__${id}`).innerHTML = eventoCardEdit;
       });
       document

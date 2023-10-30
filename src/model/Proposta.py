@@ -9,9 +9,9 @@ class Proposta(Empresa, Startup):
     data: date
     hora: time
     descricao: str
+    status: int
     nome_empresa: Empresa
     nome_startup: Startup
-
 
     def __init__(self, id, titulo, data, hora, descricao, nome_empresa, nome_startup):  
         self.id = id  # ID da proposta (inteiro)
@@ -19,9 +19,10 @@ class Proposta(Empresa, Startup):
         self.data = data  # Data da proposta (objeto date)
         self.hora = hora  # Hora da proposta (objeto time)
         self.descricao = descricao  # Descrição da proposta (string)
+        self.satus = 3 #incia como pendente 0 = recusado, 1 = aceito, 3 = pendente
         self.nome_empresa = nome_empresa #campo para saber quem criou esta proposta posteriormente
         self.nome_startup = nome_startup #campo para saber quem criou/quem recebe a proposta
-
+    
 
     # Getters
     def get_nome_empresa(self):
@@ -30,6 +31,8 @@ class Proposta(Empresa, Startup):
     def get_nome_startup(self):
         return self.nome_startup
     
+    def get_status(self):
+        return self.status
 
     def get_id(self):
         return self.__id
@@ -53,6 +56,9 @@ class Proposta(Empresa, Startup):
 
     def set_nome_startup(self, nome_startup):
         self.nome_startup = nome_startup
+
+    def set_status(self, status):
+        self.status = status
 
     def set_id(self, id):
         self.__id = id
