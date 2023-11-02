@@ -10,11 +10,11 @@ class EmpresaController():
         self.__filePath = Path(Path.cwd(), "src", "controller", 'pickle/empresas.pkl')
 
     @property
-    def startups(self):
+    def empresas(self):
         return self.__empresas
 
-    @startups.setter
-    def startups(self, empresas):
+    @empresas.setter
+    def empresas(self, empresas):
         self.__empresas = empresas
 
     @property
@@ -68,5 +68,22 @@ class EmpresaController():
                 e["cnpj"] = empresa["cnpj"]
                 e["cnae"] = empresa["cnae"]
                 e["setor"] = empresa["setor"]
+                e["activityType"] = empresa["activityType"]
+                e["offeredServices"] = empresa["offeredServices"]
+                e["offeredProducts"] = empresa["offeredProducts"]
         with open(self.__filePath, 'wb') as em:
             pickle.dump(empresas, em)
+
+    def findById(self, id):
+        empresas = self.load()
+        for empresa in empresas:
+            if (int(empresa["id"]) == int(id)):
+                return Empresa.toEmpresa(empresa)
+        return None
+
+    def findAll(self):
+        empresas = self.load()
+        listEmpresas = []
+        for empresa in empresas:
+            listEmpresas.append(Empresa.toEmpresa(empresa))
+        return None

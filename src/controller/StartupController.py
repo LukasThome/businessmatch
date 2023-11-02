@@ -72,3 +72,17 @@ class StartupController():
                 s["setor"] = startup["setor"]
         with open(self.__filePath, 'wb') as st:
             pickle.dump(startups, st)
+
+    def findById(self, id):
+        startups = self.load()
+        for startup in startups:
+            if (int(startup["id"]) == int(id)):
+                return Startup.toStartup(startup)
+        return None
+
+    def findAll(self):
+        startups = self.load()
+        listStartups = []
+        for startup in startups:
+            listStartups.append(Startup.toStartup(startup))
+        return None

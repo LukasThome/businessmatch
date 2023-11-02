@@ -32,3 +32,16 @@ class Empresa(Organizacao):
     @offeredProducts.setter
     def offeredProducts(self, offeredProducts):
         self.__offeredProducts = offeredProducts
+
+    @staticmethod
+    def toEmpresa(empresaPkl):
+        return Empresa(
+            empresaPkl["id"],
+            empresaPkl["nome"],
+            empresaPkl["cnpj"],
+            empresaPkl["cnae"],
+            empresaPkl["setor"],
+            empresaPkl["activityType"],
+            empresaPkl["offeredServices"],
+            empresaPkl["offeredProducts"]
+        )

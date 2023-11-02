@@ -32,3 +32,16 @@ class Startup(Organizacao):
     @offeredProducts.setter
     def offeredProducts(self, offeredProducts):
         self.__offeredProducts = offeredProducts
+
+    @staticmethod
+    def toStartup(startupPkl):
+        return Startup(
+            startupPkl["id"],
+            startupPkl["nome"],
+            startupPkl["cnpj"],
+            startupPkl["cnae"],
+            startupPkl["setor"],
+            startupPkl["activityType"],
+            startupPkl["offeredServices"],
+            startupPkl["offeredProducts"]
+        )
