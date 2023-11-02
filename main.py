@@ -116,6 +116,10 @@ def workWithValuesProposta(values):
     propostaController.add(values)
 
 
+@eel.expose
+def editProposta(proposta):
+    propostaController.edit(proposta)
+
 
 
 # ----------------------------------------------------// PORTFOLIO //---------------------------------------------------
