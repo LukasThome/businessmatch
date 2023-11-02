@@ -2,7 +2,7 @@ var form = document.getElementById("signup");
 
 // Função para pesquisar no Google Maps e preencher o campo "LOCAL"
 function searchLocationOnMaps() {
-  const locationInput = document.getElementById("localInput").value;
+  const locationInput = document.getElementById("local").value;
   const googleMapsUrl = `https://www.google.com/maps?q=${encodeURIComponent(
     locationInput
   )}`;
@@ -22,7 +22,7 @@ function onSubmit(event) {
   var evento = {
     nome_organizacao: null,
     titulo: form.elements["titulo"].value,
-    local: form.elements["localInput"].value, // Usa o campo "localInput" para obter o link do Google Maps
+    local: form.elements["local"].value, // Usa o campo "localInput" para obter o link do Google Maps
     data: form.elements["data"].value,
     hora: form.elements["hora"].value,
     descricao: form.elements["descricao"].value,
@@ -78,25 +78,27 @@ function onEdit(event) {
 function generateEditTemplate(titulo, local, data, hora, descricao, id) {
   let eventoCardEdit = `
       <form onsubmit="onEdit(event)" id="edit">
+        <div id="${id}">
               <div class="titleContainer">
-                  <h2 id="title">Nome: <input name="titulo" value="${titulo}" class="formInput"></h2>
+                  <h2 id="title">Título: <input name="titulo" value="${titulo}" class="formInput"></h2>
               </div>
               <div class="bodyText">
-                    <span>LOCAL: <input type="text" id="localInput" class="formInput" placeholder="Clique no mapa para escolher o local" readonly required></span>
-                    <button type="button" id="searchLocationBtn" onclick="openMap()">Escolher no Google Maps</button>
-                <button type="button" id="searchLocationBtn" class="submitBtn" onclick="searchLocationOnMaps()">Pesquisar no Google Maps</button>
+                    <span
+                    >LOCAL:
+                    <span id="local" ><input name="local" value="${local}" class="formInput"></span>
+                    <button type="button" id="searchLocationBtn" class="submitBtn" onclick="searchLocationOnMaps()">Pesquisar no Google Maps</button>
               </div>
 
               <div class="bodyText">
                   <span 
                       >DATA:
-                      <span id="data" ><input name="data" value="${data}" class="formInput"></span>
+                      <span id="data" ><input type="date" name="data" value="${data}" class="formInput"></span>
                   </span>
               </div>
               <div class="bodyText">
                   <span
                       >HORA:
-                      <span id="hora"><input name="hora" value="${hora} "class="formInput"></span>
+                      <span id="hora"><input type="time" name="hora" value="${hora} "class="formInput"></span>
                   </span>
               </div>
               <div class="bodyText">
@@ -117,9 +119,15 @@ function generateEditTemplate(titulo, local, data, hora, descricao, id) {
 function edit() {
   var list = eel.sendEventoList()();
   list.then((l) => {
-    l.map(({ id, titulo, local, data, hora, descricao }) => {
+    l.map(({id, titulo, local, data, hora, descricao }) => {
       document.getElementById(`editId__${id}`).addEventListener("click", () => {
-        let eventoCardEdit = generateEditTemplate(id, titulo, local, data, hora, descricao);
+        let eventoCardEdit = generateEditTemplate(
+          titulo,
+          local,
+          data,
+          hora,
+          descricao
+        );
         document.getElementById(`cardId__${id}`).innerHTML = eventoCardEdit;
       });
       document
