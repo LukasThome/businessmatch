@@ -31,34 +31,35 @@ class MatchingService():
         startup = Startup.toStartup(self.__startupController.findById(idStartup))
         if (empresa is not None and startup is not None):
 
-            if (empresa.cnae == startup.cnae):
+            if (str(empresa.cnae).strip() == str(startup.cnae).strip()):
                 matchingScore += 10
 
-            if (empresa.setor == startup.setor):
+            if (str(empresa.setor).strip() == str(startup.setor).strip()):
                 matchingScore += 10
 
-            if (empresa.region == startup.region):
+            if (str(empresa.region).strip() == str(startup.region).strip()):
                 matchingScore += 10
 
-            if (empresa.activityType == startup.activityType):
+            if (str(empresa.activityType).strip() == str(startup.activityType).strip()):
                 matchingScore += 10
 
-            if (empresa.offeredServices == startup.offeredServices):
+            if (str(empresa.offeredServices).strip() == str(startup.offeredServices).strip()):
                 matchingScore += 10
 
-            if (empresa.offeredProducts == startup.offeredProducts):
+            if (str(empresa.offeredProducts).strip() == str(startup.offeredProducts).strip()):
                 matchingScore += 10
 
-            if (startup.hasCertification is True) or (empresa.needCertification == startup.hasCertification):
+            if (startup.hasCertification is True) or (
+                    str(empresa.needCertification).strip() == str(startup.hasCertification).strip()):
                 matchingScore += 10
 
-            if (empresa.wantsSoftwareFactory == startup.hasOwnProduct):
+            if (str(empresa.wantsSoftwareFactory).strip() == str(startup.hasOwnProduct).strip()):
                 matchingScore += 10
 
-            if (empresa.wantsRemoteWork == startup.doesRemoteWork):
+            if (str(empresa.wantsRemoteWork).strip() == str(startup.doesRemoteWork).strip()):
                 matchingScore += 10
 
-            if (empresa.wantsFullCommitment == startup.hasOtherPartners):
+            if (str(empresa.wantsFullCommitment).strip() == str(startup.hasOtherPartners).strip()):
                 matchingScore += 10
 
         print("m=calculateMatchingScore, matchingScore=" + str(matchingScore))
