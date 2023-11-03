@@ -38,11 +38,19 @@ class StartupController():
                              values["doesRemoteWork"],
                              values["hasOtherPartners"],
                              )
-        mapping = {"id": newStartup.id, "nome": newStartup.nome, "cnpj": newStartup.cnpj, "cnae": newStartup.cnae,
-                   "setor": newStartup.setor, "region": newStartup.region, "activityType": newStartup.activityType,
-                   "offeredServices": newStartup.offeredServices, "offeredProducts": newStartup.offeredProducts,
-                   "hasCertification": newStartup.hasCertification, "hasOwnProduct": newStartup.hasOwnProduct,
-                   "doesRemoteWork": newStartup.doesRemoteWork, "hasOtherPartners": newStartup.hasOtherPartners,
+        mapping = {"id": newStartup.id,
+                   "nome": newStartup.nome,
+                   "cnpj": newStartup.cnpj,
+                   "cnae": newStartup.cnae,
+                   "setor": newStartup.setor,
+                   "region": newStartup.region,
+                   "activityType": newStartup.activityType,
+                   "offeredServices": newStartup.offeredServices,
+                   "offeredProducts": newStartup.offeredProducts,
+                   "hasCertification": newStartup.hasCertification,
+                   "hasOwnProduct": newStartup.hasOwnProduct,
+                   "doesRemoteWork": newStartup.doesRemoteWork,
+                   "hasOtherPartners": newStartup.hasOtherPartners,
                    "tipo": "startup"}
         self.__startups.append(mapping)
 
@@ -92,8 +100,8 @@ class StartupController():
     def findById(self, idStartup):
         startups = self.load()
         for startup in startups:
-            if (int(startup["id"]) == int(idStartup)):
-                return Startup.toStartup(startup)
+            if (startup["id"] == idStartup):
+                return startup
         return None
 
     def findAll(self):
@@ -101,4 +109,4 @@ class StartupController():
         listStartups = []
         for startup in startups:
             listStartups.append(Startup.toStartup(startup))
-        return None
+        return listStartups

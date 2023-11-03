@@ -2,106 +2,22 @@ var form = document.getElementById("signup");
 let userSession = {};
 
 function onSubmit(event) {
-    event.preventDefault();
-    var obj = {
-        nome: form.elements["nome"].value,
-        cnpj: form.elements["cnpj"].value,
-        cnae: form.elements["cnae"].value,
-        setor: form.elements["setor"].value,
-        pergunta1: form.elements["pergunta1"].value,
-        pergunta2: form.elements["pergunta2"].value,
-        pergunta3: form.elements["pergunta3"].value,
-    };
-    eel.workWithValuesEmpresa(obj)();
-    location.reload();
-}
-
-function onEdit(event) {
-    var editForm = document.getElementById("edit");
-
-    event.preventDefault();
-    var obj = {
-        nome: editForm.elements["nome"].value,
-        cnpj: editForm.elements["cnpj"].value,
-        cnae: editForm.elements["cnae"].value,
-        setor: editForm.elements["setor"].value,
-        id: document.querySelector("#edit").children[0].id,
-    };
-    eel.editEmpresa(obj)();
-    location.reload();
-}
-
-function remove() {
-    var list = eel.sendEmpresaList()();
-    list.then((l) => {
-        l.map(({id}) => {
-            document
-                .getElementById(`idEmpresa__${id}`)
-                .addEventListener("click", () => {
-                    eel.removeEmpresa(id)();
-                    location.reload();
-                });
-            document
-                .getElementById(`idEmpresa__${id}`)
-                .removeEventListener("click", () => {
-                });
-        });
-    });
-}
-
-function generateEditTemplate(nome, cnpj, cnae, setor, id) {
-    let empresaCardEdit = `
-        <form onsubmit="onEdit(event)" id="edit">
-            <div id="${id}">
-                <div class="titleContainer">
-                    <h2 id="title">Nome: <input name="nome" value="${nome}" class="formInput"></h2>
-                </div>
-                <div class="bodyText">
-                    <span
-                        >CPNJ:
-                        <span id="cnpj"><input name="cnpj" value="${cnpj}" class="formInput"></span>
-                    </span>
-                </div>
-                <div class="bodyText">
-                    <span 
-                        >CNAE:
-                        <span id="cnae" ><input name="cnae" value="${cnae}" class="formInput"></span>
-                    </span>
-                </div>
-                <div class="bodyText">
-                    <span
-                        >Setor:
-                        <span id="setor"><input name="setor" value="${setor} "class="formInput"></span>
-                    </span>
-                </div>
-                <div class="inputsContainer">
-                      <input type="submit" class="submitBtn editBtn" value="Enviar" />
-                </div>
-            </div>
-        </form>
-    `;
-    return empresaCardEdit;
-}
-
-function edit() {
-    var list = eel.sendEmpresaList()();
-    list.then((l) => {
-        l.map(({id, nome, cnpj, cnae, setor}) => {
-            document.getElementById(`editId__${id}`).addEventListener("click", () => {
-                let empresaCardEdit = generateEditTemplate(nome, cnpj, cnae, setor, id);
-                document.getElementById(`cardId__${id}`).innerHTML = empresaCardEdit;
-            });
-            document
-                .getElementById(`editId__${id}`)
-                .removeEventListener("click", () => {
-                });
-        });
-    });
+    // event.preventDefault();
+    // var obj = {
+    //     nome: form.elements["nome"].value,
+    //     cnpj: form.elements["cnpj"].value,
+    //     cnae: form.elements["cnae"].value,
+    //     setor: form.elements["setor"].value,
+    //     pergunta1: form.elements["pergunta1"].value,
+    //     pergunta2: form.elements["pergunta2"].value,
+    //     pergunta3: form.elements["pergunta3"].value,
+    // };
+    // eel.workWithValuesEmpresa(obj)();
+    // location.reload();
 }
 
 function logList() {
     var list = eel.getMatchingList(userSession.id, userSession.tipo)();
-    console.log("m=getMatchingList");
     list.then((l) => {
         if (!l) {
             let matchCard = `<div>Não foi possível gerar matchmaking!</div>`;

@@ -145,13 +145,13 @@ def editPortfolio(portfolio):
 
 @eel.expose
 def calculateMatchingScore(idStartup, idEmpresa):
-    matchingService.calculateMatchingScore(idStartup, idEmpresa)
+    return matchingService.calculateMatchingScore(idStartup, idEmpresa)
 
 
 @eel.expose
 def getMatchingList(id, tipo):
-    print("m=getMatchingList")
-    matchingService.getMatchingList(id, tipo)
+    matchingList = matchingService.getMatchingList(id, tipo)
+    return matchingList
 
 
 # ----------------------------------------------------------------------------------------------------------------------

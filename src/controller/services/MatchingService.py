@@ -1,5 +1,7 @@
 from src.controller.EmpresaController import EmpresaController
 from src.controller.StartupController import StartupController
+from src.model.Empresa import Empresa
+from src.model.Startup import Startup
 
 
 class MatchingService():
@@ -8,23 +10,25 @@ class MatchingService():
         self.__startupController = StartupController()
 
     def getMatchingList(self, id, tipo):
+        print("m=getMatchingList, id=" + str(id) + ", tipo=" + tipo)
         listMatch = []
         if tipo == "startup":
             empresas = self.__empresaController.findAll()
             for empresa in empresas:
-                empresa.match = MatchingService.calculateMatchingScore(id, empresa.id)
+                empresa.matchingScore = self.calculateMatchingScore(id, empresa.id)
                 listMatch.append(empresa)
         elif tipo == "empresa":
             startups = self.__startupController.findAll()
             for startup in startups:
-                startup.match = MatchingService.calculateMatchingScore(startup.id, id)
+                startup.matchingScore = self.calculateMatchingScore(startup.id, id)
                 listMatch.append(startup)
         return listMatch
 
     def calculateMatchingScore(self, idStartup, idEmpresa):
+        print("m=calculateMatchingScore, idStartup=" + str(idStartup) + ", idEmpresa=" + str(idEmpresa))
         matchingScore = 0
-        empresa = self.__empresaController.findById(self, idEmpresa)
-        startup = self.__startupController.findById(self, idStartup)
+        empresa = Empresa.toEmpresa(self.__empresaController.findById(idEmpresa))
+        startup = Startup.toStartup(self.__startupController.findById(idStartup))
         if (empresa is not None and startup is not None):
 
             if (empresa.cnae == startup.cnae):
@@ -57,4 +61,5 @@ class MatchingService():
             if (empresa.wantsFullCommitment == startup.hasOtherPartners):
                 matchingScore += 10
 
+        print("m=calculateMatchingScore, matchingScore=" + str(matchingScore))
         return matchingScore
