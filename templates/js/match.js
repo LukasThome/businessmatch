@@ -145,6 +145,7 @@ function logList() {
     session.then((s) => {
         console.log(s);
         userSession = s
+        console.log(userSession.id, userSession.tipo)
         /* body.insertAdjacentHTML(
           "beforeend",
           `<li>ID Usuário logado: ${s.id}</li> <li>Tipo: ${s.tipo}</li>`

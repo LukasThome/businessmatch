@@ -1,6 +1,3 @@
-# from main import empresaController, startupController
-import logging
-
 from src.controller.EmpresaController import EmpresaController
 from src.controller.StartupController import StartupController
 
@@ -11,7 +8,6 @@ class MatchingService():
         self.__startupController = StartupController()
 
     def getMatchingList(self, id, tipo):
-        print("m=getMatchingList tipo=" + tipo + " id=" + id)
         listMatch = []
         if tipo == "startup":
             empresas = self.__empresaController.findAll()
@@ -25,11 +21,10 @@ class MatchingService():
                 listMatch.append(startup)
         return listMatch
 
-    @staticmethod
-    def calculateMatchingScore(idStartup, idEmpresa):
+    def calculateMatchingScore(self, idStartup, idEmpresa):
         matchingScore = 0
-        empresa = EmpresaController.findById(idEmpresa)
-        startup = StartupController.findById(idStartup)
+        empresa = self.__empresaController.findById(self, idEmpresa)
+        startup = self.__startupController.findById(self, idStartup)
         if (empresa is not None and startup is not None):
 
             if (empresa.cnae == startup.cnae):
@@ -50,7 +45,7 @@ class MatchingService():
             if (empresa.offeredProducts == startup.offeredProducts):
                 matchingScore += 10
 
-            if (empresa.needCertification == startup.hasCertification):
+            if (startup.hasCertification is True) or (empresa.needCertification == startup.hasCertification):
                 matchingScore += 10
 
             if (empresa.wantsSoftwareFactory == startup.hasOwnProduct):

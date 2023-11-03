@@ -74,10 +74,10 @@ class EmpresaController():
         with open(self.__filePath, 'wb') as em:
             pickle.dump(empresas, em)
 
-    def findById(self, id):
+    def findById(self, idEmpresa):
         empresas = self.load()
         for empresa in empresas:
-            if (int(empresa["id"]) == int(id)):
+            if (int(empresa["id"]) == int(idEmpresa)):
                 return Empresa.toEmpresa(empresa)
         return None
 

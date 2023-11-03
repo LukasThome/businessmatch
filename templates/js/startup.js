@@ -7,9 +7,14 @@ function onSubmit(event) {
         cnpj: form.elements["cnpj"].value,
         cnae: form.elements["cnae"].value,
         setor: form.elements["setor"].value,
-        pergunta1: form.elements["pergunta1"].value,
-        pergunta2: form.elements["pergunta2"].value,
-        pergunta3: form.elements["pergunta3"].value,
+        region: form.elements["region"].value,
+        activityType: form.elements["activityType"].value,
+        offeredServices: form.elements["offeredServices"].value,
+        offeredProducts: form.elements["offeredProducts"].value,
+        hasCertification: form.elements["hasCertification"].value,
+        hasOwnProduct: form.elements["hasOwnProduct"].value,
+        doesRemoteWork: form.elements["doesRemoteWork"].value,
+        hasOtherPartners: form.elements["hasOtherPartners"].value,
     };
     eel.workWithValuesStartup(obj)();
     location.reload();
@@ -24,6 +29,14 @@ function onEdit(event) {
         cnpj: editForm.elements["cnpj"].value,
         cnae: editForm.elements["cnae"].value,
         setor: editForm.elements["setor"].value,
+        region: editForm.elements["region"].value,
+        activityType: editForm.elements["activityType"].value,
+        offeredServices: editForm.elements["offeredServices"].value,
+        offeredProducts: editForm.elements["offeredProducts"].value,
+        hasCertification: editForm.elements["hasCertification"].value,
+        hasOwnProduct: editForm.elements["hasOwnProduct"].value,
+        doesRemoteWork: editForm.elements["doesRemoteWork"].value,
+        hasOtherPartners: editForm.elements["hasOtherPartners"].value,
         id: document.querySelector("#edit").children[0].id,
     };
     eel.editStartup(obj)();
@@ -48,7 +61,8 @@ function remove() {
     });
 }
 
-function generateEditTemplate(nome, cnpj, cnae, setor, id) {
+function generateEditTemplate(nome, cnpj, cnae, setor, region, activityType, offeredServices, offeredProducts,
+                              hasCertification, hasOwnProduct, doesRemoteWork, hasOtherPartners, id) {
     let startupCardEdit = `
         <form onsubmit="onEdit(event)" id="edit">
             <div id="${id}">
@@ -73,6 +87,54 @@ function generateEditTemplate(nome, cnpj, cnae, setor, id) {
                         <span id="setor"><input name="setor" value="${setor} "class="formInput"></span>
                     </span>
                 </div>
+                <div class="bodyText">
+                    <span
+                        >Região:
+                        <span id="region"><input name="region" value="${region} "class="formInput"></span>
+                    </span>
+                </div>
+                <div class="bodyText">
+                    <span
+                        >Tipo de atividade(produto ou serviço):
+                        <span id="activityType"><input name="activityType" value="${activityType} "class="formInput"></span>
+                    </span>
+                </div>
+                <div class="bodyText">
+                    <span
+                        >Serviços oferecidos:
+                        <span id="offeredServices"><input name="offeredServices" value="${offeredServices} "class="formInput"></span>
+                    </span>
+                </div>
+                <div class="bodyText">
+                    <span
+                        >Produtos oferecidos:
+                        <span id="offeredProducts"><input name="offeredProducts" value="${offeredProducts} "class="formInput"></span>
+                    </span>
+                </div>
+                <div class="bodyText">
+                    <span
+                        >Possui certificação?
+                        <span id="hasCertification"><input name="hasCertification" value="${hasCertification} "class="formInput"></span>
+                    </span>
+                </div>
+                <div class="bodyText">
+                    <span
+                        >Tem produto próprio?
+                        <span id="hasOwnProduct"><input name="hasOwnProduct" value="${hasOwnProduct} "class="formInput"></span>
+                    </span>
+                </div>
+                <div class="bodyText">
+                    <span
+                        >Pratica trabalho remoto?
+                        <span id="doesRemoteWork"><input name="doesRemoteWork" value="${doesRemoteWork} "class="formInput"></span>
+                    </span>
+                </div>
+                <div class="bodyText">
+                    <span
+                        >Já possui parcerias?
+                        <span id="hasOtherPartners"><input name="hasOtherPartners" value="${hasOtherPartners} "class="formInput"></span>
+                    </span>
+                </div>
                 <div class="inputsContainer">
                       <input type="submit" class="submitBtn editBtn" value="Enviar" />
                 </div>
@@ -85,9 +147,13 @@ function generateEditTemplate(nome, cnpj, cnae, setor, id) {
 function edit() {
     var list = eel.sendStartupList()();
     list.then((l) => {
-        l.map(({id, nome, cnpj, cnae, setor}) => {
+        l.map(({
+                   id, nome, cnpj, cnae, setor, region, activityType, offeredServices, offeredProducts,
+                   hasCertification, hasOwnProduct, doesRemoteWork, hasOtherPartners
+               }) => {
             document.getElementById(`editId__${id}`).addEventListener("click", () => {
-                let startupCardEdit = generateEditTemplate(nome, cnpj, cnae, setor, id);
+                let startupCardEdit = generateEditTemplate(nome, cnpj, cnae, setor, region, activityType, offeredServices, offeredProducts,
+                    hasCertification, hasOwnProduct, doesRemoteWork, hasOtherPartners, id);
                 document.getElementById(`cardId__${id}`).innerHTML = startupCardEdit;
             });
             document
