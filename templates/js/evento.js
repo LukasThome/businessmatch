@@ -104,7 +104,7 @@ function generateEditTemplate(titulo, local, data, hora, descricao, id) {
               <div class="bodyText">
                   <span 
                       >DESCRICAO:
-                      <span id="descricao" ><input name="descricao" value="${descricao}" class="formInputDescricao"></span>
+                      <span id="descricao" ><input name="descricao" type="text"value="${descricao}" class="formInputDescricao"></span>
                   </span>
               </div>
               <div class="inputsContainer">
@@ -119,7 +119,7 @@ function generateEditTemplate(titulo, local, data, hora, descricao, id) {
 function edit() {
   var list = eel.sendEventoList()();
   list.then((l) => {
-    l.map(({id, titulo, local, data, hora, descricao }) => {
+    l.map(({id, titulo, local, data, hora, descricao}) => {
       document.getElementById(`editId__${id}`).addEventListener("click", () => {
         let eventoCardEdit = generateEditTemplate(
           titulo,
