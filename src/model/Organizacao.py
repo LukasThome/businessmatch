@@ -1,19 +1,11 @@
 class Organizacao:
-    id: int
-    nome: str
-    cnpj: str
-    cnae: str
-    setor: str
-    interesses: []
-    eventos: []
-    portfolios: []
-
-    def __init__(self, id, nome, cnpj, cnae, setor):
+    def __init__(self, id, nome, cnpj, cnae, setor, region):
         self.__id = id
         self.__nome = nome
         self.__cnpj = cnpj
         self.__cnae = cnae
         self.__setor = setor
+        self.__region = region
         self.__interesses = []
         self.__eventos = []
         self.__portfolios = []
@@ -57,6 +49,14 @@ class Organizacao:
     @setor.setter
     def setor(self, setor):
         self.__setor = setor
+
+    @property
+    def region(self):
+        return self.__region
+
+    @region.setter
+    def region(self, region):
+        self.__region = region
 
     @property
     def interesses(self):

@@ -1,4 +1,6 @@
 # from main import empresaController, startupController
+import logging
+
 from src.controller.EmpresaController import EmpresaController
 from src.controller.StartupController import StartupController
 
@@ -9,6 +11,7 @@ class MatchingService():
         self.__startupController = StartupController()
 
     def getMatchingList(self, id, tipo):
+        print("m=getMatchingList tipo=" + tipo + " id=" + id)
         listMatch = []
         if tipo == "startup":
             empresas = self.__empresaController.findAll()
@@ -35,6 +38,9 @@ class MatchingService():
             if (empresa.setor == startup.setor):
                 matchingScore += 10
 
+            if (empresa.region == startup.region):
+                matchingScore += 10
+
             if (empresa.activityType == startup.activityType):
                 matchingScore += 10
 
@@ -42,6 +48,18 @@ class MatchingService():
                 matchingScore += 10
 
             if (empresa.offeredProducts == startup.offeredProducts):
+                matchingScore += 10
+
+            if (empresa.needCertification == startup.hasCertification):
+                matchingScore += 10
+
+            if (empresa.wantsSoftwareFactory == startup.hasOwnProduct):
+                matchingScore += 10
+
+            if (empresa.wantsRemoteWork == startup.doesRemoteWork):
+                matchingScore += 10
+
+            if (empresa.wantsFullCommitment == startup.hasOtherPartners):
                 matchingScore += 10
 
         return matchingScore
