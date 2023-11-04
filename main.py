@@ -6,6 +6,7 @@ from src.controller.EmpresaController import EmpresaController
 from src.controller.PortfolioController import PortfolioController
 from src.controller.EventoController import EventoController
 from src.controller.PropostaController import PropostaController
+from src.controller.InteresseController import InteresseController
 
 import eel
 
@@ -17,7 +18,7 @@ startupController = StartupController()
 empresaController = EmpresaController()
 eventoController = EventoController()
 propostaController = PropostaController()
-
+interesseController = InteresseController()
 
 @eel.expose
 def currentSession():
@@ -143,6 +144,18 @@ def removePortfolio(portfolioid):
 @eel.expose
 def editPortfolio(portfolio):
     portfolioController.edit(portfolio)
+
+
+# ----------------------------------------------------// INTERESSES //---------------------------------------------------
+
+@eel.expose
+def saveInteresse(interesse):
+    interesseController.add(interesse)
+
+@eel.expose
+def loadInteresse():
+    data = interesseController.load()
+    return data
 
 
 # ----------------------------------------------------------------------------------------------------------------------

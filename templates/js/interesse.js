@@ -4,21 +4,19 @@ function logStartupList() {
     if (!l) {
       let startupCard = `<div>Não há startups cadastradas!</div>`;
       document
-        .getElementById("logBtn")
-        .insertAdjacentHTML("afterend", startupCard);
+        .getElementById('logBtn')
+        .insertAdjacentHTML('afterend', startupCard);
       return;
     }
     return l.map(({ nome, cnpj, cnae, setor, id }) => {
       let startupCard = `
                 <div class="card" id="cardId__${id}">
                     <div class="titleContainer">
-                        <h2 id="title">Nome: ${nome}</h2>
-                        <svg id="starId__${id}" xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fcba03" fill="#fcba03" viewBox="0 0 24 24" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
-                        </svg>
-                        <svg id="starId__${id}" xmlns="http://www.w3.org/2000/svg" fill="none" width="25px" height="25px" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fcba03" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
-                        </svg>
+                        <h2 id="titleStartup__${id}">Nome: ${nome}</h2>
+                        
+                        <svg onclick="addToFavourites('sendStartupList')" id="starId__${id}" xmlns="http://www.w3.org/2000/svg" fill="none" width="25px" height="25px" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fcba03" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                          </svg>
                       
                     </div>
                     <div class="bodyText">
@@ -52,8 +50,8 @@ function logEmpresaList() {
     if (!l) {
       let empresaCard = `<div>Não há empresas cadastradas!</div>`;
       document
-        .getElementById("logBtn")
-        .insertAdjacentHTML("afterend", empresaCard);
+        .getElementById('logBtn')
+        .insertAdjacentHTML('afterend', empresaCard);
       return;
     }
     return l.map(({ nome, cnpj, cnae, setor, id }) => {
@@ -62,7 +60,7 @@ function logEmpresaList() {
                     <div class="titleContainer">
                         <h2 id="titleEmpresa__${id}">Nome: ${nome}</h2>
                         
-                            <svg onclick="addToFavouritesEmpresa()" id="starId__${id}" xmlns="http://www.w3.org/2000/svg" fill="none" width="25px" height="25px" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fcba03" class="w-6 h-6">
+                            <svg onclick="addToFavourites('sendEmpresaList')" id="starId__${id}" xmlns="http://www.w3.org/2000/svg" fill="none" width="25px" height="25px" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fcba03" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
                             </svg>
                         
@@ -97,7 +95,7 @@ function logEmpresaList() {
 }
 
 function createTemplate(el, type) {
-  const list = el.join(" ");
+  const list = el.join(' ');
   return `
   <div class="organizacaoItem">
   <h2 class="title">${type}</h2>
@@ -106,63 +104,118 @@ function createTemplate(el, type) {
 `;
 }
 
+eel
+  .loadInteresse()()
+  .then((el) => console.log(el));
+
+function saveData() {
+  const dataToSave = {
+    empresas: empresaFavState,
+    startups: startupFavState,
+  };
+  eel.saveInteresse(dataToSave)();
+}
+
 function combineLists() {
   logStartupList().then((el) => {
     document
-      .getElementById("list")
-      .insertAdjacentHTML("afterbegin", createTemplate(el, "Startups"));
+      .getElementById('list')
+      .insertAdjacentHTML('afterbegin', createTemplate(el, 'Startups'));
   });
   logEmpresaList().then((el) => {
     document
-      .getElementById("list")
-      .insertAdjacentHTML("beforeend", createTemplate(el, "Empresas"));
+      .getElementById('list')
+      .insertAdjacentHTML('beforeend', createTemplate(el, 'Empresas'));
   });
+  document
+    .getElementById('saveBtn')
+    .insertAdjacentHTML(
+      'beforeend',
+      `<button class='submitBtn' onclick='saveData()'>Salvar</button>`
+    );
 }
-function determineFavStatus() {
-  var list = eel.sendEmpresaList()();
+function determineFavStatus(func) {
+  var list = eel[func]()();
   return list.then((l) => {
     return l;
   });
 }
 
 let empresaFavState = [];
-determineFavStatus().then((el) => {
+determineFavStatus('sendEmpresaList').then((el) => {
   el.map(({ id }, index) => {
     empresaFavState.push({ id, isFavourite: false, index });
   });
 });
 
-function addToFavouritesEmpresa() {
-  var list = eel.sendEmpresaList()();
-  console.log(empresaFavState);
+let startupFavState = [];
+determineFavStatus('sendStartupList').then((el) => {
+  el.map(({ id }, index) => {
+    startupFavState.push({ id, isFavourite: false, index });
+  });
+});
+
+function addToFavourites(func) {
+  var list = eel[func]()();
+  console.log(startupFavState);
   list.then((l) => {
     l.map(({ id, nome, cnpj, cnae, setor }) => {
-      let favStateCopy = empresaFavState.find((e) => e.id === id);
+      let favStateCopy;
+      if (func === 'sendEmpresaList') {
+        favStateCopy = empresaFavState.find((e) => e.id === id);
+      } else {
+        favStateCopy = startupFavState.find((e) => e.id === id);
+      }
+
       const listener = () => {
         favStateCopy.isFavourite = !favStateCopy.isFavourite;
         let star = document.getElementById(`starId__${id}`);
         star.remove();
         if (favStateCopy.isFavourite) {
-          document.getElementById(`titleEmpresa__${id}`).insertAdjacentHTML(
-            "afterend",
-            `<svg onclick="addToFavouritesEmpresa()" id="starId__${id}" xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fcba03" fill="#fcba03" viewBox="0 0 24 24" class="w-6 h-6">
+          document
+            .getElementById(
+              func === 'sendEmpresaList'
+                ? `titleEmpresa__${id}`
+                : `titleStartup__${id}`
+            )
+            .insertAdjacentHTML(
+              'afterend',
+              `<svg onclick="addToFavourites(${
+                func === 'sendEmpresaList'
+                  ? "'sendEmpresaList'"
+                  : "'sendStartupList'"
+              })" id="starId__${id}" xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fcba03" fill="#fcba03" viewBox="0 0 24 24" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
             </svg>`
-          );
+            );
         } else {
-          document.getElementById(`titleEmpresa__${id}`).insertAdjacentHTML(
-            "afterend",
-            `<svg onclick="addToFavouritesEmpresa()" id="starId__${id}" xmlns="http://www.w3.org/2000/svg" fill="none" width="25px" height="25px" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fcba03" class="w-6 h-6">
+          document
+            .getElementById(
+              func === 'sendEmpresaList'
+                ? `titleEmpresa__${id}`
+                : `titleStartup__${id}`
+            )
+            .insertAdjacentHTML(
+              'afterend',
+              `<svg onclick="addToFavourites(${
+                func === 'sendEmpresaList'
+                  ? "'sendEmpresaList'"
+                  : "'sendStartupList'"
+              })" id="starId__${id}" xmlns="http://www.w3.org/2000/svg" fill="none" width="25px" height="25px" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fcba03" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
             </svg>`
-          );
+            );
         }
-        empresaFavState[favStateCopy.index] = favStateCopy;
-        star.removeEventListener("click", listener);
+        if (func === 'sendEmpresaList') {
+          empresaFavState[favStateCopy.index] = favStateCopy;
+        } else {
+          startupFavState[favStateCopy.index] = favStateCopy;
+        }
+        star.removeEventListener('click', listener);
       };
       document
         .getElementById(`starId__${id}`)
-        .addEventListener("click", listener);
+        .addEventListener('click', listener);
     });
   });
 }
