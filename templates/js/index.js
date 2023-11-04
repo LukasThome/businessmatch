@@ -1,4 +1,4 @@
-var body = document.querySelector("body");
+var body = document.querySelector('body');
 
 let header = `
     <div class="headerContainer">
@@ -80,11 +80,24 @@ let header = `
                     </li>
                 </div>
             </div>
-            <li class="menuItem">
-                <a href="/cadastrarInteresse.html" class="linkItem"
-                    >Interesses
-                </a>
-            </li>
+            <div class="dropDownContainer">
+                <li class="menuItem dropdownItem">
+                    Interesses
+                </li>
+                <div class="dropdownItems">
+                    <li class="menuDropdown">
+                        <a href="/cadastrarInteresse.html" class="dropdownItem"
+                            >Cadastrar Interesses
+                        </a>
+                    </li>
+                    <li class="menuDropdown">
+                        <a href="/visualizarInteresses.html" class="dropdownItem"
+                            >Visualizar Interesses
+                        </a>
+                    </li>
+                </div>
+            </div>
+            
             <div class="dropDownContainer">
                 <li class="menuItem dropdownItem">
                     Propostas
@@ -116,4 +129,4 @@ let header = `
     ); */
   });
 })();
-body.insertAdjacentHTML("afterbegin", header);
+body.insertAdjacentHTML('afterbegin', header);

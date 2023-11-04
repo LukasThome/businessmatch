@@ -36,52 +36,12 @@ class InteresseController():
         combine = {"startups": self.__interessesStartups, "empresas": self.__interessesEmpresas}
 
         with open(self.__filePath, 'wb') as st:
+            print(combine)
             pickle.dump(combine, st)
-        """ newStartup = Startup(str(uuid4()),
-                             values["nome"],
-                             values["cnpj"],
-                             values["cnae"],
-                             values["setor"],
-                             values["pergunta1"],
-                             values["pergunta2"],
-                             values["pergunta3"],
-                             )
-        mapping = {"id": newStartup.id, "nome": newStartup.nome, "cnpj": newStartup.cnpj, "cnae": newStartup.cnae,
-                   "setor": newStartup.setor, "pergunta1": newStartup.pergunta1, "pergunta2": newStartup.pergunta2,
-                   "pergunta3": newStartup.pergunta3, "tipo": "startup"}
-        self.__startups.append(mapping)
-
-        startups = []
-        if (self.__filePath.exists()):
-            with open(self.__filePath, 'rb') as st:
-                try:
-                    startups = pickle.load(st)
-                except EOFError:
-                    return 
-        with open(self.__filePath, 'wb') as st:
-            pickle.dump([*startups, mapping], st) """
-        
-
+            
     def load(self):
         with open(self.__filePath, 'rb') as intr:
             interesses = pickle.load(intr)
             return interesses
 
-    def remove(self, startupId):
-        startups = self.load()
-        for startup in startups:
-            if (startup["id"] == startupId):
-                startups.remove(startup)
-        with open(self.__filePath, 'wb') as st:
-            pickle.dump(startups, st)
-
-    def edit(self, startup):
-        startups = self.load()
-        for s in startups:
-            if (s["id"] == startup["id"]):
-                s["nome"] = startup["nome"]
-                s["cnpj"] = startup["cnpj"]
-                s["cnae"] = startup["cnae"]
-                s["setor"] = startup["setor"]
-        with open(self.__filePath, 'wb') as st:
-            pickle.dump(startups, st)
+   
