@@ -15,12 +15,16 @@ class MatchingService():
         if tipo == "startup":
             empresas = self.__empresaController.findAll()
             for empresa in empresas:
-                empresa.matchingScore = self.calculateMatchingScore(id, empresa.id)
+                matchingScore = self.calculateMatchingScore(id, empresa.id)
+                empresa = Empresa.toJson(empresa)
+                empresa["matchingScore"] = matchingScore
                 listMatch.append(empresa)
         elif tipo == "empresa":
             startups = self.__startupController.findAll()
             for startup in startups:
-                startup.matchingScore = self.calculateMatchingScore(startup.id, id)
+                matchingScore = self.calculateMatchingScore(startup.id, id)
+                startup = Startup.toJson(startup)
+                startup["matchingScore"] = matchingScore
                 listMatch.append(startup)
         return listMatch
 

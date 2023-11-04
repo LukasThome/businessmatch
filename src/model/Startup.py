@@ -87,3 +87,22 @@ class Startup(Organizacao):
             startupPkl["doesRemoteWork"],
             startupPkl["hasOtherPartners"]
         )
+
+    @staticmethod
+    def toJson(startup):
+        startupJson = {}
+        if startup is not None:
+            startupJson["id"] = startup.id,
+            startupJson["nome"] = startup.nome,
+            startupJson["cnpj"] = startup.cnpj,
+            startupJson["cnae"] = startup.cnae,
+            startupJson["setor"] = startup.setor,
+            startupJson["region"] = startup.region,
+            startupJson["activityType"] = startup.activityType,
+            startupJson["offeredServices"] = startup.offeredServices,
+            startupJson["offeredProducts"] = startup.offeredProducts,
+            startupJson["hasCertification"] = startup.hasCertification,
+            startupJson["hasOwnProduct"] = startup.hasOwnProduct,
+            startupJson["doesRemoteWork"] = startup.doesRemoteWork,
+            startupJson["hasOtherPartners"] = startup.hasOtherPartners
+        return startupJson

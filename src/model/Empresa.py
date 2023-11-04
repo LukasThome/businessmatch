@@ -87,3 +87,22 @@ class Empresa(Organizacao):
             empresaPkl["wantsRemoteWork"],
             empresaPkl["wantsFullCommitment"]
         )
+
+    @staticmethod
+    def toJson(empresa):
+        empresaJson = {}
+        if empresa is not None:
+            empresaJson["id"] = empresa.id,
+            empresaJson["nome"] = empresa.nome,
+            empresaJson["cnpj"] = empresa.cnpj,
+            empresaJson["cnae"] = empresa.cnae,
+            empresaJson["setor"] = empresa.setor,
+            empresaJson["region"] = empresa.region,
+            empresaJson["activityType"] = empresa.activityType,
+            empresaJson["offeredServices"] = empresa.offeredServices,
+            empresaJson["offeredProducts"] = empresa.offeredProducts,
+            empresaJson["needCertification"] = empresa.needCertification,
+            empresaJson["wantsSoftwareFactory"] = empresa.wantsSoftwareFactory,
+            empresaJson["wantsRemoteWork"] = empresa.wantsRemoteWork,
+            empresaJson["wantsFullCommitment"] = empresa.wantsFullCommitment
+        return empresaJson
