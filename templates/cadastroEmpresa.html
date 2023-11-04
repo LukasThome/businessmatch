@@ -1,85 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="/css/cadastroOrganizacao.css" />
-    <link rel="stylesheet" type="text/css" href="/css/header.css" />
-    <link rel="stylesheet" type="text/css" href="/css/main.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="/css/cadastroOrganizacao.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/header.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link
-      href="https://fonts.googleapis.com/css2?family=Mooli&display=swap"
-      rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Mooli&display=swap"
+            rel="stylesheet"
     />
     <title>Cadastro Empresa</title>
-  </head>
-  <body>
-    <div class="mainContainer">
-      <h1>Cadastre a sua empresa aqui</h1>
-        <form onsubmit="onSubmit(event)" id="signup">
+</head>
+<body>
+<div class="mainContainer">
+    <h1>Cadastre a sua empresa aqui</h1>
+    <form onsubmit="onSubmit(event)" id="signup">
         <div class="inputsContainer">
-          <input
-            type="text"
-            name="nome"
-            class="formInput"
-            placeholder="Digite o nome da empresa"
-            required
-          />
-          <input
-            type="text"
-            name="cnpj"
-            class="formInput"
-            placeholder="Digite o CPNJ da empresa"
-            required
-          />
-          <input
-            type="text"
-            name="cnae"
-            class="formInput"
-            placeholder="Digite o CNAE da empresa"
-            required
-          />
-          <input
-            type="text"
-            name="setor"
-            class="formInput"
-            placeholder="Digite o setor da empresa"
-            required
-          />
-          <p class="question">Pergunta 1</p>
-          <input
-            type="text"
-            name="pergunta1"
-            class="formInput"
-            placeholder="Digite a resposta da pergunta 1"
-            required
-          />
-          <p class="question">Pergunta 2</p>
-          <input
-            type="text"
-            name="pergunta2"
-            class="formInput"
-            placeholder="Digite a resposta da pergunta 2"
-            required
-          />
-          <p class="question">Pergunta 3</p>
-          <input
-            type="text"
-            name="pergunta3"
-            class="formInput"
-            placeholder="Digite a resposta da pergunta 3"
-            required
-          />
+            <p class="question">Nome:</p>
+            <input
+                    type="text"
+                    name="nome"
+                    class="formInput"
+                    placeholder="Digite o nome da empresa"
+                    required
+            />
+            <p class="question">CNPJ:</p>
+            <input
+                    type="text"
+                    name="cnpj"
+                    class="formInput"
+                    placeholder="Digite o CPNJ da empresa"
+                    required
+            />
+            <p class="question">CNAE:</p>
+            <input
+                    type="text"
+                    name="cnae"
+                    class="formInput"
+                    placeholder="Digite o CNAE da empresa"
+                    required
+            />
+            <p class="question">Setor:</p>
+            <input
+                    type="text"
+                    name="setor"
+                    class="formInput"
+                    placeholder="Digite o setor da empresa"
+                    required
+            />
+            <p class="question">Região:</p>
+            <input
+                    type="text"
+                    name="region"
+                    class="formInput"
+                    placeholder="Em qual região do país atua"
+                    required
+            />
+            <p class="question">Tipo de atividade(produto ou serviço):</p>
+            <input
+                    type="text"
+                    name="activityType"
+                    class="formInput"
+                    placeholder="Digite o tipo de atividade"
+                    required
+            />
+            <p class="question">Serviços oferecidos:</p>
+            <input
+                    type="text"
+                    name="offeredServices"
+                    class="formInput"
+                    placeholder="Digite o número conforme a legenda"
+                    required
+            />
+            <p class="question">Produtos oferecidos:</p>
+            <input
+                    type="text"
+                    name="offeredProducts"
+                    class="formInput"
+                    placeholder="Digite o número conforme a legenda"
+                    required
+            />
+            <p class="question">Certificação necessária para parcerias?</p>
+            <input
+                    type="text"
+                    name="needCertification"
+                    class="formInput"
+                    placeholder="Digite sim ou não"
+                    required
+            />
+            <p class="question">Procura fábrica de software?</p>
+            <input
+                    type="text"
+                    name="wantsSoftwareFactory"
+                    class="formInput"
+                    placeholder="Digite sim ou não"
+                    required
+            />
+            <p class="question">Quer trabalho remoto?</p>
+            <input
+                    type="text"
+                    name="wantsRemoteWork"
+                    class="formInput"
+                    placeholder="Digite sim ou não"
+                    required
+            />
+            <p class="question">Quer exclusividade em parcerias?</p>
+            <input
+                    type="text"
+                    name="wantsFullCommitment"
+                    class="formInput"
+                    placeholder="Digite sim ou não"
+                    required
+            />
         </div>
         <div class="inputsContainer">
-          <input type="submit" class="submitBtn" value="Enviar" />
+            <input type="submit" class="submitBtn" value="Enviar"/>
         </div>
-      </form>
-    </div>
+    </form>
+</div>
 
-    <script type="text/javascript" src="/eel.js"></script>
-    <script type="text/javascript" src="/js/index.js"></script>
-    <script type="text/javascript" src="/js/empresa.js"></script>
-  </body>
+<script type="text/javascript" src="/eel.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+<script type="text/javascript" src="/js/empresa.js"></script>
+</body>
 </html>

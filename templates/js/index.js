@@ -102,6 +102,23 @@ let header = `
                     </li>
                 </div>
             </div>
+            <div class="dropDownContainer">
+                <li class="menuItem dropdownItem">
+                    Match
+                </li>
+                <div class="dropdownItems">
+                    <li class="menuDropdown">
+                        <a href="/gerarMatching.html" class="dropdownItem"
+                            >Gerar Matching
+                        </a>
+                    </li>
+                    <li class="menuDropdown">
+                        <a href="/gerenciarMatching.html" class="dropdownItem"
+                            >Gerenciar Matchings
+                        </a>
+                    </li>
+                </div>
+            </div>
         </ul>
     </div>
 `;

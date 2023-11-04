@@ -29,13 +29,29 @@ class StartupController():
                              values["cnpj"],
                              values["cnae"],
                              values["setor"],
-                             values["pergunta1"],
-                             values["pergunta2"],
-                             values["pergunta3"],
+                             values["region"],
+                             values["activityType"],
+                             values["offeredServices"],
+                             values["offeredProducts"],
+                             values["hasCertification"],
+                             values["hasOwnProduct"],
+                             values["doesRemoteWork"],
+                             values["hasOtherPartners"],
                              )
-        mapping = {"id": newStartup.id, "nome": newStartup.nome, "cnpj": newStartup.cnpj, "cnae": newStartup.cnae,
-                   "setor": newStartup.setor, "pergunta1": newStartup.pergunta1, "pergunta2": newStartup.pergunta2,
-                   "pergunta3": newStartup.pergunta3, "tipo": "startup"}
+        mapping = {"id": newStartup.id,
+                   "nome": newStartup.nome,
+                   "cnpj": newStartup.cnpj,
+                   "cnae": newStartup.cnae,
+                   "setor": newStartup.setor,
+                   "region": newStartup.region,
+                   "activityType": newStartup.activityType,
+                   "offeredServices": newStartup.offeredServices,
+                   "offeredProducts": newStartup.offeredProducts,
+                   "hasCertification": newStartup.hasCertification,
+                   "hasOwnProduct": newStartup.hasOwnProduct,
+                   "doesRemoteWork": newStartup.doesRemoteWork,
+                   "hasOtherPartners": newStartup.hasOtherPartners,
+                   "tipo": "startup"}
         self.__startups.append(mapping)
 
         startups = []
@@ -70,5 +86,27 @@ class StartupController():
                 s["cnpj"] = startup["cnpj"]
                 s["cnae"] = startup["cnae"]
                 s["setor"] = startup["setor"]
+                s["region"] = startup["region"]
+                s["activityType"] = startup["activityType"]
+                s["offeredServices"] = startup["offeredServices"]
+                s["offeredProducts"] = startup["offeredProducts"]
+                s["hasCertification"] = startup["hasCertification"]
+                s["hasOwnProduct"] = startup["hasOwnProduct"]
+                s["doesRemoteWork"] = startup["doesRemoteWork"]
+                s["hasOtherPartners"] = startup["hasOtherPartners"]
         with open(self.__filePath, 'wb') as st:
             pickle.dump(startups, st)
+
+    def findById(self, idStartup):
+        startups = self.load()
+        for startup in startups:
+            if (startup["id"] == idStartup):
+                return startup
+        return None
+
+    def findAll(self):
+        startups = self.load()
+        listStartups = []
+        for startup in startups:
+            listStartups.append(Startup.toStartup(startup))
+        return listStartups
