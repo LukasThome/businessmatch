@@ -26,6 +26,8 @@ class MatchingService():
                 startup = Startup.toJson(startup)
                 startup["matchingScore"] = matchingScore
                 listMatch.append(startup)
+        if listMatch is not []:
+            listMatch = sorted(listMatch, key=lambda x: x["matchingScore"])
         return listMatch
 
     def calculateMatchingScore(self, idStartup, idEmpresa):
