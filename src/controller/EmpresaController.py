@@ -1,4 +1,6 @@
 import random
+from uuid import uuid4
+
 import pickle
 from pathlib import Path
 from src.model.Empresa import Empresa
@@ -10,11 +12,11 @@ class EmpresaController():
         self.__filePath = Path(Path.cwd(), "src", "controller", 'pickle/empresas.pkl')
 
     @property
-    def startups(self):
+    def empresas(self):
         return self.__empresas
 
-    @startups.setter
-    def startups(self, empresas):
+    @empresas.setter
+    def empresas(self, empresas):
         self.__empresas = empresas
 
     @property
@@ -22,18 +24,33 @@ class EmpresaController():
         return self.__filePath
 
     def add(self, values):
-        novaEmpresa = Empresa(random.randint(0, 100),
+        novaEmpresa = Empresa(str(uuid4()),
                               values["nome"],
                               values["cnpj"],
                               values["cnae"],
                               values["setor"],
-                              values["pergunta1"],
-                              values["pergunta2"],
-                              values["pergunta3"],
+                              values["region"],
+                              values["activityType"],
+                              values["offeredServices"],
+                              values["offeredProducts"],
+                              values["needCertification"],
+                              values["wantsSoftwareFactory"],
+                              values["wantsRemoteWork"],
+                              values["wantsFullCommitment"],
                               )
-        mapping = {"id": novaEmpresa.id, "nome": novaEmpresa.nome, "cnpj": novaEmpresa.cnpj, "cnae": novaEmpresa.cnae,
-                   "setor": novaEmpresa.setor, "pergunta1": novaEmpresa.pergunta1, "pergunta2": novaEmpresa.pergunta2,
-                   "pergunta3": novaEmpresa.pergunta3}
+        mapping = {"id": novaEmpresa.id,
+                   "nome": novaEmpresa.nome,
+                   "cnpj": novaEmpresa.cnpj,
+                   "cnae": novaEmpresa.cnae,
+                   "setor": novaEmpresa.setor,
+                   "region": novaEmpresa.region,
+                   "activityType": novaEmpresa.activityType,
+                   "offeredServices": novaEmpresa.offeredServices,
+                   "offeredProducts": novaEmpresa.offeredProducts,
+                   "needCertification": novaEmpresa.needCertification,
+                   "wantsSoftwareFactory": novaEmpresa.wantsSoftwareFactory,
+                   "wantsRemoteWork": novaEmpresa.wantsRemoteWork,
+                   "wantsFullCommitment": novaEmpresa.wantsFullCommitment}
         self.__empresas.append(mapping)
 
         empresas = []
@@ -63,10 +80,29 @@ class EmpresaController():
     def edit(self, empresa):
         empresas = self.load()
         for e in empresas:
-            if (int(e["id"]) == int(empresa["id"])):
+            if (e["id"] == empresa["id"]):
                 e["nome"] = empresa["nome"]
                 e["cnpj"] = empresa["cnpj"]
                 e["cnae"] = empresa["cnae"]
                 e["setor"] = empresa["setor"]
+                e["activityType"] = empresa["activityType"]
+                e["offeredServices"] = empresa["offeredServices"]
+                e["offeredProducts"] = empresa["offeredProducts"]
         with open(self.__filePath, 'wb') as em:
             pickle.dump(empresas, em)
+
+    def findById(self, idEmpresa):
+        print("m=findById, idEmpresa=" + str(idEmpresa))
+        empresas = self.load()
+        # print(empresas)
+        for empresa in empresas:
+            if (empresa["id"] == idEmpresa):
+                return empresa
+        return None
+
+    def findAll(self):
+        empresas = self.load()
+        listEmpresas = []
+        for empresa in empresas:
+            listEmpresas.append(Empresa.toEmpresa(empresa))
+        return listEmpresas
