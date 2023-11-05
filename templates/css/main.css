@@ -36,6 +36,11 @@
   margin: 1rem 0;
 }
 
+.legenda {
+  color: #8c8c8c;
+  font-size: 13px;
+}
+
 
 .formInputDescricao {
   padding: 1rem;
