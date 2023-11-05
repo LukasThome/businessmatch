@@ -7,11 +7,11 @@ from src.controller.PortfolioController import PortfolioController
 from src.controller.EventoController import EventoController
 from src.controller.PropostaController import PropostaController
 from src.controller.InteresseController import InteresseController
+from src.controller.services.MatchingService import MatchingService
 
 import eel
 
 eel.init('templates')
-
 
 portfolioController = PortfolioController()
 startupController = StartupController()
@@ -19,6 +19,8 @@ empresaController = EmpresaController()
 eventoController = EventoController()
 propostaController = PropostaController()
 interesseController = InteresseController()
+matchingService = MatchingService()
+
 
 @eel.expose
 def currentSession():
@@ -100,6 +102,7 @@ def workWithValuesEvento(values):
 
 # ----------------------------------------------------// PROPOSTAS //---------------------------------------------------
 
+
 @eel.expose
 def removeProposta(propostaId):
     propostaController.remove(propostaId)
@@ -124,6 +127,7 @@ def editProposta(proposta):
 
 
 # ----------------------------------------------------// PORTFOLIO //---------------------------------------------------
+
 @eel.expose
 def workWithValuesPortfolio(values):
     portfolioController.add(values)
@@ -156,6 +160,19 @@ def saveInteresse(interesse):
 def loadInteresse():
     data = interesseController.load()
     return data
+
+
+# -----------------------------------------------// MATCHING SERVICE //-------------------------------------------------
+
+@eel.expose
+def calculateMatchingScore(idStartup, idEmpresa):
+    return matchingService.calculateMatchingScore(idStartup, idEmpresa)
+
+
+@eel.expose
+def getMatchingList(id, tipo):
+    matchingList = matchingService.getMatchingList(id, tipo)
+    return matchingList
 
 
 # ----------------------------------------------------------------------------------------------------------------------
