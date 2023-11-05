@@ -29,9 +29,9 @@ function onSubmit(event) {
   var horaValue = form.elements['hora'].value.trim();
   if (!validateTimeFormat(horaValue)) {
     alert('Formato de hora inválido. Use o formato HH:mm ou HH:mm:ss.');
-    return;
+    return;E
   }
-
+eE
   var obj = {
     nome_organizacao: null,
     titulo: form.elements['titulo'].value,
