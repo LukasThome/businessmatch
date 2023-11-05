@@ -40,32 +40,32 @@ class MatchingService():
             if (str(empresa.cnae).strip() == str(startup.cnae).strip()):
                 matchingScore += 10
 
-            if (str(empresa.setor).strip() == str(startup.setor).strip()):
+            if (str(empresa.setor).strip().upper() == str(startup.setor).strip().upper()):
                 matchingScore += 10
 
-            if (str(empresa.region).strip() == str(startup.region).strip()):
+            if (str(empresa.region).strip().upper() == str(startup.region).strip().upper()):
                 matchingScore += 10
 
-            if (str(empresa.activityType).strip() == str(startup.activityType).strip()):
+            if (str(empresa.activityType).strip().upper() == str(startup.activityType).strip().upper()):
                 matchingScore += 10
 
-            if (str(empresa.offeredServices).strip() == str(startup.offeredServices).strip()):
+            if (str(empresa.offeredServices).strip().upper() == str(startup.offeredServices).strip().upper()):
                 matchingScore += 10
 
-            if (str(empresa.offeredProducts).strip() == str(startup.offeredProducts).strip()):
+            if (str(empresa.offeredProducts).strip().upper() == str(startup.offeredProducts).strip().upper()):
                 matchingScore += 10
 
             if (startup.hasCertification is True) or (
-                    str(empresa.needCertification).strip() == str(startup.hasCertification).strip()):
+                    str(empresa.needCertification).strip().upper() == str(startup.hasCertification).strip().upper()):
                 matchingScore += 10
 
-            if (str(empresa.wantsSoftwareFactory).strip() == str(startup.hasOwnProduct).strip()):
+            if (str(empresa.wantsSoftwareFactory).strip().upper() == str(startup.hasOwnProduct).strip().upper()):
                 matchingScore += 10
 
-            if (str(empresa.wantsRemoteWork).strip() == str(startup.doesRemoteWork).strip()):
+            if (str(empresa.wantsRemoteWork).strip().upper() == str(startup.doesRemoteWork).strip().upper()):
                 matchingScore += 10
 
-            if (str(empresa.wantsFullCommitment).strip() == str(startup.hasOtherPartners).strip()):
+            if (str(empresa.wantsFullCommitment).strip().upper() == str(startup.hasOtherPartners).strip().upper()):
                 matchingScore += 10
 
         print("m=calculateMatchingScore, matchingScore=" + str(matchingScore))

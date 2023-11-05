@@ -117,6 +117,7 @@ function logList() {
 function generateEditTemplate(titulo, descricao, id) {
   let propostaCardEdit = `
         <form onsubmit="onEdit(event)" id="edit">
+          <div id="${id}">
                 <div class="titleContainer">
                     <h2 id="title">Nome: <input name="titulo" value="${titulo}" class="formInput"></h2>
                 </div>

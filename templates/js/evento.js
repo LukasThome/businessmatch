@@ -1,43 +1,56 @@
-var form = document.getElementById("signup");
+var form = document.getElementById('signup');
+
+// Defina a função validateTimeFormat no início do seu arquivo JavaScript
+function validateTimeFormat(time) {
+  var regex = /^([0-1]?[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?$/;
+
+  return regex.test(time);
+}
 
 // Função para pesquisar no Google Maps e preencher o campo "LOCAL"
 function searchLocationOnMaps() {
-  const locationInput = document.getElementById("local").value;
+  const locationInput = document.getElementById('local').value;
   const googleMapsUrl = `https://www.google.com/maps?q=${encodeURIComponent(
     locationInput
   )}`;
-  window.open(googleMapsUrl, "_blank");
+  window.open(googleMapsUrl, '_blank');
 }
 
 function openMap() {
   // URL do mapa do Google Maps
-  const googleMapsUrl = "https://www.google.com/maps";
-  window.open(googleMapsUrl, "_blank");
+  const googleMapsUrl = 'https://www.google.com/maps';
+  window.open(googleMapsUrl, '_blank');
 }
 
 // Função para adicionar um evento
 function onSubmit(event) {
   event.preventDefault();
 
-  var evento = {
+  var horaValue = form.elements['hora'].value.trim();
+  if (!validateTimeFormat(horaValue)) {
+    alert('Formato de hora inválido. Use o formato HH:mm ou HH:mm:ss.');
+    return;E
+  }
+eE
+  var obj = {
     nome_organizacao: null,
-    titulo: form.elements["titulo"].value,
-    local: form.elements["local"].value, // Usa o campo "localInput" para obter o link do Google Maps
-    data: form.elements["data"].value,
-    hora: form.elements["hora"].value,
-    descricao: form.elements["descricao"].value,
+    titulo: form.elements['titulo'].value,
+    local: form.elements['local'].value, // Usa o campo "localInput" para obter o link do Google Maps
+    data: form.elements['data'].value,
+    hora: horaValue, // Agora, hora é definida após a validação
+    descricao: form.elements['descricao'].value,
   };
 
   // Verifica se a data é válida e no futuro
-  var selectedDate = new Date(evento.data);
+  var selectedDate = new Date(obj.data);
   var currentDate = new Date();
   if (selectedDate <= currentDate) {
-    alert("A data deve ser no futuro.");
+    alert('A data deve ser no futuro.');
     return;
   }
-  eel.workWithValuesEvento(evento)();
-  console.log(evento.value);
-  console.log("create");
+  eel.workWithValuesEvento(obj)();
+  console.log(obj.value);
+  console.log('create');
 
   location.reload();
 }
@@ -48,30 +61,35 @@ function remove() {
     l.map(({ id }) => {
       document
         .getElementById(`eventoId__${id}`)
-        .addEventListener("click", () => {
+        .addEventListener('click', () => {
           eel.removeEvento(id)();
           location.reload();
         });
       document
         .getElementById(`eventoId__${id}`)
-        .removeEventListener("click", () => {});
+        .removeEventListener('click', () => {});
     });
   });
 }
 
 function onEdit(event) {
-  var editForm = document.getElementById("edit");
+  var editForm = document.getElementById('edit');
 
+  var horaValue = editForm.elements['hora'].value.trim();
+  if (!validateTimeFormat(horaValue)) {
+    alert('Formato de hora inválido. Use o formato HH:mm ou HH:mm:ss.');
+    return;
+  }
   event.preventDefault();
-  var evento = {
-    titulo: editForm.elements["titulo"].value,
-    local: editForm.elements["local"].value,
-    data: editForm.elements["data"].value,
-    hora: editForm.elements["hora"].value,
-    descricao: editForm.elements["descricao"].value,
-    id: document.querySelector("#edit").children[0].id,
+  var obj = {
+    titulo: editForm.elements['titulo'].value,
+    local: editForm.elements['local'].value,
+    data: editForm.elements['data'].value,
+    hora: horaValue, // Agora, hora é definida após a validação
+    descricao: editForm.elements['descricao'].value,
+    id: document.querySelector('#edit').children[0].id,
   };
-  eel.editEvento(evento)();
+  eel.editEvento(obj)();
   location.reload();
 }
 
@@ -98,14 +116,12 @@ function generateEditTemplate(titulo, local, data, hora, descricao, id) {
               <div class="bodyText">
                   <span
                       >HORA:
-                      <span id="hora"><input type="time" name="hora" value="${hora} "class="formInput"></span>
+                      <span id="hora"><input type="time" name="hora" value="${hora}"class="formInput"></span>
                   </span>
               </div>
               <div class="bodyText">
-                  <span 
-                      >DESCRICAO:
-                      <span id="descricao" ><input name="descricao" type="text"value="${descricao}" class="formInputDescricao"></span>
-                  </span>
+              <span>DESCRICAO:</span>
+                <textarea id="descricao" name="descricao" class="formInputDescricao">${descricao}</textarea>
               </div>
               <div class="inputsContainer">
                     <input type="submit" class="submitBtn editBtn" value="Enviar" />
@@ -119,20 +135,21 @@ function generateEditTemplate(titulo, local, data, hora, descricao, id) {
 function edit() {
   var list = eel.sendEventoList()();
   list.then((l) => {
-    l.map(({id, titulo, local, data, hora, descricao}) => {
-      document.getElementById(`editId__${id}`).addEventListener("click", () => {
+    l.map(({ id, titulo, local, data, hora, descricao }) => {
+      document.getElementById(`editId__${id}`).addEventListener('click', () => {
         let eventoCardEdit = generateEditTemplate(
           titulo,
           local,
           data,
           hora,
-          descricao
+          descricao,
+          id
         );
         document.getElementById(`cardId__${id}`).innerHTML = eventoCardEdit;
       });
       document
         .getElementById(`editId__${id}`)
-        .removeEventListener("click", () => {});
+        .removeEventListener('click', () => {});
     });
   });
 }
@@ -143,11 +160,11 @@ function logList() {
     if (!l) {
       let eventoCard = `<div>Não há eventos cadastradas!</div>`;
       document
-        .getElementById("logBtn")
-        .insertAdjacentHTML("afterend", eventoCard);
+        .getElementById('logBtn')
+        .insertAdjacentHTML('afterend', eventoCard);
       return;
     }
-    l.map(({ titulo, local, data, hora, descricao, id, nome_organizacao }) => {
+    l.map(({ titulo, local, data, hora, descricao, nome_organizacao, id }) => {
       let eventoCard = `
               <div class="card" id="cardId__${id}">
                   <div class="titleContainer">
@@ -193,8 +210,8 @@ function logList() {
               </div>
           `;
       document
-        .getElementById("logBtn")
-        .insertAdjacentHTML("afterend", eventoCard);
+        .getElementById('logBtn')
+        .insertAdjacentHTML('afterend', eventoCard);
     });
   });
 }
@@ -205,8 +222,8 @@ function logListViewOnly() {
     if (!l) {
       let eventoCard = `<div>Não há eventos cadastradas!</div>`;
       document
-        .getElementById("logBtn")
-        .insertAdjacentHTML("afterend", eventoCard);
+        .getElementById('logBtn')
+        .insertAdjacentHTML('afterend', eventoCard);
       return;
     }
     l.map(({ titulo, local, data, hora, descricao, id, nome_organizacao }) => {
@@ -250,8 +267,8 @@ function logListViewOnly() {
                 </div>
             `;
       document
-        .getElementById("logBtn")
-        .insertAdjacentHTML("afterend", eventoCard);
+        .getElementById('logBtn')
+        .insertAdjacentHTML('afterend', eventoCard);
     });
   });
 }
