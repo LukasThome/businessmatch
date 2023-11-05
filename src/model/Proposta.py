@@ -19,7 +19,7 @@ class Proposta(Empresa, Startup):
         self.data = data  # Data da proposta (objeto date)
         self.hora = hora  # Hora da proposta (objeto time)
         self.descricao = descricao  # Descrição da proposta (string)
-        self.satus = 3 #incia como pendente 0 = recusado, 1 = aceito, 3 = pendente
+        self.status = 3 #incia como pendente 0 = recusado, 1 = aceito, 3 = pendente
         self.nome_empresa = nome_empresa #campo para saber quem criou esta proposta posteriormente
         self.nome_startup = nome_startup #campo para saber quem criou/quem recebe a proposta
     

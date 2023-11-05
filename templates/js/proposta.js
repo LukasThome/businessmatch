@@ -61,6 +61,7 @@ function logList() {
         .insertAdjacentHTML("afterend", propostaCard);
       return;
     }
+    console.log(l);
     l.map(
       ({ titulo, data, hora, descricao, id, nome_empresa, nome_startup }) => {
         let propostaCard = `
