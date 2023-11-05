@@ -43,6 +43,8 @@
   font-size: 1rem;
   border-radius: 1rem;
   border: 2px solid #0d9340;
-  height: 300px;
-  text-align: justify;
+  height: auto; /* Altere a altura para "auto" para que o campo de texto se ajuste automaticamente ao conteúdo */
+  text-align: left;
+  resize: vertical;
+  height: 200px;
 }
