@@ -27,31 +27,31 @@ function logList() {
                       </div>
                       <div class="bodyText">
                           <span 
-                              >DATA:
+                              >Data:
                               <span id="data" >${data}</span>
                           </span>
                       </div>
                       <div class="bodyText">
                           <span
-                              >HORA:
+                              >Hora:
                               <span id="hora">${hora}</span>
                           </span>
                       </div>
                       <div class="descricao">
                           <span
-                              >DESCRICAO:
+                              >Descrição:
                               <span id="descricao">${descricao}</span>
                           </span>
                       </div>
                       <div class="nome_empresa">
                           <span
-                              >NOME_EMPRESA:
+                              >Nome da Empresa:
                               <span id="nome_empresa">${nome_empresa}</span>
                           </span>
                       </div>
                       <div class="nome_startup">
                           <span
-                              >NOME_STARTUP:
+                              >Nome da Startup:
                               <span id="nome_empresa">${nome_startup}</span>
                           </span>
                       </div>

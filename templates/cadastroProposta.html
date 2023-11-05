@@ -18,28 +18,41 @@
     <title>Cadastro de Proposta</title>
   </head>
   <body>
-    <div class="mainContainerWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW  3"></div>
-    <h1 class="title">Envie uma proposta aqui</h1>
+    <div class="mainContainer">
+      <h1 class="title">Envie uma proposta aqui</h1>
 
-    <!-- Empresas que podem receber propostas desta empresa devem aparecer listadas aqui-->
+      <!-- Empresas que podem receber propostas desta empresa devem aparecer listadas aqui-->
 
-    <h1 class="title">Criar Proposta</h1>
+      <h1 class="title">Criar Proposta</h1>
 
-        <!-- Formulário para criar propostas -->
-        <form onsubmit="onSubmit(event)" id="signup">
-            <div class="inputsContainer">
-                <input type="text" id="titulo" name="titulo" class="formInput" placeholder="Digite o título da proposta" required />
-                <input type="text" id="descricao" name="descricao" class="formInputDescricao" placeholder="Descreva a proposta" required />
-            </div>
-            <div class="inputsContainer">
-                <input type="submit" class="submitBtn" value="Enviar" />
-            </div>
-        </form>
+      <!-- Formulário para criar propostas -->
+      <form onsubmit="onSubmit(event)" id="signup">
+        <div class="inputsContainer">
+          <input
+            type="text"
+            id="titulo"
+            name="titulo"
+            class="formInput"
+            placeholder="Digite o título da proposta"
+            required
+          />
+          <input
+            type="text"
+            id="descricao"
+            name="descricao"
+            class="formInputDescricao"
+            placeholder="Descreva a proposta"
+            required
+          />
+        </div>
+        <div class="inputsContainer">
+          <input type="submit" class="submitBtn" value="Enviar" />
+        </div>
+      </form>
     </div>
 
     <script type="text/javascript" src="/eel.js"></script>
     <script type="text/javascript" src="/js/index.js"></script>
     <script type="text/javascript" src="/js/proposta.js"></script>
-
   </body>
 </html>
