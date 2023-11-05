@@ -102,6 +102,7 @@ def workWithValuesEvento(values):
 
 # ----------------------------------------------------// PROPOSTAS //---------------------------------------------------
 
+
 @eel.expose
 def removeProposta(propostaId):
     propostaController.remove(propostaId)

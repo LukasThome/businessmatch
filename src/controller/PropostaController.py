@@ -39,8 +39,8 @@ class PropostaController:
             "hora": newProposta.hora,
             "descricao": newProposta.descricao,
             "nome_empresa": newProposta.nome_empresa,
-            "nome_startup": newProposta.nome_startup
-
+            "nome_startup": newProposta.nome_startup,
+            "status": newProposta.status
         }
         self.__propostas.append(mapping)
 
