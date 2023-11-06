@@ -1,7 +1,8 @@
-import random
 import pickle
 from pathlib import Path
 from src.model.Portfolio import Portfolio
+from uuid import uuid4
+
 
 class PortfolioController():
     def __init__(self):
@@ -21,7 +22,7 @@ class PortfolioController():
         return self.__filePath
     
     def add(self, values):
-        novoPortfolio = Portfolio(random.randint(0, 100),
+        novoPortfolio = Portfolio(str(uuid4()),
                               values["nome"],
                               values["descricao"],
                               )
@@ -55,7 +56,7 @@ class PortfolioController():
     def edit(self, portfolio):
         portfolios = self.load()
         for p in portfolios:
-            if (int(p["id"]) == int(portfolio["id"])):
+            if (p["id"] == portfolio["id"]):
                 p["nome"] = portfolio["nome"]
                 p["descricao"] = portfolio["descricao"]
         with open(self.__filePath, 'wb') as st:
