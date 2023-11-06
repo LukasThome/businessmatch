@@ -1,69 +1,86 @@
-var form = document.getElementById("signup");
+var form = document.getElementById('signup');
 
-function onSubmit(event) {
-    event.preventDefault();
-    var obj = {
-        nome: form.elements["nome"].value,
-        cnpj: form.elements["cnpj"].value,
-        cnae: form.elements["cnae"].value,
-        setor: form.elements["setor"].value,
-        region: form.elements["region"].value,
-        activityType: form.elements["activityType"].value,
-        offeredServices: form.elements["offeredServices"].value,
-        offeredProducts: form.elements["offeredProducts"].value,
-        hasCertification: form.elements["hasCertification"].value,
-        hasOwnProduct: form.elements["hasOwnProduct"].value,
-        doesRemoteWork: form.elements["doesRemoteWork"].value,
-        hasOtherPartners: form.elements["hasOtherPartners"].value,
-    };
-    eel.workWithValuesStartup(obj)();
-    location.reload();
+async function onSubmit(event) {
+  event.preventDefault();
+  var list = await eel.sendStartupList()();
+  var elementExists = list.find(
+    (el) => el.cnpj === form.elements['cnpj'].value
+  );
+  if (elementExists) return location.reload();
+  var obj = {
+    nome: form.elements['nome'].value,
+    cnpj: form.elements['cnpj'].value,
+    cnae: form.elements['cnae'].value,
+    setor: form.elements['setor'].value,
+    region: form.elements['region'].value,
+    activityType: form.elements['activityType'].value,
+    offeredServices: form.elements['offeredServices'].value,
+    offeredProducts: form.elements['offeredProducts'].value,
+    hasCertification: form.elements['hasCertification'].value,
+    hasOwnProduct: form.elements['hasOwnProduct'].value,
+    doesRemoteWork: form.elements['doesRemoteWork'].value,
+    hasOtherPartners: form.elements['hasOtherPartners'].value,
+  };
+  eel.workWithValuesStartup(obj)();
+  location.reload();
 }
 
 function onEdit(event) {
-    var editForm = document.getElementById("edit");
+  var editForm = document.getElementById('edit');
 
-    event.preventDefault();
-    var obj = {
-        nome: editForm.elements["nome"].value,
-        cnpj: editForm.elements["cnpj"].value,
-        cnae: editForm.elements["cnae"].value,
-        setor: editForm.elements["setor"].value,
-        region: editForm.elements["region"].value,
-        activityType: editForm.elements["activityType"].value,
-        offeredServices: editForm.elements["offeredServices"].value,
-        offeredProducts: editForm.elements["offeredProducts"].value,
-        hasCertification: editForm.elements["hasCertification"].value,
-        hasOwnProduct: editForm.elements["hasOwnProduct"].value,
-        doesRemoteWork: editForm.elements["doesRemoteWork"].value,
-        hasOtherPartners: editForm.elements["hasOtherPartners"].value,
-        id: document.querySelector("#edit").children[0].id,
-    };
-    eel.editStartup(obj)();
-    location.reload();
+  event.preventDefault();
+  var obj = {
+    nome: editForm.elements['nome'].value,
+    cnpj: editForm.elements['cnpj'].value,
+    cnae: editForm.elements['cnae'].value,
+    setor: editForm.elements['setor'].value,
+    region: editForm.elements['region'].value,
+    activityType: editForm.elements['activityType'].value,
+    offeredServices: editForm.elements['offeredServices'].value,
+    offeredProducts: editForm.elements['offeredProducts'].value,
+    hasCertification: editForm.elements['hasCertification'].value,
+    hasOwnProduct: editForm.elements['hasOwnProduct'].value,
+    doesRemoteWork: editForm.elements['doesRemoteWork'].value,
+    hasOtherPartners: editForm.elements['hasOtherPartners'].value,
+    id: document.querySelector('#edit').children[0].id,
+  };
+  eel.editStartup(obj)();
+  location.reload();
 }
 
 function remove() {
-    var list = eel.sendStartupList()();
-    list.then((l) => {
-        l.map(({id}) => {
-            document
-                .getElementById(`startupId__${id}`)
-                .addEventListener("click", () => {
-                    eel.removeStartup(id)();
-                    location.reload();
-                });
-            document
-                .getElementById(`startupId__${id}`)
-                .removeEventListener("click", () => {
-                });
+  var list = eel.sendStartupList()();
+  list.then((l) => {
+    l.map(({ id }) => {
+      document
+        .getElementById(`startupId__${id}`)
+        .addEventListener('click', () => {
+          eel.removeStartup(id)();
+          location.reload();
         });
+      document
+        .getElementById(`startupId__${id}`)
+        .removeEventListener('click', () => {});
     });
+  });
 }
 
-function generateEditTemplate(nome, cnpj, cnae, setor, region, activityType, offeredServices, offeredProducts,
-                              hasCertification, hasOwnProduct, doesRemoteWork, hasOtherPartners, id) {
-    let startupCardEdit = `
+function generateEditTemplate(
+  nome,
+  cnpj,
+  cnae,
+  setor,
+  region,
+  activityType,
+  offeredServices,
+  offeredProducts,
+  hasCertification,
+  hasOwnProduct,
+  doesRemoteWork,
+  hasOtherPartners,
+  id
+) {
+  let startupCardEdit = `
         <form onsubmit="onEdit(event)" id="edit">
             <div id="${id}">
                 <div class="titleContainer">
@@ -141,42 +158,70 @@ function generateEditTemplate(nome, cnpj, cnae, setor, region, activityType, off
             </div>
         </form>
     `;
-    return startupCardEdit;
+  return startupCardEdit;
 }
 
 function edit() {
-    var list = eel.sendStartupList()();
-    list.then((l) => {
-        l.map(({
-                   id, nome, cnpj, cnae, setor, region, activityType, offeredServices, offeredProducts,
-                   hasCertification, hasOwnProduct, doesRemoteWork, hasOtherPartners
-               }) => {
-            document.getElementById(`editId__${id}`).addEventListener("click", () => {
-                let startupCardEdit = generateEditTemplate(nome, cnpj, cnae, setor, region, activityType, offeredServices, offeredProducts,
-                    hasCertification, hasOwnProduct, doesRemoteWork, hasOtherPartners, id);
-                document.getElementById(`cardId__${id}`).innerHTML = startupCardEdit;
-            });
-            document
-                .getElementById(`editId__${id}`)
-                .removeEventListener("click", () => {
-                });
-        });
-    });
+  var list = eel.sendStartupList()();
+  list.then((l) => {
+    l.map(
+      ({
+        id,
+        nome,
+        cnpj,
+        cnae,
+        setor,
+        region,
+        activityType,
+        offeredServices,
+        offeredProducts,
+        hasCertification,
+        hasOwnProduct,
+        doesRemoteWork,
+        hasOtherPartners,
+      }) => {
+        document
+          .getElementById(`editId__${id}`)
+          .addEventListener('click', () => {
+            let startupCardEdit = generateEditTemplate(
+              nome,
+              cnpj,
+              cnae,
+              setor,
+              region,
+              activityType,
+              offeredServices,
+              offeredProducts,
+              hasCertification,
+              hasOwnProduct,
+              doesRemoteWork,
+              hasOtherPartners,
+              id
+            );
+            document.getElementById(`cardId__${id}`).innerHTML =
+              startupCardEdit;
+          });
+        document
+          .getElementById(`editId__${id}`)
+          .removeEventListener('click', () => {});
+      }
+    );
+  });
 }
 
 function logList() {
-    document.querySelectorAll(".card").forEach(el => el.remove());
-    var list = eel.sendStartupList()();
-    list.then((l) => {
-        if (!l) {
-            let startupCard = `<div>Não há startups cadastradas!</div>`;
-            document
-                .getElementById("logBtn")
-                .insertAdjacentHTML("afterend", startupCard);
-            return;
-        }
-        l.map(({nome, cnpj, cnae, setor, id}) => {
-            let startupCard = `
+  document.querySelectorAll('.card').forEach((el) => el.remove());
+  var list = eel.sendStartupList()();
+  list.then((l) => {
+    if (!l) {
+      let startupCard = `<div>Não há startups cadastradas!</div>`;
+      document
+        .getElementById('logBtn')
+        .insertAdjacentHTML('afterend', startupCard);
+      return;
+    }
+    l.map(({ nome, cnpj, cnae, setor, id }) => {
+      let startupCard = `
                 <div class="card" id="cardId__${id}">
                     <div class="titleContainer">
                         <h2 id="title">Nome: ${nome}</h2>
@@ -207,9 +252,9 @@ function logList() {
                     </div>
                 </div>
             `;
-            document
-                .getElementById("logBtn")
-                .insertAdjacentHTML("afterend", startupCard);
-        });
+      document
+        .getElementById('logBtn')
+        .insertAdjacentHTML('afterend', startupCard);
     });
+  });
 }

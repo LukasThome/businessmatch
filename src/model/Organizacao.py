@@ -1,11 +1,14 @@
 class Organizacao:
-    def __init__(self, id, nome, cnpj, cnae, setor, region):
+    def __init__(self, id, nome, cnpj, cnae, setor, region, activityType, offeredServices, offeredProducts):
         self.__id = id
         self.__nome = nome
         self.__cnpj = cnpj
         self.__cnae = cnae
         self.__setor = setor
         self.__region = region
+        self.__activityType = activityType
+        self.__offeredServices = offeredServices
+        self.__offeredProducts = offeredProducts
         self.__interesses = []
         self.__eventos = []
         self.__portfolios = []
@@ -57,6 +60,30 @@ class Organizacao:
     @region.setter
     def region(self, region):
         self.__region = region
+
+    @property
+    def activityType(self):
+        return self.__activityType
+
+    @activityType.setter
+    def activityType(self, activityType):
+        self.__activityType = activityType
+
+    @property
+    def offeredServices(self):
+        return self.__offeredServices
+
+    @offeredServices.setter
+    def offeredServices(self, offeredServices):
+        self.__offeredServices = offeredServices
+
+    @property
+    def offeredProducts(self):
+        return self.__offeredProducts
+
+    @offeredProducts.setter
+    def offeredProducts(self, offeredProducts):
+        self.__offeredProducts = offeredProducts
 
     @property
     def interesses(self):
