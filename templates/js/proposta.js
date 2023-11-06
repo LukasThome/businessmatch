@@ -168,6 +168,11 @@ function aceita(id) {
   });
 }
 
+
+function verificarRemetenteDestinarario(){
+  pass
+}
+
 function logListProposta() {
   var list = eel.sendPropostaList()();
   list.then((l) => {
