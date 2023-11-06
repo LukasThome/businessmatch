@@ -23,10 +23,12 @@ interesseController = InteresseController()
 matchingService = MatchingService()
 gerenciarMatchController = GerenciarMatchController()
 
+
 @eel.expose
 def currentSession():
     startups = startupController.load()
     return startups[0]
+
 
 # ----------------------------------------------------// STARTUP //-----------------------------------------------------
 
@@ -174,17 +176,21 @@ def getMatchingList(id, tipo):
     matchingList = matchingService.getMatchingList(id, tipo)
     return matchingList
 
+
 @eel.expose
 def editMatching(match):
     gerenciarMatchController.add(match)
+
 
 @eel.expose
 def showMatchs():
     return gerenciarMatchController.load()
 
+
 @eel.expose
 def deleteMatch(listData):
     gerenciarMatchController.save(listData)
+
 
 # ----------------------------------------------------------------------------------------------------------------------
 eel.start('home.html')

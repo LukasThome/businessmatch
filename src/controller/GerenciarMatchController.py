@@ -1,6 +1,7 @@
 from pathlib import Path
 import pickle
 
+
 class GerenciarMatchController:
     def __init__(self):
         self.__matchs = []
