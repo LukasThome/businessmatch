@@ -58,11 +58,11 @@ function logList() {
                       <div class="bodyText">
                         <span
                           >Status atual:
-                        <span id="status"><input placeholder="Informe o status atual" class="formInput"></span>
+                        <span id="status"><input id="inputStatus" placeholder="Informe o status atual" class="formInput"></span>
                         </span>
                       </div>
                       
-                    <button class="submitBtn">Salvar</button>
+                    <button onclick="editMatch('${id}')" class="submitBtn">Salvar</button>
                   </div>
               `;
         document
@@ -90,6 +90,15 @@ function remove() {
       }
     });
   });
+}
+
+async function editMatch(matchId) {
+  let inputValue = document.getElementById('inputStatus').value;
+
+  var list = await verifyStatus();
+  var currentEdit = list.find((el) => el.id === matchId);
+  currentEdit['status'] = inputValue;
+  eel.editMatching(currentEdit)();
 }
 
 function onSubmit(event) {

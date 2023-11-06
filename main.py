@@ -174,6 +174,9 @@ def getMatchingList(id, tipo):
     matchingList = matchingService.getMatchingList(id, tipo)
     return matchingList
 
+@eel.expose
+def editMatching(match):
+    print(match)
 
 # ----------------------------------------------------------------------------------------------------------------------
 eel.start('home.html')
