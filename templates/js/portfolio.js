@@ -78,6 +78,7 @@ function edit() {
 }
 
 function logList() {
+  document.querySelectorAll('.card').forEach((el) => el.remove());
   var list = eel.sendPortfolioList()();
   list.then((l) => {
     if (!l) {
