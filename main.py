@@ -8,6 +8,7 @@ from src.controller.EventoController import EventoController
 from src.controller.PropostaController import PropostaController
 from src.controller.InteresseController import InteresseController
 from src.controller.services.MatchingService import MatchingService
+from src.controller.GerenciarMatchController import GerenciarMatchController
 
 import eel
 
@@ -20,13 +21,12 @@ eventoController = EventoController()
 propostaController = PropostaController()
 interesseController = InteresseController()
 matchingService = MatchingService()
-
+gerenciarMatchController = GerenciarMatchController()
 
 @eel.expose
 def currentSession():
     startups = startupController.load()
     return startups[0]
-
 
 # ----------------------------------------------------// STARTUP //-----------------------------------------------------
 
@@ -176,7 +176,15 @@ def getMatchingList(id, tipo):
 
 @eel.expose
 def editMatching(match):
-    print(match)
+    gerenciarMatchController.add(match)
+
+@eel.expose
+def showMatchs():
+    return gerenciarMatchController.load()
+
+@eel.expose
+def deleteMatch(listData):
+    gerenciarMatchController.save(listData)
 
 # ----------------------------------------------------------------------------------------------------------------------
 eel.start('home.html')
