@@ -125,7 +125,6 @@ def editProposta(proposta):
     propostaController.edit(proposta)
 
 
-
 # ----------------------------------------------------// PORTFOLIO //---------------------------------------------------
 
 @eel.expose
@@ -150,11 +149,12 @@ def editPortfolio(portfolio):
     portfolioController.edit(portfolio)
 
 
-# ----------------------------------------------------// INTERESSES //---------------------------------------------------
+# ---------------------------------------------------// INTERESSES //---------------------------------------------------
 
 @eel.expose
 def saveInteresse(interesse):
     interesseController.add(interesse)
+
 
 @eel.expose
 def loadInteresse():
