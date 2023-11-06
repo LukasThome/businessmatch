@@ -1,4 +1,4 @@
-var form = document.getElementById("signup");
+var form = document.getElementById('signup');
 let userSession = {};
 
 function logList() {
@@ -8,8 +8,8 @@ function logList() {
     if (!l) {
       let propostaCard = `<div>Não há propostas cadastradas!</div>`;
       document
-        .getElementById("logBtn")
-        .insertAdjacentHTML("afterend", propostaCard);
+        .getElementById('logBtn')
+        .insertAdjacentHTML('afterend', propostaCard);
       return;
     }
     console.log(l);
@@ -55,12 +55,19 @@ function logList() {
                               <span id="nome_empresa">${nome_startup}</span>
                           </span>
                       </div>
-  
+                      <div class="bodyText">
+                        <span
+                          >Status atual:
+                        <span id="status"><input placeholder="Informe o status atual" class="formInput"></span>
+                        </span>
+                      </div>
+                      
+                    <button class="submitBtn">Salvar</button>
                   </div>
               `;
         document
-          .getElementById("logBtn")
-          .insertAdjacentHTML("afterend", propostaCard);
+          .getElementById('logBtn')
+          .insertAdjacentHTML('afterend', propostaCard);
       }
     );
   });
@@ -75,11 +82,11 @@ function remove() {
         location.reload();
         document
           .getElementById(`idMatch__${id}`)
-          .removeEventListener("click", listener);
+          .removeEventListener('click', listener);
       };
       const element = document.getElementById(`idMatch__${id}`);
       if (element) {
-        element.addEventListener("click", listener);
+        element.addEventListener('click', listener);
       }
     });
   });
