@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="/css/gerenciarOrganizacao.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/header.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Mooli&display=swap" rel="stylesheet"/>
+    <title>Pesquisa Refinada</title>
+</head>
+<body>
+<div class="mainContainer">
+    <h1 class="title">Pesquisa Refinada</h1>
+    <div class="inputsContainerSearch" id="logBtn">
+        <select id="attributes" name="attributes" form="attributesForm" class="formInput" required>
+            <option value="selecione" disabled selected>Selecione a opção de pesquisa</option>
+            <option value="cnae">CNAE</option>
+            <option value="setor">Setor</option>
+            <option value="activityType">Tipo de atividade</option>
+            <option value="certification">Há certificação</option>
+            <option value="softwareFactory">Possui software/produto próprio</option>
+            <option value="remoteWork">Há trabalho remoto</option>
+            <option value="hasOrWantOtherPartners">Parceria exclusiva</option>
+        </select>
+
+        <input style="width: 350px"
+                type="text"
+                id="titulo"
+                name="titulo"
+                class="formInput"
+                placeholder="Digite o termo"
+                required
+        />
+        <button class="submitBtn" onclick="logList()">
+            Buscar
+        </button>
+    </div>
+</div>
+
+<script type="text/javascript" src="/eel.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+<script type="text/javascript" src="/js/pesquisaRefinada.js"></script>
+</body>
+</html>

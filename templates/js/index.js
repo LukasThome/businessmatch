@@ -129,6 +129,10 @@ let header = `
                         <a href="/gerenciarMatching.html" class="dropdownItem"
                             >Gerenciar Matchings
                         </a>
+                    <li class="menuDropdown">
+                        <a href="/pesquisaRefinada.html" class="dropdownItem"
+                            >Pesquisa refinada
+                        </a>
                     </li>
                 </div>
             </div>
@@ -137,13 +141,13 @@ let header = `
 `;
 
 (function getSession() {
-  var session = eel.currentSession()();
-  session.then((s) => {
-    console.log(s);
-    /* body.insertAdjacentHTML(
-      "beforeend",
-      `<li>ID Usuário logado: ${s.id}</li> <li>Tipo: ${s.tipo}</li>`
-    ); */
-  });
+    var session = eel.currentSession()();
+    session.then((s) => {
+        console.log(s);
+        /* body.insertAdjacentHTML(
+          "beforeend",
+          `<li>ID Usuário logado: ${s.id}</li> <li>Tipo: ${s.tipo}</li>`
+        ); */
+    });
 })();
 body.insertAdjacentHTML('afterbegin', header);
