@@ -31,7 +31,6 @@ class MatchingService():
         return listMatch
 
     def calculateMatchingScore(self, idStartup, idEmpresa):
-        print("m=calculateMatchingScore, idStartup=" + str(idStartup) + ", idEmpresa=" + str(idEmpresa))
         matchingScore = 0
         empresa = Empresa.toEmpresa(self.__empresaController.findById(idEmpresa))
         startup = Startup.toStartup(self.__startupController.findById(idStartup))
@@ -59,14 +58,73 @@ class MatchingService():
                     str(empresa.needCertification).strip().upper() == str(startup.hasCertification).strip().upper()):
                 matchingScore += 10
 
-            if (str(empresa.wantsSoftwareFactory).strip().upper() == str(startup.hasOwnProduct).strip().upper()):
+            # Disjunto
+            if (str(empresa.wantsSoftwareFactory).strip().upper() == "NÃO" and str(
+                    startup.hasOwnProduct).strip().upper() == "SIM"):
+                matchingScore += 10
+            elif (str(empresa.wantsSoftwareFactory).strip().upper() == "SIM" and str(
+                    startup.hasOwnProduct).strip().upper() == "NÃO"):
                 matchingScore += 10
 
             if (str(empresa.wantsRemoteWork).strip().upper() == str(startup.doesRemoteWork).strip().upper()):
                 matchingScore += 10
 
-            if (str(empresa.wantsFullCommitment).strip().upper() == str(startup.hasOtherPartners).strip().upper()):
+            # Disjunto
+            if (str(empresa.wantsFullCommitment).strip().upper() == "NÃO" and str(
+                    startup.hasOtherPartners).strip().upper() == "SIM"):
+                matchingScore += 10
+            elif (str(empresa.wantsSoftwareFactory).strip().upper() == "SIM" and str(
+                    startup.hasOwnProduct).strip().upper() == "NÃO"):
                 matchingScore += 10
 
-        print("m=calculateMatchingScore, matchingScore=" + str(matchingScore))
+        print("m=calculateMatchingScore, "
+              "idStartup=" + str(idStartup) + ", idEmpresa=" + str(idEmpresa) + ", matchingScore=" + str(matchingScore))
         return matchingScore
+
+    def getListByFieldValue(self, id, tipo, field, value):
+        searchList = self.getMatchingList(id, tipo)
+        if tipo == "startup":
+            if field == "nome":
+                searchList = self.__empresaController.findByFieldValueInList("nome", value, searchList)
+            elif field == "cnae":
+                searchList = self.__empresaController.findByFieldValueInList("cnae", value, searchList)
+            elif field == "setor":
+                searchList = self.__empresaController.findByFieldValueInList("setor", value, searchList)
+            elif field == "region":
+                searchList = self.__empresaController.findByFieldValueInList("region", value, searchList)
+            elif field == "activityType":
+                searchList = self.__empresaController.findByFieldValueInList("activityType", value, searchList)
+            elif field == "certification":
+                searchList = self.__empresaController.findByFieldValueInList("needCertification", value, searchList)
+            elif field == "softwareFactory":
+                searchList = self.__empresaController.findByFieldValueInList("wantsSoftwareFactory", value, searchList)
+            elif field == "remoteWork":
+                searchList = self.__empresaController.findByFieldValueInList("wantsRemoteWork", value, searchList)
+            elif field == "hasOrWantOtherPartners":
+                searchList = self.__empresaController.findByFieldValueInList("wantsFullCommitment", value, searchList)
+            else:
+                return "Erro"
+
+        elif tipo == "empresa":
+            if field == "nome":
+                searchList = self.__startupController.findByFieldValueInList("nome", value, searchList)
+            elif field == "cnae":
+                searchList = self.__startupController.findByFieldValueInList("cnae", value, searchList)
+            elif field == "setor":
+                searchList = self.__startupController.findByFieldValueInList("setor", value, searchList)
+            elif field == "region":
+                searchList = self.__empresaController.findByFieldValueInList("region", value, searchList)
+            elif field == "activityType":
+                searchList = self.__startupController.findByFieldValueInList("activityType", value, searchList)
+            elif field == "certification":
+                searchList = self.__startupController.findByFieldValueInList("hasCertification", value, searchList)
+            elif field == "softwareFactory":
+                searchList = self.__startupController.findByFieldValueInList("hasOwnProduct", value, searchList)
+            elif field == "remoteWork":
+                searchList = self.__startupController.findByFieldValueInList("doesRemoteWork", value, searchList)
+            elif field == "hasOrWantOtherPartners":
+                searchList = self.__startupController.findByFieldValueInList("hasOtherPartners", value, searchList)
+            else:
+                return "Erro"
+            print(searchList[0])
+        return searchList

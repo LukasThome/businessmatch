@@ -173,6 +173,8 @@ def calculateMatchingScore(idStartup, idEmpresa):
 
 @eel.expose
 def getMatchingList(id, tipo):
+    if id is None or tipo is None:
+        return []
     matchingList = matchingService.getMatchingList(id, tipo)
     return matchingList
 
@@ -190,6 +192,15 @@ def showMatchs():
 @eel.expose
 def deleteMatch(listData):
     gerenciarMatchController.save(listData)
+
+
+# ----------------------------------------------// PESQUISA REFINADA //-------------------------------------------------
+
+
+@eel.expose
+def getSearchResult(id, tipo, field, value):
+    searchResultList = matchingService.getListByFieldValue(id, tipo, field, value)
+    return searchResultList
 
 
 # ----------------------------------------------------------------------------------------------------------------------

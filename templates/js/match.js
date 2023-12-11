@@ -1,27 +1,12 @@
 var form = document.getElementById("signup");
 let userSession = {};
 
-function onSubmit(event) {
-    // event.preventDefault();
-    // var obj = {
-    //     nome: form.elements["nome"].value,
-    //     cnpj: form.elements["cnpj"].value,
-    //     cnae: form.elements["cnae"].value,
-    //     setor: form.elements["setor"].value,
-    //     pergunta1: form.elements["pergunta1"].value,
-    //     pergunta2: form.elements["pergunta2"].value,
-    //     pergunta3: form.elements["pergunta3"].value,
-    // };
-    // eel.workWithValuesEmpresa(obj)();
-    // location.reload();
-}
-
 function logList() {
     document.querySelectorAll(".card").forEach(el => el.remove());
     var list = eel.getMatchingList(userSession.id, userSession.tipo)();
     list.then((l) => {
-        if (!l) {
-            let matchCard = `<div>Não foi possível gerar matchmaking!</div>`;
+        if (!l || l.length === 0) {
+            let matchCard = `<div class="card">Não foi possível gerar matchmaking!</div>`;
             document
                 .getElementById("logBtn")
                 .insertAdjacentHTML("afterend", matchCard);

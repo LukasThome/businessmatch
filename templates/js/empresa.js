@@ -168,8 +168,8 @@ function logList() {
     document.querySelectorAll(".card").forEach(el => el.remove());
     var list = eel.sendEmpresaList()();
     list.then((l) => {
-        if (!l) {
-            let empresaCard = `<div>Não há empresas cadastradas!</div>`;
+        if (!l || l.length === 0) {
+            let empresaCard = `<div class="card">Não há empresas cadastradas!</div>`;
             document
                 .getElementById("logBtn")
                 .insertAdjacentHTML("afterend", empresaCard);

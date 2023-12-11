@@ -1,35 +1,29 @@
-var form = document.getElementById("signup");
+var form = document.getElementById("search");
 let userSession = {};
 
 function onSubmit(event) {
-    // event.preventDefault();
-    // var obj = {
-    //     nome: form.elements["nome"].value,
-    //     cnpj: form.elements["cnpj"].value,
-    //     cnae: form.elements["cnae"].value,
-    //     setor: form.elements["setor"].value,
-    //     pergunta1: form.elements["pergunta1"].value,
-    //     pergunta2: form.elements["pergunta2"].value,
-    //     pergunta3: form.elements["pergunta3"].value,
-    // };
-    // eel.workWithValuesEmpresa(obj)();
-    // location.reload();
-}
-
-function logList() {
+    event.preventDefault();
     document.querySelectorAll(".card").forEach(el => el.remove());
-    var list = eel.getMatchingList(userSession.id, userSession.tipo)();
+    var e = document.getElementById("attributes");
+    var field = e.options[e.selectedIndex].value;
+    var value = form.elements["searchValue"].value
+    var list = eel.getSearchResult(userSession.id, userSession.tipo, field, value)();
     list.then((l) => {
-        if (!l) {
-            let matchCard = `<div>Não foi possível gerar matchmaking!</div>`;
+        if (l.length === 0) {
+            let matchCard = `<div class="card">Não foram encontrados resultados para o critério informado!</div>`;
             document
                 .getElementById("logBtn")
                 .insertAdjacentHTML("afterend", matchCard);
             return;
         }
-        l.map(({nome, matchingScore, setor, region, id}) => {
+
+        l.map(({
+                   nome, matchingScore, setor, region, cnae, activityType, needCertification, hasCertification,
+                   wantsSoftwareFactory, hasOwnProduct, wantsRemoteWork, doesRemoteWork, wantsFullCommitment,
+                   hasOtherPartners, id
+               }) => {
             let matchCard = `
-                <div class="card" id="cardId__${id}" style="width: 365px">
+                <div class="card" id="cardId__${id}" style="width: 95.5%">
                     <div class="titleContainer">
                         <h2 id="title">${nome}</h2>
                         <div>
@@ -41,7 +35,13 @@ function logList() {
                     <div class="bodyText">
                         <span
                             >Matching Score:
-                            <span id="cnpj"><b>${matchingScore}%</b></span>
+                            <span id="matchingScore"><b>${(matchingScore)}%</b></span>
+                        </span>
+                    </div>
+                    <div class="bodyText">
+                        <span
+                            >CNAE:
+                            <span id="cnae"><b>${cnae}</b></span>
                         </span>
                     </div>
                     <div class="bodyText">
@@ -53,9 +53,39 @@ function logList() {
                     <div class="bodyText">
                         <span
                             >Região:
-                            <span id="setor"><b>${region}</b></span>
+                            <span id="region"><b>${region}</b></span>
                         </span>
                     </div>
+                    <div class="bodyText">
+                        <span
+                            >Tipo de atividade:
+                            <span id="activityType"><b>${activityType}</b></span>
+                        </span>
+                    </div>
+                    <div class="bodyText">
+                        <span
+                            >Possui ou necessita de certificações:
+                            <span id="certification"><b>${(needCertification != null ? needCertification : hasCertification)}</b></span>
+                        </span>
+                    </div>
+                    <div class="bodyText">
+                        <span
+                            >Desenvolve ou procura desenvolvimento de software proprietário :
+                            <span id="softwareFactory"><b>${(wantsSoftwareFactory != null ? wantsSoftwareFactory : hasOwnProduct)}</b></span>
+                        </span>
+                    </div>
+                    <div class="bodyText">
+                        <span
+                            >Trabalho remoto:
+                            <span id="remoteWork"><b>${(wantsRemoteWork != null ? wantsRemoteWork : doesRemoteWork)}</b></span>
+                        </span>
+                    </div>  
+                    <div class="bodyText">
+                        <span
+                            >Parcerias exclusivas:
+                            <span id="hasOrWantOtherPartners"><b>${(wantsFullCommitment != null ? wantsFullCommitment : hasOtherPartners)}</b></span>
+                        </span>
+                    </div>  
                 </div>
             `;
             document

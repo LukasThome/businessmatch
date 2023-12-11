@@ -91,18 +91,26 @@ class EmpresaController():
         with open(self.__filePath, 'wb') as em:
             pickle.dump(empresas, em)
 
-    def findById(self, idEmpresa):
-        print("m=findById, idEmpresa=" + str(idEmpresa))
-        empresas = self.load()
-        # print(empresas)
-        for empresa in empresas:
-            if (empresa["id"] == idEmpresa):
-                return empresa
-        return None
-
     def findAll(self):
         empresas = self.load()
         listEmpresas = []
         for empresa in empresas:
             listEmpresas.append(Empresa.toEmpresa(empresa))
         return listEmpresas
+
+    def findById(self, idEmpresa):
+        print("m=findById, idEmpresa=" + str(idEmpresa))
+        empresas = self.load()
+        for empresa in empresas:
+            if (empresa["id"] == idEmpresa):
+                return empresa
+        return None
+
+    @staticmethod
+    def findByFieldValueInList(field, value, empresas):
+        print("m=findByFieldValueInList, field=" + str(field) + ", value=" + str(value))
+        resultList = []
+        for empresa in empresas:
+            if (str(empresa[field]).strip().upper() == str(value).strip().upper()):
+                resultList.append(empresa)
+        return resultList

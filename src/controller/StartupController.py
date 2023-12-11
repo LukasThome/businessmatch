@@ -97,6 +97,13 @@ class StartupController():
         with open(self.__filePath, 'wb') as st:
             pickle.dump(startups, st)
 
+    def findAll(self):
+        startups = self.load()
+        listStartups = []
+        for startup in startups:
+            listStartups.append(Startup.toStartup(startup))
+        return listStartups
+
     def findById(self, idStartup):
         startups = self.load()
         for startup in startups:
@@ -104,9 +111,11 @@ class StartupController():
                 return startup
         return None
 
-    def findAll(self):
-        startups = self.load()
-        listStartups = []
+    @staticmethod
+    def findByFieldValueInList(field, value, startups):
+        print("m=findByFieldValueInList, field=" + str(field) + "value=" + str(value))
+        resultList = []
         for startup in startups:
-            listStartups.append(Startup.toStartup(startup))
-        return listStartups
+            if (str(startup[field]).strip().upper() == str(value).strip().upper()):
+                resultList.append(startup)
+        return resultList
