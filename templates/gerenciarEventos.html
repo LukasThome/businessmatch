@@ -19,28 +19,12 @@
 
 <body>
     <div class="mainContainer">
-        <div class="dropdown">
-            <ul id="my-dropdown2">
-                <li><a href="./cadastroEvento.html">Criar Evento</a></li>
-                <li><a href="./gerenciarEventos.html">Gerenciar Eventos</a></li>
-                <li><a href="./eventos.html">Todos Eventos</a></li>
-
-
-            </ul>
-            <a href="#my-dropdown2" aria-controls="my-dropdown2" role="button" data-toggle="dropdown"
-                id="my-dropdown2-btn">
-                Selecione
-            </a>
-            <a href="#my-dropdown2-btn" aria-controls="my-dropdown2" role="button" data-toggle="dropdown" class="close">
-                Close dropdown
-            </a>
-        </div>
 
         <h1 class="title">Gerencie os eventos aqui</h1>
         <div class="inputsContainer" id="logBtn">
-          <button class="submitBtn" onclick="logList()">
-            Visualizar Eventos
-          </button>
+            <button class="submitBtn" onclick="logList()">
+                Visualizar Eventos
+            </button>
         </div>
         <div class="eventList"></div>
         <!-- Aqui serão adicionados os eventos como cards -->

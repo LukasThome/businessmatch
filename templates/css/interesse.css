@@ -1,0 +1,12 @@
+.organizacaoContainer {
+  display: flex;
+  gap: 2rem;
+}
+.title {
+  align-self: center;
+}
+.organizacaoItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

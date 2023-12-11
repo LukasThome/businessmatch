@@ -16,32 +16,18 @@
 </head>
 <body>
     <div class="mainContainer">
-        <div class="dropdown">
-            <ul id="my-dropdown2">
-                <li><a href="./cadastroEvento.html">Criar Evento</a></li>
-                <li><a href="./gerenciarEventos.html">Gerenciar Eventos</a></li>
-                <li><a href="./eventos.html">Todos Eventos</a></li>
-
-                
-            </ul>
-            <a href="#my-dropdown2" aria-controls="my-dropdown2" role="button" data-toggle="dropdown"
-                id="my-dropdown2-btn">
-                Selecione
-            </a>
-            <a href="#my-dropdown2-btn" aria-controls="my-dropdown2" role="button" data-toggle="dropdown" class="close">
-                Close dropdown
-            </a>
-        </div>
+        
         <h1 class="title">Criar Evento</h1>
 
         <!-- Formulário para criar eventos -->
-        <form onsubmit="addEvent(event)" id="evento">
+        <form onsubmit="onSubmit(event)" id="signup">
             <div class="inputsContainer">
                 <input type="text" id="titulo" name="titulo" class="formInput" placeholder="Digite o título do evento" required />
-                <input type="text" id="local" name="local" class="formInput" placeholder="Informe o local do evento" required />
+                <input type="text" id="local" name="local" class="formInput" placeholder="Pesquise o local no Google Maps" required />
+                <button type="button" id="searchLocationBtn" class="submitBtn" onclick="searchLocationOnMaps()">Pesquisar no Google Maps</button>
                 <input type="date" id="data" name="data" class="formInput" placeholder="Informe a data do evento" required />
                 <input type="time" id="hora" name="hora" class="formInput" placeholder="Informe o horário do evento" required />
-                <input type="text" id="descricao" name="descricao" class="formInput" placeholder="Descreva o evento" required />
+                <textarea id="descricao" name="descricao" class="formInputDescricao" placeholder="Descreva o evento" required></textarea>
             </div>
             <div class="inputsContainer">
                 <input type="submit" class="submitBtn" value="Enviar" />

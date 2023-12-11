@@ -1,7 +1,8 @@
-import random
 import pickle
 from pathlib import Path
 from src.model.Evento import Evento
+from uuid import uuid4
+
 
 class EventoController:
     def __init__(self):
@@ -20,25 +21,26 @@ class EventoController:
     def filePath(self):
         return self.__filePath
 
+
+    
     def add(self, values):
-        newEvento = Evento(random.randint(0, 100),
+        
+        newEvento = Evento(str(uuid4()),
                            values["titulo"],
-                           values["endereco"],
+                           values["local"],
                            values["data"],
                            values["hora"],
                            values["descricao"],
-                           values["empresa"],
-                           values["organizacao"]
+                           values["nome_organizacao"]
                            )
         mapping = {
-            "id": newEvento.get_id(),
-            "titulo": newEvento.get_titulo(),
-            "endereco": newEvento.get_endereco(),
-            "data": newEvento.get_data(),
-            "hora": newEvento.get_hora(),
-            "descricao": newEvento.get_descricao(),
-            "empresa": newEvento.get_empresa(),
-            "organizacao": newEvento.get_organizacao()
+            "id": newEvento.id,
+            "titulo": newEvento.titulo,
+            "local": newEvento.local,
+            "data": newEvento.data,
+            "hora": newEvento.hora,
+            "descricao": newEvento.descricao,
+            "nome_organizacao": newEvento.nome_organizacao
         }
         self.__eventos.append(mapping)
 
@@ -69,13 +71,12 @@ class EventoController:
     def edit(self, evento):
         eventos = self.load()
         for e in eventos:
-            if int(e["id"]) == int(evento["id"]):
+            if (e["id"] == evento["id"]):
                 e["titulo"] = evento["titulo"]
-                e["endereco"] = evento["endereco"]
+                e["local"] = evento["local"]
                 e["data"] = evento["data"]
                 e["hora"] = evento["hora"]
                 e["descricao"] = evento["descricao"]
-                e["empresa"] = evento["empresa"]
-                e["organizacao"] = evento["organizacao"]
+
         with open(self.__filePath, 'wb') as ev:
             pickle.dump(eventos, ev)

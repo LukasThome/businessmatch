@@ -1,4 +1,4 @@
-var body = document.querySelector("body");
+var body = document.querySelector('body');
 
 let header = `
     <div class="headerContainer">
@@ -7,44 +7,147 @@ let header = `
         </a>
         <ul class="menuBarContainer">
             <li class="menuItem"><a href="/home.html" class="linkItem">Home</a></li>
-            <li class="menuItem">
-                <a href="/cadastroEmpresa.html" class="linkItem"
-                    >Cadastro de Empresas
-                </a>
-            </li>
-            <li class="menuItem">
-                <a href="/cadastroStartup.html" class="linkItem"
-                    >Cadastro de Startup
-                </a>
-            </li>
-            <li class="menuItem">
-                <a href="/gerenciarStartups.html" class="linkItem"
-                    >Gerenciar Startups
-                </a>
-            </li>
-            <li class="menuItem">
-                <a href="/gerenciarEmpresas.html" class="linkItem"
-                    >Gerenciar Empresas
-                </a>
-            </li>
-            <li class="menuItem">
-                <a href="/eventos.html" class="linkItem"
-                    >Eventos
-                </a>
-            </li>
-            <li class="menuItem">
-            <a href="/portfolio.html" class="linkItem"
-                >Portfólio
-            </a>
-        </li>
-        </li>
-            <li class="menuItem">
-            <a href="/gerenciarportfolios.html" class="linkItem"
-                >Gerenciar Portfólios
-            </a>
-        </li>
+            <div class="dropDownContainer">
+                <li class="menuItem dropdownItem">
+                    Empresas
+                </li>
+                <div class="dropdownItems">
+                    <li class="menuDropdown">
+                        <a href="/cadastroEmpresa.html" class="dropdownItem"
+                            >Cadastro de Empresas
+                        </a>
+                    </li>
+                    <li class="menuDropdown">
+                        <a href="/gerenciarEmpresas.html" class="dropdownItem"
+                            >Gerenciar Empresas
+                        </a>
+                    </li>
+                </div>
+            </div>
+            <div class="dropDownContainer">
+                <li class="menuItem dropdownItem">
+                    Startups
+                </li>
+                <div class="dropdownItems">
+                    <li class="menuDropdown">
+                        <a href="/cadastroStartup.html" class="dropdownItem"
+                            >Cadastro de Startups
+                        </a>
+                    </li>
+                    <li class="menuDropdown">
+                        <a href="/gerenciarStartups.html" class="dropdownItem"
+                            >Gerenciar Startups
+                        </a>
+                    </li>
+                </div>
+            </div>
+            <div class="dropDownContainer">
+                <li class="menuItem dropdownItem">
+                    Eventos
+                </li>
+                <div class="dropdownItems">
+                    <li class="menuDropdown">
+                        <a href="/eventos.html" class="dropdownItem"
+                            >Mostrar todos os eventos
+                        </a>
+                    </li>
+                    <li class="menuDropdown">
+                        <a href="/cadastroEvento.html" class="dropdownItem"
+                            >Cadastrar Evento
+                        </a>
+                    </li>
+                    <li class="menuDropdown">
+                        <a href="/gerenciarEventos.html" class="dropdownItem"
+                            >Gerenciar Eventos
+                        </a>
+                    </li>
+                </div>
+            </div>
+            <div class="dropDownContainer">
+                <li class="menuItem dropdownItem">
+                    Portfólios
+                </li>
+                <div class="dropdownItems">
+                    <li class="menuDropdown">
+                        <a href="/portfolio.html" class="dropdownItem"
+                            >Cadastro de Portfólio
+                        </a>
+                    </li>
+                    <li class="menuDropdown">
+                        <a href="/gerenciarportfolios.html" class="dropdownItem"
+                            >Gerenciar Portfólios
+                        </a>
+                    </li>
+                </div>
+            </div>
+            <div class="dropDownContainer">
+                <li class="menuItem dropdownItem">
+                    Interesses
+                </li>
+                <div class="dropdownItems">
+                    <li class="menuDropdown">
+                        <a href="/cadastrarInteresse.html" class="dropdownItem"
+                            >Cadastrar Interesses
+                        </a>
+                    </li>
+                    <li class="menuDropdown">
+                        <a href="/visualizarInteresses.html" class="dropdownItem"
+                            >Visualizar Interesses
+                        </a>
+                    </li>
+                </div>
+            </div>
+            
+            <div class="dropDownContainer">
+                <li class="menuItem dropdownItem">
+                    Propostas
+                </li>
+                <div class="dropdownItems">
+                    <li class="menuDropdown">
+                        <a href="/cadastroProposta.html" class="dropdownItem"
+                            >Cadastro de Proposta
+                        </a>
+                    </li>
+                    <li class="menuDropdown">
+                        <a href="/gerenciarPropostas.html" class="dropdownItem"
+                            >Gerenciar Propostas
+                        </a>
+                    </li>
+                </div>
+            </div>
+            <div class="dropDownContainer">
+                <li class="menuItem dropdownItem">
+                    Match
+                </li>
+                <div class="dropdownItems">
+                    <li class="menuDropdown">
+                        <a href="/gerarMatching.html" class="dropdownItem"
+                            >Gerar Matching
+                        </a>
+                    </li>
+                    <li class="menuDropdown">
+                        <a href="/gerenciarMatching.html" class="dropdownItem"
+                            >Gerenciar Matchings
+                        </a>
+                    <li class="menuDropdown">
+                        <a href="/pesquisaRefinada.html" class="dropdownItem"
+                            >Pesquisa refinada
+                        </a>
+                    </li>
+                </div>
+            </div>
         </ul>
     </div>
 `;
 
-body.insertAdjacentHTML("afterbegin", header);
+(function getSession() {
+    var session = eel.currentSession()();
+    session.then((s) => {
+        console.log(s);
+        /* body.insertAdjacentHTML(
+          "beforeend",
+          `<li>ID Usuário logado: ${s.id}</li> <li>Tipo: ${s.tipo}</li>`
+        ); */
+    });
+})();
+body.insertAdjacentHTML('afterbegin', header);

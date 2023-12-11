@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/css/index.css" />
+    <link rel="stylesheet" type="text/css" href="/css/header.css" />
+    <link rel="stylesheet" type="text/css" href="/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="/css/propostas.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mooli&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Gerenciar Propostas</title>
+  </head>
+  <body>
+    <div class="mainContainer">
+      <h1 class="title">Gerencie as propostas aqui</h1>
+      
+      <h2 class="title">Propostas recebidas</h2>
+      
+      <div class="inputsContainer" id="logBtn1">
+        <button class="submitBtn" onclick="logListProposta()">
+            Visualizar Propostas Recebidas
+        </button>
+      </div>
+      <div class="eventList"></div>
+      <!-- Aqui serão adicionados as propstascomo cards -->
+      
+      <h2 class="title">Propostas enviadas</h2>
+      
+      <div class="inputsContainer" id="logBtn">
+        <button class="submitBtn" onclick="logList()">
+          Visualizar Propostas
+        </button>
+      </div>
+
+      <div class="eventList"></div>
+      <!-- Aqui serão adicionados as propstascomo cards -->
+    </div>
+
+    <script type="text/javascript" src="/eel.js"></script>
+    <script type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript" src="/js/proposta.js"></script>
+  </body>
+</html>

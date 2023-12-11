@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="/css/gerenciarOrganizacao.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/header.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Mooli&display=swap" rel="stylesheet"/>
+    <title>Pesquisa Refinada</title>
+</head>
+<body>
+<div class="mainContainer">
+    <h1 class="title">Pesquisa Refinada</h1>
+
+    <form onsubmit="onSubmit(event)" id="search">
+        <div class="inputsContainerSearch" id="logBtn">
+            <select id="attributes" name="attributes" form="attributesForm" class="formInput" required>
+                <option value="nome">Nome</option>
+                <option value="cnae">CNAE</option>
+                <option value="setor">Setor</option>
+                <option value="region">Região</option>
+                <option value="activityType">Tipo de atividade (produto ou serviço)</option>
+                <option value="certification">Há certificação (sim/não)</option>
+                <option value="softwareFactory">Possui software/produto próprio (sim/não)</option>
+                <option value="remoteWork">Há trabalho remoto (sim/não)</option>
+                <option value="hasOrWantOtherPartners">Parceria exclusiva (sim/não)</option>
+            </select>
+
+            <input style="width: 350px"
+                   type="text"
+                   id="searchValue"
+                   name="searchValue"
+                   class="formInput"
+                   placeholder="Digite o termo / sim ou não"
+                   required
+            />
+            <button type="submit" class="submitBtn">
+                Buscar
+            </button>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript" src="/eel.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+<script type="text/javascript" src="/js/pesquisaRefinada.js"></script>
+</body>
+</html>

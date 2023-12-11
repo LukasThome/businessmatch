@@ -1,30 +1,39 @@
 from src.model.Organizacao import Organizacao
 from datetime import date, time
+from uuid import uuid4
 
-class Evento:
-    
-    def __init__(self, id, titulo, endereco, data, hora, descricao, empresa, organizacao):
-        self.__id = id  # ID do evento (inteiro)
-        self.__titulo = titulo  # Título do evento
-        self.__endereco = endereco  # Endereço do evento
-        self.__data = data  # Data do evento (objeto date)
-        self.__hora = hora  # Hora do evento (objeto time)
-        self.__descricao = descricao  # Descrição do evento (string)
-        self.__empresa = empresa  # Nome da empresa organizadora
-        self.__organizacao = organizacao  # Referência à organização responsável pelo evento (objeto Organizacao)
+class Evento(Organizacao):
+    id: int
+    titulo: str
+    local: str
+    data: date
+    hora: time
+    descricao: str
+    nome_organizacao: Organizacao
 
-    def get_organizacao(self):
-        return self.__organizacao
 
-# Getters
+    def __init__(self, id, titulo, local, data, hora, descricao, nome_organizacao):  
+        self.id = id  # ID do evento (inteiro)
+        self.titulo = titulo  # Título do evento
+        self.local = local  # Endereço do evento
+        self.data = data  # Data do evento (objeto date)
+        self.hora = hora  # Hora do evento (objeto time)
+        self.descricao = descricao  # Descrição do evento (string)
+        self.nome_organizacao = nome_organizacao#campo para saber quem criou este evento posteriormente
+
+
+    # Getters
+    def get_nome_organizacao(self):
+        return self.nome_organizacao
+
     def get_id(self):
         return self.__id
 
     def get_titulo(self):
         return self.__titulo
 
-    def get_endereco(self):
-        return self.__endereco
+    def get_local(self):
+        return self.__local
 
     def get_data(self):
         return self.__data
@@ -35,21 +44,20 @@ class Evento:
     def get_descricao(self):
         return self.__descricao
 
-    def get_empresa(self):
-        return self.__empresa
-
-    def get_organizacao(self):
-        return self.__organizacao
 
     # Setters
+    # Setter para a organização
+    def set_organizacao(self, nome_organizacao):
+        self.nome_organizacao = nome_organizacao
+
     def set_id(self, id):
         self.__id = id
 
     def set_titulo(self, titulo):
         self.__titulo = titulo
 
-    def set_endereco(self, endereco):
-        self.__endereco = endereco
+    def set_local(self, local):
+        self.__local = local
 
     def set_data(self, data):
         self.__data = data
@@ -60,8 +68,4 @@ class Evento:
     def set_descricao(self, descricao):
         self.__descricao = descricao
 
-    def set_empresa(self, empresa):
-        self.__empresa = empresa
-
-    def set_organizacao(self, organizacao):
-        self.__organizacao = organizacao
+   

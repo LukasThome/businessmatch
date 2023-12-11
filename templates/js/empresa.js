@@ -7,9 +7,14 @@ function onSubmit(event) {
         cnpj: form.elements["cnpj"].value,
         cnae: form.elements["cnae"].value,
         setor: form.elements["setor"].value,
-        pergunta1: form.elements["pergunta1"].value,
-        pergunta2: form.elements["pergunta2"].value,
-        pergunta3: form.elements["pergunta3"].value,
+        region: form.elements["region"].value,
+        activityType: form.elements["activityType"].value,
+        offeredServices: form.elements["offeredServices"].value,
+        offeredProducts: form.elements["offeredProducts"].value,
+        needCertification: form.elements["needCertification"].value,
+        wantsSoftwareFactory: form.elements["wantsSoftwareFactory"].value,
+        wantsRemoteWork: form.elements["wantsRemoteWork"].value,
+        wantsFullCommitment: form.elements["wantsFullCommitment"].value,
     };
     eel.workWithValuesEmpresa(obj)();
     location.reload();
@@ -24,6 +29,14 @@ function onEdit(event) {
         cnpj: editForm.elements["cnpj"].value,
         cnae: editForm.elements["cnae"].value,
         setor: editForm.elements["setor"].value,
+        region: editForm.elements["region"].value,
+        activityType: editForm.elements["activityType"].value,
+        offeredServices: editForm.elements["offeredServices"].value,
+        offeredProducts: editForm.elements["offeredProducts"].value,
+        needCertification: editForm.elements["needCertification"].value,
+        wantsSoftwareFactory: editForm.elements["wantsSoftwareFactory"].value,
+        wantsRemoteWork: editForm.elements["wantsRemoteWork"].value,
+        wantsFullCommitment: editForm.elements["wantsFullCommitment"].value,
         id: document.querySelector("#edit").children[0].id,
     };
     eel.editEmpresa(obj)();
@@ -48,7 +61,8 @@ function remove() {
     });
 }
 
-function generateEditTemplate(nome, cnpj, cnae, setor, id) {
+function generateEditTemplate(nome, cnpj, cnae, setor, region, activityType, offeredServices, offeredProducts,
+                              needCertification, wantsSoftwareFactory, wantsRemoteWork, wantsFullCommitment, id) {
     let empresaCardEdit = `
         <form onsubmit="onEdit(event)" id="edit">
             <div id="${id}">
@@ -70,7 +84,55 @@ function generateEditTemplate(nome, cnpj, cnae, setor, id) {
                 <div class="bodyText">
                     <span
                         >Setor:
-                        <span id="setor"><input name="setor" value="${setor} "class="formInput"></span>
+                        <span id="setor"><input name="setor" value="${setor}" class="formInput"></span>
+                    </span>
+                </div>
+                <div class="bodyText">
+                    <span
+                        >Região:
+                        <span id="region"><input name="region" value="${region}" class="formInput"></span>
+                    </span>
+                </div>
+                <div class="bodyText">
+                    <span
+                        >Tipo de atividade(produto ou serviço):
+                        <span id="activityType"><input name="activityType" value="${activityType}" class="formInput"></span>
+                    </span>
+                </div>
+                <div class="bodyText">
+                    <span
+                        >Serviços oferecidos:
+                        <span id="offeredServices"><input name="offeredServices" value="${offeredServices}" class="formInput"></span>
+                    </span>
+                </div>
+                <div class="bodyText">
+                    <span
+                        >Produtos oferecidos:
+                        <span id="offeredProducts"><input name="offeredProducts" value="${offeredProducts}" class="formInput"></span>
+                    </span>
+                </div>
+                <div class="bodyText">
+                    <span
+                        >Certificação necessária para parcerias?
+                        <span id="needCertification"><input name="needCertification" value="${needCertification}" class="formInput"></span>
+                    </span>
+                </div>
+                <div class="bodyText">
+                    <span
+                        >Procura fábrica de software?
+                        <span id="wantsSoftwareFactory"><input name="wantsSoftwareFactory" value="${wantsSoftwareFactory}" class="formInput"></span>
+                    </span>
+                </div>
+                <div class="bodyText">
+                    <span
+                        >Quer trabalho remoto?
+                        <span id="wantsRemoteWork"><input name="wantsRemoteWork" value="${wantsRemoteWork}" class="formInput"></span>
+                    </span>
+                </div>
+                <div class="bodyText">
+                    <span
+                        >Quer exclusividade em parcerias?
+                        <span id="wantsFullCommitment"><input name="wantsFullCommitment" value="${wantsFullCommitment}" class="formInput"></span>
                     </span>
                 </div>
                 <div class="inputsContainer">
@@ -85,9 +147,13 @@ function generateEditTemplate(nome, cnpj, cnae, setor, id) {
 function edit() {
     var list = eel.sendEmpresaList()();
     list.then((l) => {
-        l.map(({id, nome, cnpj, cnae, setor}) => {
+        l.map(({
+                   id, nome, cnpj, cnae, setor, region, activityType, offeredServices, offeredProducts,
+                   needCertification, wantsSoftwareFactory, wantsRemoteWork, wantsFullCommitment
+               }) => {
             document.getElementById(`editId__${id}`).addEventListener("click", () => {
-                let empresaCardEdit = generateEditTemplate(nome, cnpj, cnae, setor, id);
+                let empresaCardEdit = generateEditTemplate(nome, cnpj, cnae, setor, region, activityType, offeredServices, offeredProducts,
+                    needCertification, wantsSoftwareFactory, wantsRemoteWork, wantsFullCommitment, id);
                 document.getElementById(`cardId__${id}`).innerHTML = empresaCardEdit;
             });
             document
@@ -99,10 +165,11 @@ function edit() {
 }
 
 function logList() {
+    document.querySelectorAll(".card").forEach(el => el.remove());
     var list = eel.sendEmpresaList()();
     list.then((l) => {
-        if (!l) {
-            let empresaCard = `<div>Não há empresas cadastradas!</div>`;
+        if (!l || l.length === 0) {
+            let empresaCard = `<div class="card">Não há empresas cadastradas!</div>`;
             document
                 .getElementById("logBtn")
                 .insertAdjacentHTML("afterend", empresaCard);

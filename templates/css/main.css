@@ -10,6 +10,7 @@
   font-size: 1rem;
   border-radius: 1rem;
   border: 2px solid #0d9340;
+
 }
 .inputsContainer {
   display: flex;
@@ -17,6 +18,14 @@
   margin-bottom: 1rem;
   gap: 0.5rem;
 }
+
+.inputsContainerSearch {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1rem;
+  gap: 0.5rem;
+}
+
 .submitBtn {
   padding: 1rem;
   font-family: Mooli;
@@ -33,4 +42,22 @@
 }
 .question {
   margin: 1rem 0;
+}
+
+.legenda {
+  color: #8c8c8c;
+  font-size: 13px;
+}
+
+
+.formInputDescricao {
+  padding: 1rem;
+  font-family: Mooli;
+  font-size: 1rem;
+  border-radius: 1rem;
+  border: 2px solid #0d9340;
+  height: auto; /* Altere a altura para "auto" para que o campo de texto se ajuste automaticamente ao conteúdo */
+  text-align: left;
+  resize: vertical;
+  height: 200px;
 }

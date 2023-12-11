@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,33 +15,25 @@
 
     <title>Eventos</title>
 </head>
+
 <body>
     <div class="mainContainer">
-        <div class="dropdown">
-            <ul id="my-dropdown2">
-                <li><a href="./cadastroEvento.html">Criar Evento</a></li>
-                <li><a href="./gerenciarEventos.html">Gerenciar Eventos</a></li>
-                <li><a href="./eventos.html">Todos Eventos</a></li>
+        
 
-
-            </ul>
-            <a href="#my-dropdown2" aria-controls="my-dropdown2" role="button" data-toggle="dropdown"
-                id="my-dropdown2-btn">
-                Selecione
-            </a>
-            <a href="#my-dropdown2-btn" aria-controls="my-dropdown2" role="button" data-toggle="dropdown" class="close">
-                Close dropdown
-            </a>
-        </div>
         <h1 class="title">Todos os Eventos</h1>
-
-        <div class="eventList">
-            <!-- Aqui serão adicionados os eventos como cards -->
+        <div class="inputsContainer" id="logBtn">
+            <button class="submitBtn" onclick="logListViewOnly()">
+                Visualizar Todos Eventos
+            </button>
         </div>
+        <div class="eventList"></div>
+        <!-- Aqui serão adicionados os eventos como cards -->
+    </div>
 
 
     <script type="text/javascript" src="/eel.js"></script>
     <script type="text/javascript" src="/js/index.js"></script>
     <script type="text/javascript" src="/js/evento.js"></script>
 </body>
+
 </html>
